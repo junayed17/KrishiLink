@@ -1,19 +1,19 @@
-import React from 'react';
-import Navber from '../Components/Navber';
-import Footer from '../Components/footer/Footer';
-import { Outlet } from 'react-router';
+import React from "react";
+import Navber from "../Components/Navber";
+import Footer from "../Components/footer/Footer";
+import { Outlet } from "react-router";
 
 const Home = () => {
   return (
     <div>
       <header>
-        <Navber/>
+        <Navber />
       </header>
       <main>
-<Outlet/>
+        <Outlet />
       </main>
       <footer>
-        <Footer/>
+        <Footer />
       </footer>
     </div>
   );

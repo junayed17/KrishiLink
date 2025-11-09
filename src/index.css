@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* slider font  */
+
+
+.sliderFont {
+  font-family: "DM Serif Display", serif;
+  font-weight: 600;
+  font-style: normal;
+}
 a.active {
   padding: 10px 20px;
   border-radius: 10px;
