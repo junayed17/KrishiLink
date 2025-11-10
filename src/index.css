@@ -20,8 +20,12 @@
   font-style: normal;
 }
 a.active {
-  padding: 10px 20px;
   border-radius: 10px;
   border-bottom: 5px solid green;
   transition: 0.3s;
 }
+body{
+  background:rgb(249, 247, 247);
+}
+
+

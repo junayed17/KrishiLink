@@ -4,22 +4,28 @@ import { Link, NavLink } from "react-router";
 const Navber = () => {
   const links = (
     <>
-      <NavLink className="hover:px-2.5 hover:py-5 hover:bg-[#009432] mx-4 transition-all duration-500 hover:text-white">
+      <NavLink
+        className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-4 transition-all duration-500 hover:text-white"
+        to="/"
+      >
         Home
       </NavLink>
-      <NavLink className="hover:px-2.5 hover:py-5 hover:bg-[#009432] mx-4 transition-all duration-500 hover:text-white">
+      <NavLink
+        className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white"
+        to="/AllCrops"
+      >
         All crops
       </NavLink>
-      <NavLink className="hover:px-2.5 hover:py-5 hover:bg-[#009432] mx-4 transition-all duration-500 hover:text-white">
+      <NavLink className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white">
         Profile
       </NavLink>
-      <NavLink className="hover:px-2.5 hover:py-5 hover:bg-[#009432] mx-4 transition-all duration-500 hover:text-white">
+      <NavLink className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white">
         Add crops
       </NavLink>
-      <NavLink className="hover:px-2.5 hover:py-5 hover:bg-[#009432] mx-4 transition-all duration-500 hover:text-white">
+      <NavLink className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white">
         My posts
       </NavLink>
-      <NavLink className="hover:px-2.5 hover:py-5 hover:bg-[#009432] mx-4 transition-all duration-500 hover:text-white">
+      <NavLink className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white">
         My interests
       </NavLink>
     </>
@@ -73,7 +79,7 @@ const Navber = () => {
         <div className="navbar-end">
           <Link
             to="/signIn"
-            className="btn hover:bg-[#009432] rounded-2xl transition-all duration-500 hover:text-white"
+            className="text-[20px] font-semibold px-3 py-2 hover:bg-green-500 rounded-2xl duration-300 bg-green-400  hover:scale-[1.3] text-center inline-flex items-center justify-center"
           >
             SignIn
           </Link>

@@ -4,6 +4,7 @@ import Home from '../Pages/Home';
 import SignIn from '../Components/SignIn/SignIn';
 import HomeContent from '../Components/HomeContent/HomeContent';
 import CropDetails from '../Components/CropsDetails/CropDetails';
+import AllCrops from '../Components/AllCrops/AllCrops';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path:"/crop/cropDetails",
         element:<CropDetails/>
+      },
+      {
+        path:"/AllCrops",
+        element:<AllCrops/>
       },
       {
         path: "/signIn",
