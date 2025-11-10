@@ -16,7 +16,10 @@ const Navber = () => {
       >
         All crops
       </NavLink>
-      <NavLink className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white">
+      <NavLink
+        className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white"
+        to="/myProfile"
+      >
         Profile
       </NavLink>
       <NavLink className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white">
