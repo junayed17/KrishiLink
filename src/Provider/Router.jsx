@@ -6,6 +6,7 @@ import HomeContent from "../Components/HomeContent/HomeContent";
 import CropDetails from "../Components/CropsDetails/CropDetails";
 import AllCrops from "../Components/AllCrops/AllCrops";
 import Profile from "../Components/Profile/Profile";
+import SignUp from "../Components/SignUp/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/signIn",
         element: <SignIn />,
+      },
+      {
+        path: "/signUp",
+        element:<SignUp/>
       },
     ],
   },

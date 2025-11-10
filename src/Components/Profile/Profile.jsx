@@ -95,8 +95,11 @@ const Profile = () => {
         ref={reference}
       >
         <div className="modal-box">
-          <form class="bg-white p-4 max-w-sm mx-auto rounded-lg shadow-xl" onSubmit={handleUpdate}>
-            <h3 class="text-xl font-semibold text-center text-gray-900 mb-4 font-bold text-lg">
+          <form
+            class="bg-white p-4 max-w-sm mx-auto rounded-lg shadow-xl"
+            onSubmit={handleUpdate}
+          >
+            <h3 className="text-2xl font-bold text-center text-gray-900 mb-4 text-green-600">
               Update your profile
             </h3>
             <div class="relative">
