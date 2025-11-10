@@ -99,7 +99,7 @@ const Profile = () => {
             class="bg-white p-4 max-w-sm mx-auto rounded-lg shadow-xl"
             onSubmit={handleUpdate}
           >
-            <h3 className="text-2xl font-bold text-center text-gray-900 mb-4 text-green-600">
+            <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
               Update your profile
             </h3>
             <div class="relative">

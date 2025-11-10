@@ -7,6 +7,7 @@ import CropDetails from "../Components/CropsDetails/CropDetails";
 import AllCrops from "../Components/AllCrops/AllCrops";
 import Profile from "../Components/Profile/Profile";
 import SignUp from "../Components/SignUp/SignUp";
+import AddCrop from "../Components/AddCrops/AddCrop";
 
 const router = createBrowserRouter([
   {
@@ -30,12 +31,16 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
+        path: "/addCrop",
+        element: <AddCrop />,
+      },
+      {
         path: "/signIn",
         element: <SignIn />,
       },
       {
         path: "/signUp",
-        element:<SignUp/>
+        element: <SignUp />,
       },
     ],
   },

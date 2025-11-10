@@ -54,7 +54,7 @@ function handleSignUp(e) {
           onSubmit={handleSignUp}
         >
           {/* Form Title */}
-          <h3 className="text-2xl font-bold text-center text-gray-900 mb-4 text-green-600">
+          <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
             Create Your Account
           </h3>
 
@@ -165,22 +165,21 @@ function handleSignUp(e) {
               <path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"></path>
               <path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path>
             </svg>
-            
 
-
-          <input
+            <input
               onChange={handleCorrectPass}
               placeholder="Enter your Password"
               className="input ml-2 rounded-lg border-none w-full h-full focus:outline-none"
               name="password"
               type={passShow ? "text" : "password"}
             />
-            <p className="text-2xl mr-2" onClick={()=>{
-              setPassShow(!passShow)
-            }}>
-             {
-              !passShow? <FaEye />:<LuEyeClosed/>
-             }
+            <p
+              className="text-2xl mr-2"
+              onClick={() => {
+                setPassShow(!passShow);
+              }}
+            >
+              {!passShow ? <FaEye /> : <LuEyeClosed />}
             </p>
           </div>
 
@@ -218,7 +217,10 @@ function handleSignUp(e) {
 
           {/* --- Social Buttons --- */}
           <div className="flex-row flex flex-row gap-2">
-            <button className="btn google mt-2 w-full h-[50px] rounded-lg flex justify-center items-center font-medium gap-2 border border-gray-200 bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#09bb2f]" type="submit"> 
+            <button
+              className="btn google mt-2 w-full h-[50px] rounded-lg flex justify-center items-center font-medium gap-2 border border-gray-200 bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#09bb2f]"
+              type="submit"
+            >
               <svg
                 xmlSpace="preserve"
                 viewBox="0 0 512 512"
@@ -259,9 +261,9 @@ function handleSignUp(e) {
             </button>
           </div>
         </form>
-        </div>
+      </div>
     </section>
-  )
+  );
 };
 
 export default SignUp;

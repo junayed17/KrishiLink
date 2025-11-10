@@ -20,7 +20,7 @@ function handleSignIn(e) {
           class="form flex flex-col gap-2 bg-white p-7 w-full max-w-lg mx-auto rounded-xl font-sans"
           onSubmit={handleSignIn}
         >
-          <h3 className="text-2xl font-bold text-center text-gray-900 mb-4 text-green-600">
+          <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
             SignIn Your Account
           </h3>
           <div class="flex-column flex flex-col">
@@ -66,12 +66,13 @@ function handleSignIn(e) {
               name="password"
               type={passShow ? "text" : "password"}
             />
-            <p className="text-2xl mr-2" onClick={()=>{
-              setPassShow(!passShow)
-            }}>
-             {
-              !passShow? <FaEye />:<LuEyeClosed/>
-             }
+            <p
+              className="text-2xl mr-2"
+              onClick={() => {
+                setPassShow(!passShow);
+              }}
+            >
+              {!passShow ? <FaEye /> : <LuEyeClosed />}
             </p>
           </div>
 
