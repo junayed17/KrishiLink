@@ -1,13 +1,19 @@
 import React, { use, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { LuEyeClosed } from "react-icons/lu";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/ContextProvider";
 
 const SignIn = () => {
+  const Navigate=useNavigate()
   const { handleSignInWithEmailPass, handleSignInWithGoogle } =
     use(AuthContext);
   const [passShow, setPassShow] = useState(false);
+
+const desiredlocation=useLocation()
+
+console.log(desiredlocation);
+
   function handleSignIn(e) {
     e.preventDefault();
     const email = e.target.email.value;
@@ -16,6 +22,7 @@ const SignIn = () => {
     handleSignInWithEmailPass(email, password)
       .then((result) => {
         alert(result);
+        Navigate(desiredlocation.state.pathname);
       })
       .catch((err) => {
         alert(err);

@@ -20,15 +20,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <PrivateRouter>
-            <HomeContent />
-          </PrivateRouter>
-        ),
+        element: <HomeContent />,
       },
       {
         path: "/crop/cropDetails",
-        element: <CropDetails />,
+        element: (
+          <PrivateRouter>
+            <CropDetails />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/AllCrops",
