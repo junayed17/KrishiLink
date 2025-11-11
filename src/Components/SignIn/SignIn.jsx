@@ -1,17 +1,36 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { LuEyeClosed } from "react-icons/lu";
 import { Link } from "react-router";
+import { AuthContext } from "../../Provider/ContextProvider";
 
 const SignIn = () => {
-const [passShow,setPassShow]=useState(false)
-function handleSignIn(e) {
-  e.preventDefault();
-  const email=e.target.email.value;
-  const password = e.target.password.value;
-  alert(email, password);
-}
-
+  const { handleSignInWithEmailPass, handleSignInWithGoogle } =
+    use(AuthContext);
+  const [passShow, setPassShow] = useState(false);
+  function handleSignIn(e) {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    alert(email, password);
+    handleSignInWithEmailPass(email, password)
+      .then((result) => {
+        alert(result);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+  
+  function handleSignInGoogle() {
+    handleSignInWithGoogle()
+      .then((result) => {
+        alert("sucessfully logged");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     <section className="px-4">
@@ -101,7 +120,10 @@ function handleSignIn(e) {
           </p>
 
           <div class="flex-row flex flex-row gap-2">
-            <button class="btn google mt-2 w-full h-[50px] rounded-lg flex justify-center items-center font-medium gap-2 border border-gray-200 bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#09bb2f]">
+            <button
+              class="btn google mt-2 w-full h-[50px] rounded-lg flex justify-center items-center font-medium gap-2 border border-gray-200 bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#09bb2f]"
+              onClick={handleSignInGoogle}
+            >
               <svg
                 xml:space="preserve"
                 viewBox="0 0 512 512"

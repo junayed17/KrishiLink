@@ -1,27 +1,41 @@
-import React, { useRef } from "react";
+import React, { use, useRef } from "react";
+import { AuthContext } from "../../Provider/ContextProvider";
+import Loader from "../Loader/Loader";
 
 const Profile = () => {
   const reference = useRef(null);
-
+  const { handleUpdateProfile, user, setUser } = use(AuthContext);
   function handleModal() {
     reference.current.showModal();
   }
 
-
+  console.log(user);
   function handleUpdate(e) {
-    e.preventDefault()
-    const name=e.target.name.value;
+    e.preventDefault();
+    const name = e.target.name.value;
     const photoUrl = e.target.photo.value;
+    const userData = {
+      displayName: name,
+      photoURL: photoUrl,
+    };
+    handleUpdateProfile(userData)
+      .then(() => {
+        setUser((prevUser) => ({
+          ...prevUser,
+          displayName: name,
+          photoURL: photoUrl,
+        }));
+        alert("profile updated");
+      })
+      .catch(() => {
+        alert("profile update cannot possible");
+      });
     reference.current.close();
   }
 
-
-
-
-
-
-
-
+  if (!user) {
+    return <Loader />;
+  }
   return (
     <section className="max-w-[1440px] mx-auto px-4 py-10">
       <div>
@@ -31,35 +45,15 @@ const Profile = () => {
 
           {/* Profile Image */}
           <div className="w-24 h-24 rounded-full bg-gray-100 mx-auto mb-4 overflow-hidden border-4 border-white shadow-md flex items-center justify-center">
-            <svg
-              fill="#000000"
-              viewBox="0 0 64 64"
-              height="70px"
-              width="70px"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18,12c0-5.522,4.478-10,10-10h8c5.522,0,10,4.478,10,10v7c0-3.313-2.687-6-6-6h-6c-2.209,0-4-1.791-4-4 
-        c0-0.553-0.447-1-1-1s-1,0.447-1,1c0,2.209-1.791,4-4,4c-3.313,0-6,2.687-6,6V12z"
-                fill="#506C7F"
-              ></path>
-              <path
-                d="M62,60c0,1.104-0.896,2-2,2H4c-1.104,0-2-0.896-2-2v-8c0-1.104,0.447-2.104,1.172-2.828l-0.004-0.004 
-        c4.148-3.343,8.896-5.964,14.046-7.714C20.869,45.467,26.117,48,31.973,48c5.862,0,11.115-2.538,14.771-6.56 
-        c5.167,1.75,9.929,4.376,14.089,7.728l-0.004,0.004C61.553,49.896,62,50.896,62,52V60z"
-                fill="#7d988a"
-              ></path>
-            </svg>
+            <img src={user.photoURL} alt="" />
           </div>
 
           {/* Profile Info */}
           <div className="text-left mb-6">
             <p className="text-xl font-semibold text-gray-900 mb-1">
-              Junayed Ahmmed
+              {user.displayName}
             </p>
-            <p className="text-sm text-gray-600 mb-2">
-              junayedahmmednipun@gmail.com
-            </p>
+            <p className="text-sm text-gray-600 mb-2">{user.email}</p>
           </div>
 
           {/* CTA Button */}
@@ -109,6 +103,7 @@ const Profile = () => {
                   placeholder="Enter your name..."
                   class="w-full p-4 pr-12 text-sm leading-5 border border-gray-200 rounded-lg shadow-sm outline-none focus:border-green-400"
                   name="name"
+                  defaultValue={user.displayName}
                 />
                 <span></span>
               </div>
@@ -118,6 +113,7 @@ const Profile = () => {
                   placeholder="Enter Profile Url.."
                   class="w-full p-4 pr-12 text-sm leading-5 border border-gray-200 rounded-lg shadow-sm outline-none focus:border-green-400"
                   name="photo"
+                  defaultValue={user.photoURL}
                 />
               </div>
             </div>

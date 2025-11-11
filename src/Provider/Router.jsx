@@ -11,6 +11,7 @@ import AddCrop from "../Components/AddCrops/AddCrop";
 import MyCrops from "../Components/MyPosts/MyPost";
 import MyPost from "../Components/MyPosts/MyPost";
 import MyInterests from "../Components/My interest/MyInterest";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomeContent />,
+        element: (
+          <PrivateRouter>
+            <HomeContent />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/crop/cropDetails",
@@ -43,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/MyInterests",
-        element:<MyInterests/>
+        element: <MyInterests />,
       },
       {
         path: "/signIn",

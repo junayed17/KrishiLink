@@ -1,5 +1,6 @@
-import React, { useRef, useState} from "react";
+import React, { use, useRef, useState} from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { AuthContext } from "../../Provider/ContextProvider";
 const initialCrops = [
   {
     id: 1,
@@ -38,6 +39,10 @@ const MyPost= () => {
   const editRef=useRef(null);
   const deleteRef=useRef(null);
 
+
+
+    const { user } = use(AuthContext);
+    console.log(user);
 function handleEditModal(event) {
   console.log(editRef.current);
   

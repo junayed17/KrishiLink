@@ -5,23 +5,30 @@ import { RouterProvider } from "react-router";
 import router from "./Provider/Router.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ContextProvider from "./Provider/ContextProvider.jsx";
 
-function Root() {
-  useEffect(() => {
-    AOS.init({
-      offset: 200,
-      delay: 0,
-      duration:300,
-      easing: "ease-in-out",
-      once: true,
-    });
-  }, []);
+// function Root() {
+//   useEffect(() => {
+//     AOS.init({
+//       offset: 200,
+//       delay: 0,
+//       duration:300,
+//       easing: "ease-in-out",
+//       once: true,
+//     });
+//   }, []);
 
-  return <RouterProvider router={router} />;
-}
+  // return (
+    // <ContextProvider>
+    //   <RouterProvider router={router} />
+    // </ContextProvider>
+//   );
+// }
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Root />
+    <ContextProvider>
+      <RouterProvider router={router} />
+    </ContextProvider>
   </StrictMode>
 );

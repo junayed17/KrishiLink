@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import {
   FaMapMarkerAlt,
   FaTag,
@@ -8,6 +8,7 @@ import {
   FaFeatherAlt,
 } from "react-icons/fa";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import { AuthContext } from "../../Provider/ContextProvider";
 
 const cropData = {
   name: "Tomato",
@@ -26,6 +27,8 @@ const cropData = {
 };
 
 const Details = () => {
+
+
 
 
   const {

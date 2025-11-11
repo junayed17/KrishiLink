@@ -1,0 +1,73 @@
+import React from 'react';
+import "./Loading.css"
+
+const Loader = () => {
+  return (
+    <div class="wrapper-grid text-center py-10 w-[200px] mx-auto">
+      <div class="cube">
+        <div class="face face-front">L</div>
+        <div class="face face-back"></div>
+        <div class="face face-right"></div>
+        <div class="face face-left"></div>
+        <div class="face face-top"></div>
+        <div class="face face-bottom"></div>
+      </div>
+
+      <div class="cube">
+        <div class="face face-front">O</div>
+        <div class="face face-back"></div>
+        <div class="face face-right"></div>
+        <div class="face face-left"></div>
+        <div class="face face-top"></div>
+        <div class="face face-bottom"></div>
+      </div>
+
+      <div class="cube">
+        <div class="face face-front">A</div>
+        <div class="face face-back"></div>
+        <div class="face face-right"></div>
+        <div class="face face-left"></div>
+        <div class="face face-top"></div>
+        <div class="face face-bottom"></div>
+      </div>
+
+      <div class="cube">
+        <div class="face face-front">D</div>
+        <div class="face face-back"></div>
+        <div class="face face-right"></div>
+        <div class="face face-left"></div>
+        <div class="face face-top"></div>
+        <div class="face face-bottom"></div>
+      </div>
+
+      <div class="cube">
+        <div class="face face-front">I</div>
+        <div class="face face-back"></div>
+        <div class="face face-right"></div>
+        <div class="face face-left"></div>
+        <div class="face face-top"></div>
+        <div class="face face-bottom"></div>
+      </div>
+
+      <div class="cube">
+        <div class="face face-front">N</div>
+        <div class="face face-back"></div>
+        <div class="face face-right"></div>
+        <div class="face face-left"></div>
+        <div class="face face-top"></div>
+        <div class="face face-bottom"></div>
+      </div>
+
+      <div class="cube">
+        <div class="face face-front">G</div>
+        <div class="face face-back"></div>
+        <div class="face face-right"></div>
+        <div class="face face-left"></div>
+        <div class="face face-top"></div>
+        <div class="face face-bottom"></div>
+      </div>
+    </div>
+  );
+};
+
+export default Loader;

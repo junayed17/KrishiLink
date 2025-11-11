@@ -1,49 +1,73 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { LuEyeClosed } from "react-icons/lu";
 import { Link } from "react-router";
+import { AuthContext } from "../../Provider/ContextProvider";
 
 const SignUp = () => {
+  const {
+    registerWithEmailPass,
+    handleUpdateProfile,
+    user,
+    setUser,
+    handleSignInWithGoogle,
+  } = use(AuthContext);
 
   const [error, setError] = useState("");
-  const [passShow,setPassShow]=useState(false)
+  const [passShow, setPassShow] = useState(false);
 
-const upperCase = /.*[A-Z].*/;
-const lowercase = /.*[a-z].*/;
-const mustSixCharecter = /^.{6,}$/;
+  const upperCase = /.*[A-Z].*/;
+  const lowercase = /.*[a-z].*/;
+  const mustSixCharecter = /^.{6,}$/;
 
-
-
-
-function handleCorrectPass(e) {
- const pass= e.target.value;
- if (!upperCase.test(pass)) {
-  setError("Password Must contain atleast one uppercase Latter")
-  return;
- }
-  if (!lowercase.test(pass)) {
-    setError("Password Must contain atleast one lowercase Latter");
-    return;
+  function handleCorrectPass(e) {
+    const pass = e.target.value;
+    if (!upperCase.test(pass)) {
+      setError("Password Must contain atleast one uppercase Latter");
+      return;
+    }
+    if (!lowercase.test(pass)) {
+      setError("Password Must contain atleast one lowercase Latter");
+      return;
+    }
+    if (!mustSixCharecter.test(pass)) {
+      setError("Password Must contain atleast 6 Charecter");
+      return;
+    }
+    setError("");
   }
-   if (!mustSixCharecter.test(pass)) {
-     setError("Password Must contain atleast 6 Charecter");
-     return;
-   }
-  setError("");
 
-}
+  function handleSignInGoogle() {
+    handleSignInWithGoogle()
+      .then((result) => {
+        alert("sucessfully logged");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
+  function handleSignUp(e) {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const name = e.target.name.value;
+    const photo = e.target.photo.value;
+    const password = e.target.password.value;
+    console.log(name, email, password, photo);
+    const userData = {
+      displayName: name,
+      photoURL: photo,
+    };
 
-function handleSignUp(e) {
-  e.preventDefault();
-  const email=e.target.email.value;
-  const name=e.target.name.value;
-  const photo=e.target.photo.value;
-  const password = e.target.password.value;
-  console.log(name,email,password,photo);
-}
-
-
+    registerWithEmailPass(email, password)
+      .then((result) => {
+        handleUpdateProfile(userData).then((result2) => {
+          setUser(result.user);
+          alert("Account created successfully!");
+        });
+      })
+      .catch((err) => alert(err.message));
+  }
 
   return (
     <section className="px-4 bg-gray-100 min-h-screen flex items-center justify-center">
@@ -220,6 +244,7 @@ function handleSignUp(e) {
             <button
               className="btn google mt-2 w-full h-[50px] rounded-lg flex justify-center items-center font-medium gap-2 border border-gray-200 bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#09bb2f]"
               type="submit"
+              onClick={handleSignInGoogle}
             >
               <svg
                 xmlSpace="preserve"

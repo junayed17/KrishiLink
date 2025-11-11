@@ -5,7 +5,7 @@ import { Outlet } from "react-router";
 
 const Home = () => {
   return (
-    <div>
+    <div className="min-h-full">
       <header>
         <Navber />
       </header>
