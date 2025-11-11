@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from "react";
+import Details from "./Details";
+import BookedForm from "./BookedForm";
+import AllInterests from "./AllInterests";
 
 const CropDetails = () => {
+  const [isUser, setIsUser] = useState(false);
   return (
-    <div>
-      i am crop details
-    </div>
+    <>
+      <section>
+        <Details />
+      </section>
+      <section>{isUser ? <BookedForm /> : <AllInterests />}</section>
+    </>
   );
 };
 
