@@ -43,6 +43,16 @@ function handleEditModal(event) {
   
   editRef.current.showModal();
 }
+function handleDeleteModal(event) {
+console.log(deleteRef.current);
+console.log("working");
+
+  deleteRef.current.showModal();
+}
+function handleDelete(event) {
+
+  deleteRef.current.close();
+}
 
    
   return (
@@ -101,7 +111,7 @@ function handleEditModal(event) {
                     <button
                       className="text-red-600 hover:text-red-900 p-2 rounded-full hover:bg-red-100 transition"
                       aria-label={`Delete ${crop.name}`}
-                      ref={deleteRef}
+                      onClick={handleDeleteModal}
                     >
                       <FaTrashAlt />
                     </button>
@@ -271,6 +281,24 @@ function handleEditModal(event) {
               <button className="btn">Close</button>
             </form>
           </div>
+        </div>
+      </dialog>
+
+      {/* delete modal  */}
+
+      <dialog id="my_modal_2" className="modal px-4" ref={deleteRef}>
+        <div className="modal-box">
+          <p className="py-4">Are You Sure to Delete?</p>
+          <button
+            type="submit"
+            className="button-submit mt-6 bg-[#0cdc39] border-none text-white text-lg font-bold rounded-lg h-[55px] w-full cursor-pointer hover:bg-[#0bb730] transition duration-150 shadow-md"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+          <form method="dialog" className="modal-backdrop">
+            <button className="btn"> close</button>
+          </form>
         </div>
       </dialog>
     </section>

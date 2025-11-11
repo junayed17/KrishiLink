@@ -22,13 +22,22 @@ const Navber = () => {
       >
         Profile
       </NavLink>
-      <NavLink className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white" to="/addCrop">
+      <NavLink
+        className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white"
+        to="/addCrop"
+      >
         Add crops
       </NavLink>
-      <NavLink className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white" to="myPost">
+      <NavLink
+        className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white"
+        to="myPost"
+      >
         My posts
       </NavLink>
-      <NavLink className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white">
+      <NavLink
+        className="px-5 py-3 hover:bg-green-500 rounded-[10px] mx-4 transition-all duration-500 hover:text-white"
+        to="/MyInterests"
+      >
         My interests
       </NavLink>
     </>

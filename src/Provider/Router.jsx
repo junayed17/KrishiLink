@@ -10,6 +10,7 @@ import SignUp from "../Components/SignUp/SignUp";
 import AddCrop from "../Components/AddCrops/AddCrop";
 import MyCrops from "../Components/MyPosts/MyPost";
 import MyPost from "../Components/MyPosts/MyPost";
+import MyInterests from "../Components/My interest/MyInterest";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myPost",
-        element: <MyPost/>,
+        element: <MyPost />,
+      },
+      {
+        path: "/MyInterests",
+        element:<MyInterests/>
       },
       {
         path: "/signIn",
