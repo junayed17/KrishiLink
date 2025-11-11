@@ -8,6 +8,8 @@ import AllCrops from "../Components/AllCrops/AllCrops";
 import Profile from "../Components/Profile/Profile";
 import SignUp from "../Components/SignUp/SignUp";
 import AddCrop from "../Components/AddCrops/AddCrop";
+import MyCrops from "../Components/MyPosts/MyPost";
+import MyPost from "../Components/MyPosts/MyPost";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/addCrop",
         element: <AddCrop />,
+      },
+      {
+        path: "/myPost",
+        element: <MyPost/>,
       },
       {
         path: "/signIn",
