@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import Loader from "../Components/Loader/Loader";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -55,7 +54,7 @@ function handleSignInWithGoogle() {
   useEffect(() => {
     onAuthStateChanged(auth, (userCondition) => {
       setUser(userCondition);
-       setLoading(true);
+       setLoading(false);
     });
   }, []);
 

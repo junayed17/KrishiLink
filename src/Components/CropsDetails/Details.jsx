@@ -10,27 +10,7 @@ import {
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { AuthContext } from "../../Provider/ContextProvider";
 
-const cropData = {
-  name: "Tomato",
-  type: "Vegetable",
-  pricePerUnit: 55,
-  quantity: 400,
-  description:
-    "Fresh organic tomatoes, field-ripened, excellent for salads and cooking. Harvested last week.",
-  location: "Bogura",
-  image:
-    "https://cdn.britannica.com/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
-  owner: {
-    ownerEmail: "owner@gmail.com",
-    ownerName: "Mr Owner",
-  },
-};
-
-const Details = () => {
-
-
-
-
+const Details = ({ postDetails }) => {
   const {
     name,
     type,
@@ -40,7 +20,11 @@ const Details = () => {
     location,
     image,
     owner,
-  } = cropData;
+  } = postDetails;
+
+
+
+  
 
   return (
     <div className="p-4 sm:p-8 min-h-screen">
@@ -61,7 +45,8 @@ const Details = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center border-b pb-6 border-gray-100">
             <div className="bg-green-50 p-4 rounded-lg shadow-sm">
               <p className="text-3xl font-bold text-green-700 flex items-center justify-center">
-                <FaBangladeshiTakaSign/>{pricePerUnit}
+                <FaBangladeshiTakaSign />
+                {pricePerUnit}
               </p>
               <p className="text-sm text-gray-600 mt-1">Price per Kg</p>
             </div>

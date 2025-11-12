@@ -1,21 +1,51 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import Details from "./Details";
 import BookedForm from "./BookedForm";
 import AllInterests from "./AllInterests";
 import { AuthContext } from "../../Provider/ContextProvider";
 import { useParams } from "react-router";
+import Loader from "../Loader/Loader";
 
 const CropDetails = () => {
   const {id}=useParams()
   const {user}=use(AuthContext)
-  console.log(id);
+
+
+
+const [postDetails, setPostDetails] = useState(null);
+
+const [isOwner,setIsOwner]=useState(false)
+
+
+useEffect(()=>{
+fetch(`http://localhost:3000/postDetails/${id}`)
+  .then((res) => res.json())
+  .then((result) => setPostDetails(result));
+},[id])
+
+
+
+ useEffect(() => {
+   if (user?.email === postDetails?.owner?.ownerEmail) {
+     setIsOwner(true);
+   } else {
+     setIsOwner(false);
+   }
+ }, [postDetails, user]);
+
+
+if (!postDetails) {
+  return <Loader/>
+}
+console.log(isOwner)
+
   
   return (
     <>
       <section>
-        <Details />
+        <Details postDetails={postDetails} />
       </section>
-      <section>{user ? <BookedForm /> : <AllInterests />}</section>
+      <section>{isOwner ? <AllInterests /> : <BookedForm />}</section>
     </>
   );
 };

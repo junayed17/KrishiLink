@@ -24,6 +24,7 @@ const LatestCrops = () => {
 
   console.log(latestCrop);
   
+  
   if (latestCrop.length===0) {
     return <Loader/>
   }
