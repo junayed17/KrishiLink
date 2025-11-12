@@ -1,7 +1,7 @@
 import React, { use, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { LuEyeClosed } from "react-icons/lu";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/ContextProvider";
 
 const SignUp = () => {
@@ -11,10 +11,12 @@ const SignUp = () => {
     user,
     setUser,
     handleSignInWithGoogle,
+    desiredlocation,
   } = use(AuthContext);
 
   const [error, setError] = useState("");
   const [passShow, setPassShow] = useState(false);
+  const navigate=useNavigate()
 
   const upperCase = /.*[A-Z].*/;
   const lowercase = /.*[a-z].*/;
@@ -41,9 +43,10 @@ const SignUp = () => {
     handleSignInWithGoogle()
       .then((result) => {
         alert("sucessfully logged");
+        desiredlocation ? navigate(desiredlocation) : navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        alert(err)
       });
   }
 
@@ -53,7 +56,6 @@ const SignUp = () => {
     const name = e.target.name.value;
     const photo = e.target.photo.value;
     const password = e.target.password.value;
-    console.log(name, email, password, photo);
     const userData = {
       displayName: name,
       photoURL: photo,
@@ -64,11 +66,15 @@ const SignUp = () => {
         handleUpdateProfile(userData).then((result2) => {
           setUser(result.user);
           alert("Account created successfully!");
+           {
+            desiredlocation ? navigate(desiredlocation) : navigate("/");
+           }
+          
         });
       })
       .catch((err) => alert(err.message));
   }
-
+ console.log(desiredlocation);
   return (
     <section className="px-4 bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="py-10 w-full">

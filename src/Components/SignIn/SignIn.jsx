@@ -6,13 +6,13 @@ import { AuthContext } from "../../Provider/ContextProvider";
 
 const SignIn = () => {
   const Navigate=useNavigate()
+
   const { handleSignInWithEmailPass, handleSignInWithGoogle } =
     use(AuthContext);
   const [passShow, setPassShow] = useState(false);
 
-const desiredlocation=useLocation()
-
-console.log(desiredlocation);
+const {state}=useLocation()
+   console.log(state);
 
   function handleSignIn(e) {
     e.preventDefault();
@@ -22,7 +22,7 @@ console.log(desiredlocation);
     handleSignInWithEmailPass(email, password)
       .then((result) => {
         alert(result);
-        Navigate(desiredlocation.state.pathname);
+          state ? Navigate(state) : Navigate("/");
       })
       .catch((err) => {
         alert(err);
@@ -33,6 +33,7 @@ console.log(desiredlocation);
     handleSignInWithGoogle()
       .then((result) => {
         alert("sucessfully logged");
+        state ? Navigate(state) : Navigate("/");
       })
       .catch((err) => {
         console.log(err);

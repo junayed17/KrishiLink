@@ -36,19 +36,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/myProfile",
-        element: <Profile />,
+        element: (
+          <PrivateRouter>
+            <Profile />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/addCrop",
-        element: <AddCrop />,
+        element: (
+          <PrivateRouter>
+            <AddCrop />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/myPost",
-        element: <MyPost />,
+        element: (
+          <PrivateRouter>
+            <MyPost />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/MyInterests",
-        element: <MyInterests />,
+        element: (
+          <PrivateRouter>
+            <MyInterests />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/signIn",

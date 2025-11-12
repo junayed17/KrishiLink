@@ -40,6 +40,7 @@ function handleSignInWithGoogle() {
 
 const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [desiredlocation,setDesiredLocation]=useState(null)
 
   useEffect(() => {
     onAuthStateChanged(auth, (userCondition) => {
@@ -55,6 +56,8 @@ const ContextProvider = ({ children }) => {
     handleSignOut,
     handleSignInWithEmailPass,
     handleSignInWithGoogle,
+    setDesiredLocation,
+    desiredlocation,
   };
   return <AuthContext value={Context}>{children}</AuthContext>;
 };

@@ -1,21 +1,22 @@
-import React, { use } from "react";
+import React, { use, useEffect } from "react";
 import { AuthContext } from "./ContextProvider";
 import Loader from "../Components/Loader/Loader";
 import { Navigate, useLocation } from "react-router";
 
 const PrivateRouter = ({ children }) => {
-  const { user } = use(AuthContext);
-  console.log(user);
+  const { user, setDesiredLocation,desiredLocation } = use(AuthContext);
 
 
 
-  const desiredLocation=useLocation()
-  console.log(desiredLocation);
+  const {pathname }=useLocation()
+
   
-  
+  useEffect(() => {
+    setDesiredLocation(pathname);
+  }, [pathname]);
 
   if (!user) {
-    return <Navigate to="/signIn" state={desiredLocation} />;
+    return <Navigate to="/signIn" state={pathname} />;
   }
   return <div>{children}</div>;
 };
