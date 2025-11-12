@@ -1,10 +1,33 @@
-import React from "react";
+import React, { use, useEffect, useState } from "react";
 import Crop from "./Crop";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router";
+import { AuthContext } from "../../Provider/ContextProvider";
+import Loader from "../Loader/Loader";
 
-let posts = [1, 2, 3, 4, 5, 6];
+
+
+
+
+
 const LatestCrops = () => {
+
+  const [latestCrop, setLatestCrop] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/latestPosts`)
+      .then((res) => res.json())
+      .then((result) => setLatestCrop(result))
+      .catch((err) => console.log(err));
+  },[]);
+
+
+  console.log(latestCrop);
+  
+  if (latestCrop.length===0) {
+    return <Loader/>
+  }
+
   return (
     <div className="">
       <div className="flex items-center justify-center gap-4">
@@ -19,7 +42,7 @@ const LatestCrops = () => {
         />{" "}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {posts.map((post) => (
+        {latestCrop.map((post) => (
           <Crop post={post} />
         ))}
       </div>

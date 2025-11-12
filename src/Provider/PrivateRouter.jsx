@@ -4,7 +4,8 @@ import Loader from "../Components/Loader/Loader";
 import { Navigate, useLocation } from "react-router";
 
 const PrivateRouter = ({ children }) => {
-  const { user, setDesiredLocation,desiredLocation } = use(AuthContext);
+  const { user, setDesiredLocation, desiredLocation, Loading } =
+    use(AuthContext);
 
 
 
@@ -14,6 +15,12 @@ const PrivateRouter = ({ children }) => {
   useEffect(() => {
     setDesiredLocation(pathname);
   }, [pathname]);
+
+  if (!user && Loading) {
+    return <Loader />;
+  }
+
+
 
   if (!user) {
     return <Navigate to="/signIn" state={pathname} />;

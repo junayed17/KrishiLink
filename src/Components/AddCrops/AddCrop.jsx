@@ -1,25 +1,54 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { use } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../../Provider/ContextProvider";
 
 const AddCrop = () => {
+  const { user } = use(AuthContext);
+
+
+  const navigate=useNavigate()
+
   function handleCropAdd(e) {
     e.preventDefault();
 
-    const cropName = e.target.name.value;
-    const cropType = e.target.type.value;
+    const name = e.target.name.value;
+    const type = e.target.type.value;
+    const unit = e.target.unit.value;
     const pricePerUnit = e.target.price.value;
-    const estimatedQuantity = e.target.quantity.value;
+    const quantity = e.target.quantity.value;
     const description = e.target.description.value;
     const location = e.target.location.value;
-    const cropImage = e.target.photo.value; 
-    alert(`
-      Crop Name: ${cropName}
-      Type: ${cropType}
-      Quantity: ${estimatedQuantity}
-      Location: ${location}
-      Description: ${description}
-      Image File: ${cropImage }
-    `);
+    const image = e.target.photo.value;
+
+
+
+    const insertedData = {
+      name,
+      type,
+      pricePerUnit,
+      unit,
+      quantity,
+      description,
+      location,
+      image,
+      owner: {
+        ownerEmail: user.email,
+        ownerName: user.displayName,
+      },
+    };
+    fetch("http://localhost:3000/addPost", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(insertedData),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        alert("data added");
+        navigate("/myPost")
+      });
   }
 
   return (
@@ -71,6 +100,25 @@ const AddCrop = () => {
             </div>
             <div className="w-1/2">
               <label
+                htmlFor="unit"
+                className="text-sm text-[#151717] font-semibold mb-1 block"
+              >
+                Unit
+              </label>
+              <select
+                id="unit"
+                name="unit"
+                className="input w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-green-500 transition duration-150"
+                required
+              >
+                <option value="">Select Unit</option>
+                <option value="kg">Kg</option>
+                <option value="ton">Ton</option>
+                <option value="bag">Bag</option>
+              </select>
+            </div>
+            <div className="w-1/2">
+              <label
                 for="location"
                 className="text-sm text-[#151717] font-semibold mb-1 block"
               >
@@ -90,7 +138,7 @@ const AddCrop = () => {
           <div className="flex gap-4">
             <div className="w-2/5">
               <label
-              for="pricePerUnit"
+                for="pricePerUnit"
                 className="text-sm text-[#151717] font-semibold mb-1 block"
               >
                 Price per Unit (BDT)
@@ -176,5 +224,4 @@ const AddCrop = () => {
     </section>
   );
 };
-
 export default AddCrop;

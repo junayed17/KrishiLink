@@ -1,65 +1,42 @@
-import React, { use, useRef, useState} from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { AuthContext } from "../../Provider/ContextProvider";
-const initialCrops = [
-  {
-    id: 1,
-    name: "Boro Dhaan",
-    type: "Grain",
-    pricePerUnit: 25,
-    unit: "kg",
-    quantity: 500,
-    location: "Rajshahi",
-    imageUrl: "/images/boro.jpg",
-  },
-  {
-    id: 2,
-    name: "Tomato",
-    type: "Vegetable",
-    pricePerUnit: 60,
-    unit: "kg",
-    quantity: 120,
-    location: "Jessore",
-    imageUrl: "/images/tomato.jpg",
-  },
-  {
-    id: 3,
-    name: "Mango (Amrupali)",
-    type: "Fruit",
-    pricePerUnit: 120,
-    unit: "kg",
-    quantity: 800,
-    location: "Chapainawabganj",
-    imageUrl: "/images/mango.jpg",
-  },
-];
+import Loader from "../Loader/Loader";
 
-const MyPost= () => {
-  const [crops, setCrops] = useState(initialCrops);
-  const editRef=useRef(null);
-  const deleteRef=useRef(null);
+const MyPost = () => {
+  const editRef = useRef(null);
+  const deleteRef = useRef(null);
+
+  const { user,loading } = use(AuthContext);
+  const [myPost, setMyPost] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/myPosts?email=${user.email}`)
+      .then((res) => res.json())
+      .then((result) => setMyPost(result))
+      .catch((err) => console.log(err));
+  }, [user.email]);
+
+  console.log(myPost);
+  function handleEditModal(event) {
+    console.log(editRef.current);
+
+    editRef.current.showModal();
+  }
+  function handleDeleteModal(event) {
+    console.log(deleteRef.current);
+    console.log("working");
+
+    deleteRef.current.showModal();
+  }
+  function handleDelete(event) {
+    deleteRef.current.close();
+  }
 
 
 
-    const { user } = use(AuthContext);
-    console.log(user);
-function handleEditModal(event) {
-  console.log(editRef.current);
-  
-  editRef.current.showModal();
-}
-function handleDeleteModal(event) {
-console.log(deleteRef.current);
-console.log("working");
 
-  deleteRef.current.showModal();
-}
-function handleDelete(event) {
 
-  deleteRef.current.close();
-}
-
-   
   return (
     <section className="max-w-[1440px] mx-auto pt-10 px-4">
       <div className="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
@@ -87,11 +64,11 @@ function handleDelete(event) {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {crops.length > 0 ? (
-              crops.map((crop) => (
+            {myPost.length > 0 ? (
+              myPost.map((crop, index) => (
                 <tr key={crop.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {crop.id}
+                    {index+1}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                     {crop.name}

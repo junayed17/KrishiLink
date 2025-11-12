@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Crop from "../Crops/Crop";
+import Loader from "../Loader/Loader";
 
-let posts = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-];
 const AllCrops = () => {
+
+
+const [allPost,setAllPost]=useState([])
+
+
+useEffect(()=>{
+fetch("http://localhost:3000/allPosts")
+  .then((res) => res.json())
+  .then((result) => setAllPost(result));
+},[])
+
+
+
+
+if (allPost.length===0) {
+  return <Loader/>
+}
+
+
+
   return (
     <section className="max-w-[1440px] mx-auto px-4">
       <div className="flex items-center justify-center gap-4 pt-20 pb-10">
@@ -49,7 +67,7 @@ const AllCrops = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {posts.map((post) => (
+        {allPost.map((post) => (
           <Crop post={post} />
         ))}
       </div>

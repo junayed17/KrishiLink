@@ -13,38 +13,49 @@ import { auth } from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 
-function registerWithEmailPass(email, pass) {
-  return createUserWithEmailAndPassword(auth, email, pass);
-}
-
-function handleUpdateProfile(data) {
-  return updateProfile(auth.currentUser, data);
-}
-
-function handleSignInWithEmailPass(email,pass) {
-  return signInWithEmailAndPassword(auth,email,pass)
-}
-
-
-function handleSignOut() {
-  return signOut(auth)
-}
-
-const googleAuthProvider = new GoogleAuthProvider();
-
-
-function handleSignInWithGoogle() {
-  return signInWithPopup(auth,googleAuthProvider)
-}
-
 
 const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [desiredlocation,setDesiredLocation]=useState(null)
+  const [Loading, setLoading] = useState(true);
+
+
+
+
+
+function registerWithEmailPass(email, pass) {
+  setLoading(true)
+  return createUserWithEmailAndPassword(auth, email, pass);
+}
+
+function handleUpdateProfile(data) {
+   setLoading(true);
+  return updateProfile(auth.currentUser, data);
+}
+
+function handleSignInWithEmailPass(email, pass) {
+   setLoading(true);
+  return signInWithEmailAndPassword(auth, email, pass);
+}
+
+function handleSignOut() {
+   setLoading(true);
+  return signOut(auth);
+}
+
+const googleAuthProvider = new GoogleAuthProvider();
+
+function handleSignInWithGoogle() {
+   setLoading(true);
+  return signInWithPopup(auth, googleAuthProvider);
+}
+
+
 
   useEffect(() => {
     onAuthStateChanged(auth, (userCondition) => {
       setUser(userCondition);
+       setLoading(true);
     });
   }, []);
 
@@ -58,6 +69,8 @@ const ContextProvider = ({ children }) => {
     handleSignInWithGoogle,
     setDesiredLocation,
     desiredlocation,
+    Loading,
+    setLoading
   };
   return <AuthContext value={Context}>{children}</AuthContext>;
 };

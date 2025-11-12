@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         element: <HomeContent />,
       },
       {
-        path: "/crop/cropDetails",
+        path: "/crop/cropDetails/:id",
         element: (
           <PrivateRouter>
             <CropDetails />
