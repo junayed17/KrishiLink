@@ -12,6 +12,7 @@ import MyCrops from "../Components/MyPosts/MyPost";
 import MyPost from "../Components/MyPosts/MyPost";
 import MyInterests from "../Components/My interest/MyInterest";
 import PrivateRouter from "./PrivateRouter";
+import Error from "../Components/error/Error";
 
 const router = createBrowserRouter([
   {
@@ -74,8 +75,12 @@ const router = createBrowserRouter([
         path: "/signUp",
         element: <SignUp />,
       },
-    ],
+    ]
   },
+  {
+    path:"*",
+    element:<Error/>
+  }
 ]);
 
 export default router;

@@ -3,14 +3,15 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/ContextProvider";
 
 const Navber = () => {
+  const { user, handleSignOut } = use(AuthContext);
 
-const { user, handleSignOut } = use(AuthContext);
-
-function signOut() {
-  handleSignOut().then(()=>{
-    alert("sucessfully logOut")
-  }).catch(err=>alert(err))
-}
+  function signOut() {
+    handleSignOut()
+      .then(() => {
+        alert("sucessfully logOut");
+      })
+      .catch((err) => alert(err));
+  }
 
   let links = (
     <>
