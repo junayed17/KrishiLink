@@ -6,6 +6,7 @@ import Loader from "../Loader/Loader";
 const MyPost = () => {
   const [crops, setCrops] = useState(null);
   const [deleteId, setDeleteId] = useState(null);
+  const [editId, seteditId] = useState(null);
   const editRef = useRef(null);
   const deleteRef = useRef(null);
 
@@ -19,15 +20,61 @@ const MyPost = () => {
   }, [user.email]);
 
   console.log(crops);
-  function handleEditModal(event) {
+  function handleEditModal(id) {
+    seteditId(id);
+
     editRef.current.showModal();
+  }
+console.log(editId);
+
+  function handleUpdate(e) {
+
+        e.preventDefault();
+
+        const name = e.target.name.value;
+        const type = e.target.type.value;
+        const unit = e.target.unit.value;
+        const pricePerUnit = e.target.price.value;
+        const quantity = e.target.quantity.value;
+        const description = e.target.description.value;
+        const location = e.target.location.value;
+        const image = e.target.photo.value;
+
+        const updatedData = {
+          name,
+          type,
+          unit,
+          pricePerUnit,
+          quantity,
+          description,
+          location,
+          image,
+        };
+
+console.log(updatedData);
+
+  fetch(`http://localhost:3000/myPost/${editId}`,{
+    method:"PATCH",
+    headers:{
+      "content-type":"application/json"
+    },
+    body:JSON.stringify(updatedData)
+
+  })
+    .then((res) => res.json())
+    .then((result) => {
+      console.log(result)
+       editRef.current.close();
+       if (result) {
+        alert("data updated sucessfully")
+       }
+    });
   }
   function handleDeleteModal(id) {
     setDeleteId(id);
     deleteRef.current.showModal();
   }
   function handleDelete() {
-
 
     fetch(`http://localhost:3000/myPost/${deleteId}`, {
       method: "DELETE",
@@ -36,16 +83,18 @@ const MyPost = () => {
       },
     })
       .then((res) => res.json())
-      .then((result) =>{
-        if (result.deletedCount===1) {
-          alert("Post Deleted Sucessfully")
-          const newPosts = crops.filter((ele) => ele._id != deleteId)
+      .then((result) => {
+        if (result.deletedCount === 1) {
+          alert("Post Deleted Sucessfully");
+          const newPosts = crops.filter((ele) => ele._id != deleteId);
           setCrops(newPosts);
         }
       })
       .catch((err) => console.log(err));
     deleteRef.current.close();
   }
+
+
 
   if (!crops) {
     return <Loader />;
@@ -100,7 +149,7 @@ const MyPost = () => {
                     <button
                       className="text-green-600 hover:text-green-900 p-2 rounded-full hover:bg-green-100 transition"
                       aria-label={`Edit ${crop.name}`}
-                      onClick={handleEditModal}
+                      onClick={() => handleEditModal(crop._id)}
                     >
                       <FaEdit />
                     </button>
@@ -134,7 +183,7 @@ const MyPost = () => {
         <div className="modal-box">
           <form
             className="form flex flex-col gap-4 bg-white p-8 w-full max-w-xl mx-auto rounded-xl font-sans shadow-2xl border border-green-100"
-            // onSubmit={handleCropAdd}
+            onSubmit={handleUpdate}
           >
             <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
               Edit Your Post
@@ -211,6 +260,27 @@ const MyPost = () => {
                   required
                 />
               </div>
+
+              <div className="w-1/2">
+                <label
+                  htmlFor="unit"
+                  className="text-sm text-[#151717] font-semibold mb-1 block"
+                >
+                  Unit
+                </label>
+                <select
+                  id="unit"
+                  name="unit"
+                  className="input w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-green-500 transition duration-150"
+                  required
+                >
+                  <option value="">Select Unit</option>
+                  <option value="kg">Kg</option>
+                  <option value="ton">Ton</option>
+                  <option value="bag">Bag</option>
+                </select>
+              </div>
+
               <div className="w-2/5">
                 <label
                   for="Quantity"
