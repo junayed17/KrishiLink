@@ -118,7 +118,7 @@ function handleSearch(e) {
       </div>
 
       {displayData.length ? (
-        <div className="grid items-center justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid items-center justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayData.map((post) => (
             <Crop key={post._id} post={post} />
           ))}

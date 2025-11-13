@@ -7,10 +7,11 @@ const MyPost = () => {
   const [crops, setCrops] = useState(null);
   const [deleteId, setDeleteId] = useState(null);
   const [editId, seteditId] = useState(null);
+
   const editRef = useRef(null);
   const deleteRef = useRef(null);
 
-  const { user, loading } = use(AuthContext);
+  const { user } = use(AuthContext);
 
   useEffect(() => {
     fetch(`http://localhost:3000/myPosts?email=${user.email}`)
@@ -19,63 +20,56 @@ const MyPost = () => {
       .catch((err) => console.log(err));
   }, [user.email]);
 
-  console.log(crops);
   function handleEditModal(id) {
     seteditId(id);
-
     editRef.current.showModal();
   }
-console.log(editId);
 
   function handleUpdate(e) {
+    e.preventDefault();
 
-        e.preventDefault();
+    const name = e.target.name.value;
+    const type = e.target.type.value;
+    const unit = e.target.unit.value;
+    const pricePerUnit = e.target.price.value;
+    const quantity = e.target.quantity.value;
+    const description = e.target.description.value;
+    const location = e.target.location.value;
+    const image = e.target.photo.value;
 
-        const name = e.target.name.value;
-        const type = e.target.type.value;
-        const unit = e.target.unit.value;
-        const pricePerUnit = e.target.price.value;
-        const quantity = e.target.quantity.value;
-        const description = e.target.description.value;
-        const location = e.target.location.value;
-        const image = e.target.photo.value;
+    const updatedData = {
+      name,
+      type,
+      unit,
+      pricePerUnit,
+      quantity,
+      description,
+      location,
+      image,
+    };
 
-        const updatedData = {
-          name,
-          type,
-          unit,
-          pricePerUnit,
-          quantity,
-          description,
-          location,
-          image,
-        };
-
-console.log(updatedData);
-
-  fetch(`http://localhost:3000/myPost/${editId}`,{
-    method:"PATCH",
-    headers:{
-      "content-type":"application/json"
-    },
-    body:JSON.stringify(updatedData)
-
-  })
-    .then((res) => res.json())
-    .then((result) => {
-      console.log(result)
-       editRef.current.close();
-       if (result) {
-        alert("data updated sucessfully")
-       }
-    });
+    fetch(`http://localhost:3000/myPost/${editId}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        editRef.current.close();
+        if (result) {
+          alert("data updated sucessfully");
+        }
+      });
   }
+
   function handleDeleteModal(id) {
     setDeleteId(id);
     deleteRef.current.showModal();
   }
   function handleDelete() {
-
     fetch(`http://localhost:3000/myPost/${deleteId}`, {
       method: "DELETE",
       headers: {
@@ -93,8 +87,6 @@ console.log(updatedData);
       .catch((err) => console.log(err));
     deleteRef.current.close();
   }
-
-
 
   if (!crops) {
     return <Loader />;
@@ -202,12 +194,13 @@ console.log(updatedData);
                 className="input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
                 type="text"
                 required
+                defaultValue={crops.name}
               />
             </div>
             <div className="flex gap-4">
               <div className="w-1/2">
                 <label
-                  htmlFor="Type"
+                  for="Type"
                   className="text-sm text-[#151717] font-semibold mb-1 block"
                 >
                   Type
@@ -217,6 +210,7 @@ console.log(updatedData);
                   name="type"
                   className="input w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-green-500 transition duration-150"
                   required
+                  defaultValue={crops.type}
                 >
                   <option value="Vegetable">Vegetable</option>
                   <option value="Fruit">Fruit</option>
@@ -238,6 +232,7 @@ console.log(updatedData);
                   className="input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
                   type="text"
                   required
+                  defaultValue={crops.location}
                 />
               </div>
             </div>
@@ -258,12 +253,13 @@ console.log(updatedData);
                   type="number"
                   step="0.01"
                   required
+                  defaultValue={crops.price}
                 />
               </div>
 
               <div className="w-1/2">
                 <label
-                  htmlFor="unit"
+                  for="unit"
                   className="text-sm text-[#151717] font-semibold mb-1 block"
                 >
                   Unit
@@ -273,6 +269,7 @@ console.log(updatedData);
                   name="unit"
                   className="input w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-green-500 transition duration-150"
                   required
+                  defaultValue={crops.unit}
                 >
                   <option value="">Select Unit</option>
                   <option value="kg">Kg</option>
@@ -295,6 +292,7 @@ console.log(updatedData);
                   className="input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
                   type="number"
                   required
+                  defaultValue={crops.quantity}
                 />
               </div>
             </div>
@@ -312,12 +310,13 @@ console.log(updatedData);
                 placeholder="type description of your product."
                 className="input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150 h-24 resize-none"
                 required
+                defaultValue={crops.description}
               ></textarea>
             </div>
 
             <div>
               <label
-                htmlFor="Photo"
+                for="Photo"
                 className="text-sm text-[#151717] font-semibold mb-1 block"
               >
                 Photo url of the Crop
@@ -329,6 +328,7 @@ console.log(updatedData);
                 type="text"
                 required
                 placeholder="url Of your crop"
+                defaultValue={crops.photo}
               />
             </div>
 
