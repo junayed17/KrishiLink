@@ -5,8 +5,7 @@ import { AuthContext } from "../../Provider/ContextProvider";
 const AddCrop = () => {
   const { user } = use(AuthContext);
 
-
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   function handleCropAdd(e) {
     e.preventDefault();
@@ -19,8 +18,6 @@ const AddCrop = () => {
     const description = e.target.description.value;
     const location = e.target.location.value;
     const image = e.target.photo.value;
-
-
 
     const insertedData = {
       name,
@@ -47,7 +44,7 @@ const AddCrop = () => {
       .then((result) => {
         console.log(result);
         alert("data added");
-        navigate("/myPost")
+        navigate("/myPost");
       });
   }
 
@@ -55,7 +52,7 @@ const AddCrop = () => {
     <section className="px-4 bg-gray-50 min-h-screen flex items-center justify-center">
       <div className="py-10 w-full">
         <form
-          className="form flex flex-col gap-4 bg-white p-8 w-full max-w-xl mx-auto rounded-xl font-sans shadow-2xl border border-green-100"
+          className="flex flex-col gap-4 bg-white p-8 w-full w-[500px] mx-auto rounded-xl font-sans shadow-2xl border border-green-100"
           onSubmit={handleCropAdd}
         >
           <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
@@ -63,7 +60,7 @@ const AddCrop = () => {
           </h3>
           <div>
             <label
-              htmlFor="cropName"
+              for="cropName"
               className="text-sm text-[#151717] font-semibold mb-1 block"
             >
               Crop Name
@@ -80,7 +77,7 @@ const AddCrop = () => {
           <div className="flex gap-4">
             <div className="w-1/2">
               <label
-                htmlFor="cropType"
+                for="cropType"
                 className="text-sm text-[#151717] font-semibold mb-1 block"
               >
                 Type
@@ -100,7 +97,7 @@ const AddCrop = () => {
             </div>
             <div className="w-1/2">
               <label
-                htmlFor="unit"
+                for="unit"
                 className="text-sm text-[#151717] font-semibold mb-1 block"
               >
                 Unit
@@ -225,3 +222,17 @@ const AddCrop = () => {
   );
 };
 export default AddCrop;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

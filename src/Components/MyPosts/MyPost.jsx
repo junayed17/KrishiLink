@@ -182,7 +182,7 @@ console.log(updatedData);
       >
         <div className="modal-box">
           <form
-            className="form flex flex-col gap-4 bg-white p-8 w-full max-w-xl mx-auto rounded-xl font-sans shadow-2xl border border-green-100"
+            className="flex flex-col gap-4 bg-white p-8 w-full max-w-xl mx-auto rounded-xl font-sans shadow-2xl border border-green-100"
             onSubmit={handleUpdate}
           >
             <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">

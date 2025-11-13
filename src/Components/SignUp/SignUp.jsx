@@ -80,7 +80,7 @@ const SignUp = () => {
       <div className="py-10 w-full">
         {/* Sign Up Form Container */}
         <form
-          className="form flex flex-col gap-3 bg-white p-8 w-full max-w-lg mx-auto rounded-xl font-sans shadow-2xl"
+          className="flex flex-col gap-3 bg-white p-8 w-full max-w-lg mx-auto rounded-xl font-sans shadow-2xl"
           onSubmit={handleSignUp}
         >
           {/* Form Title */}

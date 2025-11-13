@@ -44,7 +44,7 @@ const {state}=useLocation()
     <section className="px-4">
       <div className="py-10">
         <form
-          class="form flex flex-col gap-2 bg-white p-7 w-full max-w-lg mx-auto rounded-xl font-sans"
+          class="flex flex-col gap-2 bg-white p-7 w-full max-w-lg mx-auto rounded-xl font-sans"
           onSubmit={handleSignIn}
         >
           <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
