@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Crop from "../Crops/Crop";
 import Loader from "../Loader/Loader";
+import "./allCrops.css"
+import PostNotFound from "../error/PostNotFound";
 
 const AllCrops = () => {
 
 
-const [allPost,setAllPost]=useState([])
+const [allPost,setAllPost]=useState(null)
 
 
 useEffect(()=>{
@@ -13,12 +15,41 @@ fetch("http://localhost:3000/allPosts")
   .then((res) => res.json())
   .then((result) => setAllPost(result));
 },[])
+const [displayData,setDisplayData]=useState(allPost)
 
 
 
 
-if (allPost.length===0) {
-  return <Loader/>
+
+
+
+
+useEffect(() => {
+  setDisplayData(allPost);
+}, [allPost]);
+
+
+
+if (!displayData) {
+  return <Loader />;
+}
+
+
+
+
+function handleSearch(e) {
+  const searchPost = e.target.value.trim().toLowerCase();
+
+  const filteredPost = allPost.filter((post) =>{
+
+    
+   return post.name.toLowerCase().includes(searchPost)}
+  );
+
+  
+  setDisplayData(filteredPost);
+
+
 }
 
 
@@ -39,38 +70,62 @@ if (allPost.length===0) {
 
       <div>
         <div class="flex items-center justify-center py-5">
-          <div class="rounded-lg">
-            <div class="flex">
-              <div class="flex w-10 items-center justify-center rounded-tl-lg rounded-bl-lg border-r border-gray-200 bg-white p-5">
-                <svg
-                  viewBox="0 0 20 20"
-                  aria-hidden="true"
-                  class="pointer-events-none absolute w-5 fill-gray-500 transition"
-                >
-                  <path d="M16.72 17.78a.75.75 0 1 0 1.06-1.06l-1.06 1.06ZM9 14.5A5.5 5.5 0 0 1 3.5 9H2a7 7 0 0 0 7 7v-1.5ZM3.5 9A5.5 5.5 0 0 1 9 3.5V2a7 7 0 0 0-7 7h1.5ZM9 3.5A5.5 5.5 0 0 1 14.5 9H16a7 7 0 0 0-7-7v1.5Zm3.89 10.45 3.83 3.83 1.06-1.06-3.83-3.83-1.06 1.06ZM14.5 9a5.48 5.48 0 0 1-1.61 3.89l1.06 1.06A6.98 6.98 0 0 0 16 9h-1.5Zm-1.61 3.89A5.48 5.48 0 0 1 9 14.5V16a6.98 6.98 0 0 0 4.95-2.05l-1.06-1.06Z"></path>
-                </svg>
-              </div>
-              <input
-                type="text"
-                class="w-full max-w-[160px] bg-white pl-2 text-base font-semibold outline-0"
-                placeholder="Search App..."
-                id=""
-              />
-              <input
-                type="button"
-                value="Search"
-                class="bg-green-400 p-2 rounded-tr-lg rounded-br-lg text-black font-semibold hover:bg-green-500 transition-colors"
-              />
-            </div>
-          </div>
+          <form class="form">
+            <button>
+              <svg
+                width="17"
+                height="16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-labelledby="search"
+              >
+                <path
+                  d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
+                  stroke="currentColor"
+                  stroke-width="1.333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+            <input
+              class="input"
+              placeholder="Type your text"
+              required=""
+              type="text"
+              onChange={handleSearch}
+            />
+
+            <button class="reset" type="reset">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {allPost.map((post) => (
-          <Crop post={post} />
-        ))}
-      </div>
+      {displayData.length ? (
+        <div className="grid items-center justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {displayData.map((post) => (
+            <Crop key={post._id} post={post} />
+          ))}
+        </div>
+      ) : (
+        <PostNotFound />
+      )}
     </section>
   );
 };
