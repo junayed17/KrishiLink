@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const HowItWork = () => {
   return (
@@ -21,7 +22,7 @@ const HowItWork = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-14">
-        <div className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
+        <Link to="/signIn" className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
           <img
             src="https://cdni.iconscout.com/illustration/premium/thumb/online-registration-illustration-svg-download-png-6381808.png"
             alt="Create account"
@@ -37,9 +38,9 @@ const HowItWork = () => {
           <div className="absolute -top-7 left-1/2 transform -translate-x-1/2  rounded-full bg-green-400 shadow-lg">
             <h4 className="text-white font-bold px-6 py-4 text-2xl">1</h4>
           </div>
-        </div>
+        </Link>
 
-        <div className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
+        <Link to="/addCrop" className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
           <img
             src="https://cdni.iconscout.com/illustration/premium/thumb/post-content-planning-illustration-svg-download-png-8491110.png"
             alt="Add items"
@@ -54,9 +55,9 @@ const HowItWork = () => {
           <div className="absolute -top-7 left-1/2 transform -translate-x-1/2  rounded-full bg-green-400 shadow-lg">
             <h4 className="text-white font-bold px-6 py-4 text-2xl">2</h4>
           </div>
-        </div>
-
-        <div className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
+        </Link>
+ 
+        <Link to="/myPost" className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Collaboration_logo_V2.svg/607px-Collaboration_logo_V2.svg.png"
             alt="Connect"
@@ -72,7 +73,7 @@ const HowItWork = () => {
           <div className="absolute -top-7 left-1/2 transform -translate-x-1/2  rounded-full bg-green-400 shadow-lg">
             <h4 className="text-white font-bold px-6 py-4 text-2xl">3</h4>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );
