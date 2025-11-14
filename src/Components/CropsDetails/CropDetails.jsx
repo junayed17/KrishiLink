@@ -36,16 +36,19 @@ fetch(`http://localhost:3000/postDetails/${id}`)
 
 if (!postDetails) {
   return <Loader/>
-}
-console.log(isOwner)
-
-  
+} 
   return (
     <>
       <section>
         <Details postDetails={postDetails} />
       </section>
-      <section>{isOwner ? <AllInterests /> : <BookedForm />}</section>
+      <section>
+        {isOwner ? (
+          <AllInterests postDetails={postDetails}/>
+        ) : (
+          <BookedForm id={id} postDetails={postDetails} user={user} />
+        )}
+      </section>
     </>
   );
 };

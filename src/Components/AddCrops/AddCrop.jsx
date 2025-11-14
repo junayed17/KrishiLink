@@ -28,6 +28,7 @@ const AddCrop = () => {
       description,
       location,
       image,
+      interests:[],
       owner: {
         ownerEmail: user.email,
         ownerName: user.displayName,
@@ -50,9 +51,9 @@ const AddCrop = () => {
 
   return (
     <section className="px-4 bg-gray-50 min-h-screen flex items-center justify-center">
-      <div className="py-10 w-full">
+      <div className="w-[700px] mx-auto mt-5">
         <form
-          className="flex flex-col gap-4 bg-white p-8 w-full w-[500px] mx-auto rounded-xl font-sans shadow-2xl border border-green-100"
+          className="flex flex-col gap-4 bg-white p-8 w-full  rounded-xl font-sans shadow-2xl border border-green-100"
           onSubmit={handleCropAdd}
         >
           <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
@@ -74,7 +75,7 @@ const AddCrop = () => {
               required
             />
           </div>
-          <div className="flex gap-4">
+          <div className="sm:flex gap-4">
             <div className="w-1/2">
               <label
                 for="cropType"
@@ -125,14 +126,14 @@ const AddCrop = () => {
                 id="Location"
                 name="location"
                 placeholder="Where is the crop grown?"
-                className="input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
+                className="input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150 "
                 type="text"
                 required
               />
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="sm:flex gap-4">
             <div className="w-2/5">
               <label
                 for="pricePerUnit"

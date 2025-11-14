@@ -1,22 +1,50 @@
-import React, { useState } from "react";
-
-function handleBooked(e) {
-  e.preventDefault();
-  alert("i am working")
-}
+import React, { useEffect, useState } from "react";
 
 
 
 
-const BookedForm = () => {
 
 
-  const [totalPrice,setTotalPrice]=useState(null)
+const BookedForm = ({ id, postDetails, user }) => {
+  const [totalPrice, setTotalPrice] = useState(null);
 
   function handleTotalPrice(e) {
-   const total= e.target.value;
-   setTotalPrice(total)
+    const total = e.target.value;
+    setTotalPrice(total * postDetails.pricePerUnit);
   }
+
+  function handleBooked(e) {
+    e.preventDefault();
+    const quantity = e.target.quantity.value;
+    const message = e.target.message.value;
+    const total = e.target.total.value;
+    const email = user.email;
+
+    const userName =user.displayName;
+    const status = "Pending";
+
+
+    const bookedInfo={
+     email,userName,quantity,message,total,status
+    }
+
+    fetch(`http://localhost:3000/post/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookedInfo),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        alert("sucessfully done")
+      });
+    
+  }
+
+  console.log(id, postDetails.interests, user);
+
   return (
     <div className="">
       <div className="py-10 shadow-2xl border-green-200">
@@ -108,7 +136,7 @@ const BookedForm = () => {
             <input
               placeholder="Quantity * unit Price"
               class="input ml-2 rounded-lg border-none w-full h-full focus:outline-none"
-              name="message"
+              name="total"
               type="number"
               readOnly
               value={totalPrice}

@@ -28,8 +28,14 @@ const initialInterests = [
   },
 ];
 
-const AllInterests = () => {
+const AllInterests = ({postDetails}) => {
   const [interests, setInterests] = useState(initialInterests);
+
+
+console.log(postDetails.interests);
+
+
+
 
   const getStatusClass = (status) => {
     switch (status) {
@@ -72,13 +78,13 @@ const AllInterests = () => {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {interests.length > 0 ? (
-                interests.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50">
+                postDetails.interests.map((item) => (
+                  <tr key={item._id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {item.buyerName}
+                      {item.userName}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                      {item.requestedQuantity}
+                      {item.quantity}
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
                       {item.message}

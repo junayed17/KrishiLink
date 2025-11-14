@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { FaCheckCircle, FaTimesCircle, FaClock } from "react-icons/fa";
+import { AuthContext } from "../../Provider/ContextProvider";
+import Loader from "../Loader/Loader";
+import SingleInteresdts from "./SingleInteresdts";
 
 const initialInterests = [
   {
@@ -32,20 +35,44 @@ const initialInterests = [
 ];
 
 const MyInterests = () => {
-  const [interests, setInterests] = useState(initialInterests);
+  const [interestssss, setInterestssss] = useState(null);
+  const [myInterestsInfo, setMyInterestsInfo] = useState(null);
 
+  const { user, loading } = use(AuthContext);
+  useEffect(() => {
+    fetch(`http://localhost:3000/myInterestedPosts/${user.email}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setInterestssss(result);
+        console.log(result);
+      });
+  }, [user.email]);
 
-  const getStatusClass = (status) => {
-    switch (status) {
-      case "Accepted":
-        return "bg-green-100 text-green-700 border-green-400";
-      case "Rejected":
-        return "bg-red-100 text-red-700 border-red-400";
-      case "Pending":
-      default:
-        return "bg-yellow-100 text-yellow-700 border-yellow-400";
+  useEffect(() => {
+    if (!interestssss) {
+      return;
     }
-  };
+
+    const myInterests = interestssss.filter((ele) => ele.email == user.email);
+    setMyInterestsInfo(myInterests);
+  }, [interestssss]);
+
+  // useEffect(() => {
+  //   let interestInfo = interestssss?.interests.filter(
+  //     (ele) => ele.email === user.email
+  //   );
+  //   setMyInterestsInfo(interestInfo);
+  // }, [interestssss, user.email]);
+
+  if (!interestssss) {
+    return <Loader />;
+  }
+
+  console.log(interestssss);
+
+  // console.log(myInterestsInfo);
+
+
 
   return (
     <section className="max-w-[1440px] mx-auto px-4 py-10">
@@ -72,41 +99,8 @@ const MyInterests = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {interests.length > 0 ? (
-                interests.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                      {item.cropName}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {item.buyerName}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                      {item.requestedQuantity} {item.unit}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
-                      {item.message}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-center">
-                      <span
-                        className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full border ${getStatusClass(
-                          item.status
-                        )}`}
-                      >
-                        {item.status === "Accepted" && (
-                          <FaCheckCircle className="mr-1 mt-0.5" />
-                        )}
-                        {item.status === "Rejected" && (
-                          <FaTimesCircle className="mr-1 mt-0.5" />
-                        )}
-                        {item.status === "Pending" && (
-                          <FaClock className="mr-1 mt-0.5" />
-                        )}
-                        {item.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))
+              {interestssss.length > 0 ? (
+                interestssss.map((item) => <SingleInteresdts item={item} />)
               ) : (
                 <tr>
                   <td
