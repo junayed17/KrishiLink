@@ -43,7 +43,6 @@ const BookedForm = ({ id, postDetails, user }) => {
     
   }
 
-  console.log(id, postDetails.interests, user);
 
   return (
     <div className="">

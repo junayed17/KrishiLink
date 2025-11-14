@@ -1,38 +1,21 @@
 import React, { useState } from "react";
-import { FaCheckCircle, FaTimesCircle, FaClock, FaThinkPeaks, FaCheck, FaCross, FaTimes } from "react-icons/fa";
-
-const initialInterests = [
-  {
-    id: 101,
-    cropName: "Boro Dhaan",
-    buyerName: "Rahim Khan",
-    requestedQuantity: 50,
-    message: "Need immediate supply, best price offer.",
-    status: "Pending",
-  },
-  {
-    id: 102,
-    cropName: "Tomato",
-    buyerName: "Sumi Akter",
-    requestedQuantity: 10,
-    message: "Interested in high quality organic tomatoes.",
-    status: "Accepted",
-  },
-  {
-    id: 103,
-    cropName: "Mango (Amrupali)",
-    buyerName: "Kalam Hossain",
-    requestedQuantity: 200,
-    message: "Price negotiation possible?",
-    status: "Rejected",
-  },
-];
-
-const AllInterests = ({postDetails}) => {
-  const [interests, setInterests] = useState(initialInterests);
+import {
+  FaCheckCircle,
+  FaTimesCircle,
+  FaClock,
+  FaThinkPeaks,
+  FaCheck,
+  FaCross,
+  FaTimes,
+} from "react-icons/fa";
+import SingleInterest from "./SingleInterest";
 
 
-console.log(postDetails.interests);
+
+const AllInterests = ({ postDetails }) => {
+  // const [interests, setInterests] = useState(initialInterests);
+
+  console.log(postDetails.interests);
 
 
 
@@ -77,47 +60,9 @@ console.log(postDetails.interests);
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {interests.length > 0 ? (
+              {postDetails.interests.length > 0 ? (
                 postDetails.interests.map((item) => (
-                  <tr key={item._id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {item.userName}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                      {item.quantity}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
-                      {item.message}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-center">
-                      <span
-                        className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full border ${getStatusClass(
-                          item.status
-                        )}`}
-                      >
-                        {item.status === "Accepted" && (
-                          <FaCheckCircle className="mr-1 mt-0.5" />
-                        )}
-                        {item.status === "Rejected" && (
-                          <FaTimesCircle className="mr-1 mt-0.5" />
-                        )}
-                        {item.status === "Pending" && (
-                          <FaClock className="mr-1 mt-0.5" />
-                        )}
-                        {item.status}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 flex items-center justify-start gap-2">
-                      <button className="bg-green-100 text-green-700 border-green-400 flex items-center justify-center gap-1 p-1 rounded-2xl border">
-                        <FaCheck />
-                        <span>Accept</span>
-                      </button>
-                      <button className="bg-red-100 p-1 rounded-2xl text-red-700 border-red-400 flex items-center justify-center gap-1 border">
-                        <FaTimes />
-                        <span>Reject</span>
-                      </button>
-                    </td>
-                  </tr>
+                  <SingleInterest item={item} postId={postDetails._id}/>
                 ))
               ) : (
                 <tr>
