@@ -7,36 +7,30 @@ import { useParams } from "react-router";
 import Loader from "../Loader/Loader";
 
 const CropDetails = () => {
-  const {id}=useParams()
-  const {user}=use(AuthContext)
+  const { id } = useParams();
+  const { user } = use(AuthContext);
 
+  const [postDetails, setPostDetails] = useState(null);
 
+  const [isOwner, setIsOwner] = useState(false);
 
-const [postDetails, setPostDetails] = useState(null);
+  useEffect(() => {
+    fetch(`http://localhost:3000/postDetails/${id}`)
+      .then((res) => res.json())
+      .then((result) => setPostDetails(result));
+  }, [id]);
 
-const [isOwner,setIsOwner]=useState(false)
+  useEffect(() => {
+    if (user?.email === postDetails?.owner?.ownerEmail) {
+      setIsOwner(true);
+    } else {
+      setIsOwner(false);
+    }
+  }, [postDetails, user]);
 
-
-useEffect(()=>{
-fetch(`http://localhost:3000/postDetails/${id}`)
-  .then((res) => res.json())
-  .then((result) => setPostDetails(result));
-},[id])
-
-
-
- useEffect(() => {
-   if (user?.email === postDetails?.owner?.ownerEmail) {
-     setIsOwner(true);
-   } else {
-     setIsOwner(false);
-   }
- }, [postDetails, user]);
-
-
-if (!postDetails) {
-  return <Loader/>
-} 
+  if (!postDetails) {
+    return <Loader />;
+  }
   return (
     <>
       <section>
@@ -44,7 +38,7 @@ if (!postDetails) {
       </section>
       <section>
         {isOwner ? (
-          <AllInterests postDetails={postDetails}/>
+          <AllInterests postDetails={postDetails} />
         ) : (
           <BookedForm id={id} postDetails={postDetails} user={user} />
         )}

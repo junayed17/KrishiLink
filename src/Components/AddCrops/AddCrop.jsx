@@ -28,7 +28,7 @@ const AddCrop = () => {
       description,
       location,
       image,
-      interests:[],
+      interests: [],
       owner: {
         ownerEmail: user.email,
         ownerName: user.displayName,
@@ -223,17 +223,3 @@ const AddCrop = () => {
   );
 };
 export default AddCrop;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

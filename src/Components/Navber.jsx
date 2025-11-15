@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/ContextProvider";
+import "./navber.css"
 
 const Navber = () => {
   const { user, handleSignOut } = use(AuthContext);
@@ -16,13 +17,13 @@ const Navber = () => {
   let links = (
     <>
       <NavLink
-        className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-4 transition-all duration-500 hover:text-white text-[16px] font-bold"
+        className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1 transition-all duration-500 hover:text-white text-[16px] font-bold"
         to="/"
       >
         Home
       </NavLink>
       <NavLink
-        className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-4 transition-all duration-500 hover:text-white text-[16px] font-bold"
+        className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1 transition-all duration-500 hover:text-white text-[16px] font-bold"
         to="/AllCrops"
       >
         All crops
@@ -31,25 +32,25 @@ const Navber = () => {
       {user && (
         <>
           <NavLink
-            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-4 transition-all duration-500 hover:text-white text-[16px] font-bold"
+            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1 transition-all duration-500 hover:text-white text-[16px] font-bold"
             to="/myProfile"
           >
             Profile
           </NavLink>
           <NavLink
-            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-4 transition-all duration-500 hover:text-white text-[16px] font-bold"
+            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1  transition-all duration-500 hover:text-white text-[16px] font-bold"
             to="/addCrop"
           >
             Add crops
           </NavLink>
           <NavLink
-            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-4 transition-all duration-500 hover:text-white text-[16px] font-bold"
+            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1  transition-all duration-500 hover:text-white text-[16px] font-bold"
             to="myPost"
           >
             My posts
           </NavLink>
           <NavLink
-            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-4 transition-all duration-500 hover:text-white text-[16px] font-bold"
+            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1 transition-all duration-500 hover:text-white text-[16px] font-bold"
             to="/MyInterests"
           >
             My interests
@@ -83,7 +84,7 @@ const Navber = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow z-10"
             >
               {links}
             </ul>
@@ -95,14 +96,14 @@ const Navber = () => {
                 alt=""
               />
             </div>
-            <div className="flex items-center text-3xl font-bold">
+            <div className="flex items-center text-3xl font-bold logoHidden">
               <span className="text-[#009432]">Krishi</span>
               <span className="text-black">Link</span>
             </div>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className="menu menu-horizontal px-1 z-10">{links}</ul>
         </div>
         <div className="navbar-end">
           {user ? (

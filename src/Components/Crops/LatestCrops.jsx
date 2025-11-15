@@ -5,28 +5,20 @@ import { Link } from "react-router";
 import { AuthContext } from "../../Provider/ContextProvider";
 import Loader from "../Loader/Loader";
 
-
-
-
-
-
 const LatestCrops = () => {
-
-  const [latestCrop, setLatestCrop] = useState([]);
+  const [latestCrop, setLatestCrop] = useState(null);
 
   useEffect(() => {
     fetch(`http://localhost:3000/latestPosts`)
       .then((res) => res.json())
       .then((result) => setLatestCrop(result))
       .catch((err) => console.log(err));
-  },[]);
-
+  }, []);
 
   console.log(latestCrop);
-  
-  
-  if (latestCrop.length===0) {
-    return <Loader/>
+
+  if (!latestCrop) {
+    return <Loader />;
   }
 
   return (

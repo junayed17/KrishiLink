@@ -13,6 +13,7 @@ import MyPost from "../Components/MyPosts/MyPost";
 import MyInterests from "../Components/My interest/MyInterest";
 import PrivateRouter from "./PrivateRouter";
 import Error from "../Components/error/Error";
+import MypostEdit from "../Components/MyPosts/MypostEdit";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,15 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/post/edit/:id",
+        element: (
+          <PrivateRouter>
+            {" "}
+            <MypostEdit />
+          </PrivateRouter>
+        ),
+      },
+      {
         path: "/signIn",
         element: <SignIn />,
       },
@@ -75,12 +85,12 @@ const router = createBrowserRouter([
         path: "/signUp",
         element: <SignUp />,
       },
-    ]
+    ],
   },
   {
-    path:"*",
-    element:<Error/>
-  }
+    path: "*",
+    element: <Error />,
+  },
 ]);
 
 export default router;

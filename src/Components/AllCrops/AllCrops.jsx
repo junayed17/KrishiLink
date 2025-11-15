@@ -1,58 +1,36 @@
 import React, { useEffect, useState } from "react";
 import Crop from "../Crops/Crop";
 import Loader from "../Loader/Loader";
-import "./allCrops.css"
+import "./allCrops.css";
 import PostNotFound from "../error/PostNotFound";
 
 const AllCrops = () => {
+  const [allPost, setAllPost] = useState(null);
 
+  useEffect(() => {
+    fetch("https://krishilink-two.vercel.app/allPosts")
+      .then((res) => res.json())
+      .then((result) => setAllPost(result));
+  }, []);
+  const [displayData, setDisplayData] = useState(allPost);
 
-const [allPost,setAllPost]=useState(null)
+  useEffect(() => {
+    setDisplayData(allPost);
+  }, [allPost]);
 
+  if (!displayData) {
+    return <Loader />;
+  }
 
-useEffect(()=>{
-fetch("http://localhost:3000/allPosts")
-  .then((res) => res.json())
-  .then((result) => setAllPost(result));
-},[])
-const [displayData,setDisplayData]=useState(allPost)
+  function handleSearch(e) {
+    const searchPost = e.target.value.trim().toLowerCase();
 
+    const filteredPost = allPost.filter((post) => {
+      return post.name.toLowerCase().includes(searchPost);
+    });
 
-
-
-
-
-
-
-useEffect(() => {
-  setDisplayData(allPost);
-}, [allPost]);
-
-
-
-if (!displayData) {
-  return <Loader />;
-}
-
-
-
-
-function handleSearch(e) {
-  const searchPost = e.target.value.trim().toLowerCase();
-
-  const filteredPost = allPost.filter((post) =>{
-
-    
-   return post.name.toLowerCase().includes(searchPost)}
-  );
-
-  
-  setDisplayData(filteredPost);
-
-
-}
-
-
+    setDisplayData(filteredPost);
+  }
 
   return (
     <section className="max-w-[1440px] mx-auto px-4">

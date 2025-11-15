@@ -72,8 +72,6 @@ const MyInterests = () => {
 
   // console.log(myInterestsInfo);
 
-
-
   return (
     <section className="max-w-[1440px] mx-auto px-4 py-10">
       <div className="min-h-screen">

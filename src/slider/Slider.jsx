@@ -31,7 +31,7 @@ export default function App() {
             />
             <h1
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-  sliderFont text-5xl text-[#fff200] drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)] "
+  sliderFont text-[20px] sm:text-2xl md:text-4xl  lg:text-5xl text-[#fff200] drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)] "
               // data-aos="fade-up"
             >
               “Bridging Farmers, Traders & Consumers — Growing Together with
@@ -49,7 +49,7 @@ export default function App() {
             />
             <h1
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-  sliderFont text-5xl text-[#fff200] drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)] "
+  sliderFont text-[20px] sm:text-2xl md:text-4xl  lg:text-5xl text-[#fff200] drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)] "
               // data-aos="fade-up"
             >
               “From Fields to Future — KrishiLink connects every hand that feeds
@@ -67,7 +67,7 @@ export default function App() {
             />
             <h1
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-  sliderFont text-5xl text-[#fff200] drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)] "
+  sliderFont text-[20px] sm:text-2xl md:text-4xl  lg:text-5xl text-[#fff200] drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)] "
               // data-aos="fade-up"
             >
               “Not just a marketplace — a social agro network for growth and
@@ -85,8 +85,7 @@ export default function App() {
             />
             <h1
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-  sliderFont text-5xl text-[#fff200] drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)] "
-              data-aos="fade-up"
+  sliderFont text-[20px] sm:text-2xl md:text-4xl  lg:text-5xl text-[#fff200] drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)] "
             >
               “Empowering Farmers, Uniting Communities — The Green Connection
               Begins Here.”
