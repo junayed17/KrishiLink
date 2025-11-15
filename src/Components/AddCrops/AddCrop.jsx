@@ -52,6 +52,7 @@ const AddCrop = () => {
 
   return (
     <section className="px-4 bg-gray-50 min-h-screen flex items-center justify-center">
+      <title>KrisiLink | AddPost</title>
       <div className="w-[700px] mx-auto mt-5">
         <form
           className="flex flex-col gap-4 bg-white p-8 w-full  rounded-xl font-sans shadow-2xl border border-green-100"

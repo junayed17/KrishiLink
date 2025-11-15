@@ -43,6 +43,7 @@ const SignIn = () => {
 
   return (
     <section className="px-4">
+      <title>KrisiLink | SignIn</title>
       <div className="py-10">
         <form
           class="flex flex-col gap-2 bg-white p-7 w-full max-w-lg mx-auto rounded-xl font-sans"

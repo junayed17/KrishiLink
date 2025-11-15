@@ -8,7 +8,7 @@ const AllCrops = () => {
   const [allPost, setAllPost] = useState(null);
 
   useEffect(() => {
-    fetch("https://krishilink-two.vercel.app/allPosts")
+    fetch("http://localhost:3000/allPosts")
       .then((res) => res.json())
       .then((result) => setAllPost(result));
   }, []);
@@ -34,6 +34,7 @@ const AllCrops = () => {
 
   return (
     <section className="max-w-[1440px] mx-auto px-4">
+      <title>KrisiLink | AllPosts</title>
       <div className="flex items-center justify-center gap-4 pt-20 pb-10">
         <img
           src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"

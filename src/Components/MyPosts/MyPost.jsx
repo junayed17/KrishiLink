@@ -52,6 +52,7 @@ const MyPost = () => {
 
   return (
     <section className="max-w-[1440px] mx-auto pt-10 px-4">
+      <title>KrisiLink | My Post</title>
       <div className="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-green-50">

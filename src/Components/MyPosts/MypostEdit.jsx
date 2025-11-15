@@ -66,6 +66,7 @@ const MypostEdit = () => {
 
   return (
     <div className="mx-4">
+      <title>KrisiLink | PostEdit</title>
       <form
         className="flex flex-col gap-4 bg-white p-8 w-full max-w-xl mx-auto rounded-xl font-sans shadow-2xl border border-green-100 my-5 mx-4"
         onSubmit={handleUpdate}

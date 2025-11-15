@@ -35,13 +35,13 @@ const SingleInteresdts = ({ item }) => {
 
 if (!myInterestsInfo) {
 
-  console.log("ami duksi");
+
   
  return <Loader/>
 }
 
 
-  console.log(myInterestsInfo);
+
   return (
     <tr key={item._id} className="hover:bg-gray-50">
       <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">

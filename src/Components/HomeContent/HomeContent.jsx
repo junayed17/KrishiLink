@@ -9,6 +9,7 @@ import Partners from '../extra2/Partner';
 const HomeContent = () => {
   return (
     <div>
+      <title>KrisiLink | Home</title>
       <section>
         <Slider />
       </section>
@@ -22,10 +23,10 @@ const HomeContent = () => {
         <Blog />
       </section>
       <section>
-        <Success/>
+        <Success />
       </section>
       <section>
-        <Partners/>
+        <Partners />
       </section>
     </div>
   );

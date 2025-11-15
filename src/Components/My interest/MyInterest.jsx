@@ -3,48 +3,19 @@ import { FaCheckCircle, FaTimesCircle, FaClock } from "react-icons/fa";
 import { AuthContext } from "../../Provider/ContextProvider";
 import Loader from "../Loader/Loader";
 import SingleInteresdts from "./SingleInteresdts";
+import toast from "react-hot-toast";
 
-const initialInterests = [
-  {
-    id: 101,
-    cropName: "Boro Dhaan",
-    buyerName: "Rahim Khan",
-    requestedQuantity: 50,
-    unit: "ton",
-    message: "Need immediate supply, best price offer.",
-    status: "Pending",
-  },
-  {
-    id: 102,
-    cropName: "Tomato",
-    buyerName: "Sumi Akter",
-    requestedQuantity: 10,
-    unit: "bag",
-    message: "Interested in high quality organic tomatoes.",
-    status: "Accepted",
-  },
-  {
-    id: 103,
-    cropName: "Mango (Amrupali)",
-    buyerName: "Kalam Hossain",
-    requestedQuantity: 200,
-    unit: "kg",
-    message: "Price negotiation possible?",
-    status: "Rejected",
-  },
-];
 
 const MyInterests = () => {
   const [interestssss, setInterestssss] = useState(null);
   const [myInterestsInfo, setMyInterestsInfo] = useState(null);
 
-  const { user, loading } = use(AuthContext);
+  const { user } = use(AuthContext);
   useEffect(() => {
     fetch(`http://localhost:3000/myInterestedPosts/${user.email}`)
       .then((res) => res.json())
       .then((result) => {
         setInterestssss(result);
-        console.log(result);
       });
   }, [user.email]);
 
@@ -68,12 +39,27 @@ const MyInterests = () => {
     return <Loader />;
   }
 
-  console.log(interestssss);
 
-  // console.log(myInterestsInfo);
+function sortByName() {
+   const sortByName = interestssss.sort((a, b) => a.name.localeCompare(b.name))
+   toast.success("Sorted sucessfully")
+   
+   setInterestssss([...sortByName]);
+
+}
+
+console.log(interestssss);
+
 
   return (
     <section className="max-w-[1440px] mx-auto px-4 py-10">
+      <title>KrisiLink | MyInterests</title>
+      <button
+        className="block cursor-pointer px-6 py-3 rounded-2xl bg-green-500 max-w-[180px] mx-auto mb-10 font-bold shadow-2xl"
+        onClick={sortByName}
+      >
+        <p className="text-black">Shot by Quantity</p>
+      </button>
       <div className="min-h-[50vh]">
         <div className="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">

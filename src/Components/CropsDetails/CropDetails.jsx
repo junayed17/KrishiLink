@@ -34,6 +34,7 @@ const CropDetails = () => {
   return (
     <>
       <section>
+        <title>KrisiLink | PostDetails</title>
         <Details postDetails={postDetails} />
       </section>
       <section>

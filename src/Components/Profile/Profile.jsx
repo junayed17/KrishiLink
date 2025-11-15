@@ -39,6 +39,7 @@ const Profile = () => {
   }
   return (
     <section className="max-w-[1440px] mx-auto px-4 py-10">
+      <title>KrisiLink | MyProfile</title>
       <div>
         <div className="relative max-w-[400px] bg-white/90 backdrop-blur-3xl rounded-2xl p-8 shadow-lg transform scale-90 mx-auto">
           {/* Profile Top Background */}

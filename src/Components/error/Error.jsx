@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 const Error = () => {
   return (
     <div className="relative">
+      <title>Error</title>
       <img
         src="https://i.ibb.co.com/wGVgm65/err.jpg"
         alt=""
