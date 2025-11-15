@@ -75,7 +75,7 @@ const SignUp = () => {
       })
       .catch((err) => toast.error(err.message));
   }
- console.log(desiredlocation);
+
   return (
     <section className="px-4 bg-gray-100 min-h-screen flex items-center justify-center">
       <title>KrisiLink | SignUp</title>
@@ -251,7 +251,7 @@ const SignUp = () => {
           <div className="flex-row flex flex-row gap-2">
             <button
               className="btn google mt-2 w-full h-[50px] rounded-lg flex justify-center items-center font-medium gap-2 border border-gray-200 bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#09bb2f]"
-              type="submit"
+              type="button"
               onClick={handleSignInGoogle}
             >
               <svg

@@ -58,7 +58,7 @@ console.log(interestssss);
         className="block cursor-pointer px-6 py-3 rounded-2xl bg-green-500 max-w-[180px] mx-auto mb-10 font-bold shadow-2xl"
         onClick={sortByName}
       >
-        <p className="text-black">Shot by Quantity</p>
+        <p className="text-black">Shot by Name</p>
       </button>
       <div className="min-h-[50vh]">
         <div className="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">

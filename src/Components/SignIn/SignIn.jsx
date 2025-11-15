@@ -37,6 +37,8 @@ const SignIn = () => {
         state ? Navigate(state) : Navigate("/");
       })
       .catch((err) => {
+        console.log(err);
+        
         toast.error("try again");
       });
   }
@@ -133,6 +135,7 @@ const SignIn = () => {
             <button
               class="btn google mt-2 w-full h-[50px] rounded-lg flex justify-center items-center font-medium gap-2 border border-gray-200 bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#09bb2f]"
               onClick={handleSignInGoogle}
+              type="button"
             >
               <svg
                 xml:space="preserve"
