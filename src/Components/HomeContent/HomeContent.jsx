@@ -4,6 +4,7 @@ import HowItWork from '../HowItWork/HowItWork';
 import LatestCrops from '../Crops/LatestCrops';
 import Blog from '../Blog/Blog';
 import Success from '../extra2/Success';
+import Partners from '../extra2/Partner';
 
 const HomeContent = () => {
   return (
@@ -22,6 +23,9 @@ const HomeContent = () => {
       </section>
       <section>
         <Success/>
+      </section>
+      <section>
+        <Partners/>
       </section>
     </div>
   );
