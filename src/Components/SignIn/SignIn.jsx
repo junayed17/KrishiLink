@@ -3,16 +3,16 @@ import { FaEye } from "react-icons/fa";
 import { LuEyeClosed } from "react-icons/lu";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/ContextProvider";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
   const Navigate = useNavigate();
 
-  const { handleSignInWithEmailPass, handleSignInWithGoogle ,setLoading} =
+  const { handleSignInWithEmailPass, handleSignInWithGoogle, setLoading } =
     use(AuthContext);
   const [passShow, setPassShow] = useState(false);
 
   const { state } = useLocation();
-  console.log(state);
 
   function handleSignIn(e) {
     e.preventDefault();
@@ -20,24 +20,24 @@ const SignIn = () => {
     const password = e.target.password.value;
     handleSignInWithEmailPass(email, password)
       .then((result) => {
-        alert(result);
-        setLoading(false)
+        toast.success("sucessfully logged");
+        setLoading(false);
         state ? Navigate(state) : Navigate("/");
       })
-      .catch((err) => {
-        alert(err);
+      .catch((err1) => {
+        toast.error(err1.code);
       });
   }
 
   function handleSignInGoogle() {
     handleSignInWithGoogle()
       .then((result) => {
-        alert("sucessfully logged");
-            setLoading(false);
+        toast.success("sucessfully logged");
+        setLoading(false);
         state ? Navigate(state) : Navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("try again");
       });
   }
 

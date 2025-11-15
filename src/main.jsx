@@ -6,6 +6,7 @@ import router from "./Provider/Router.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ContextProvider from "./Provider/ContextProvider.jsx";
+import { Toaster } from "react-hot-toast";
 
 // function Root() {
 //   useEffect(() => {
@@ -29,6 +30,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ContextProvider>
       <RouterProvider router={router} />
+      <Toaster position="top-right" reverseOrder={false} />
     </ContextProvider>
   </StrictMode>
 );

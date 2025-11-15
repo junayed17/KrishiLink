@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import Loader from "../Loader/Loader";
 import { AuthContext } from "../../Provider/ContextProvider";
 import { FaCheckCircle } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const BookedForm = ({ id, postDetails, user }) => {
   const [totalPrice, setTotalPrice] = useState(null);
@@ -56,7 +57,7 @@ console.log(postDetails);
 
 
     if (quantity<1) {
-      alert("Quantity must be atleast 1")
+      toast.error("Quantity must be atleast 1")
       return
     }
 
@@ -72,7 +73,7 @@ console.log(postDetails);
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        alert("sucessfully done");
+        toast.success("sucessfully done");
         setIsBooked(true);
       });
   }

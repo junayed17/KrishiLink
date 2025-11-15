@@ -7,6 +7,7 @@ import {
   FaTimesCircle,
 } from "react-icons/fa";
 import Loader from "../Loader/Loader";
+import toast from "react-hot-toast";
 
  const SingleInterest = ({ item, postId }) => {
   const [obj, setObj] = useState(item);
@@ -38,8 +39,7 @@ console.log(isBtnDisable);
 
 
   function handleAccept(id) {
-    alert("i am working");
-    console.log(postId, id);
+
 
     const query = {
       status: "Accepted",
@@ -55,7 +55,7 @@ console.log(isBtnDisable);
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        alert("Interest Accepted");
+        toast.success("Interest Accepted");
         setObj((prev) => ({
           ...prev,
           status: "Accepted",
@@ -67,7 +67,7 @@ console.log(isBtnDisable);
   }
 
   function handleRejected(id) {
-    alert("i am working");
+
 
     const query = {
       status: "Rejected",
@@ -83,12 +83,13 @@ console.log(isBtnDisable);
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        alert("Interest Rejected");
+        toast.error("Interest Rejected");
         setObj((prev) => ({
           ...prev,
           status: "Rejected",
         }));
         setIsBtnDisable(true);
+        
       });
   }
 

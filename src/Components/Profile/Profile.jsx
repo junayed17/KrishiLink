@@ -1,6 +1,7 @@
 import React, { use, useRef } from "react";
 import { AuthContext } from "../../Provider/ContextProvider";
 import Loader from "../Loader/Loader";
+import toast from "react-hot-toast";
 
 const Profile = () => {
   const reference = useRef(null);
@@ -25,10 +26,10 @@ const Profile = () => {
           displayName: name,
           photoURL: photoUrl,
         }));
-        alert("profile updated");
+        toast.success("profile updated");
       })
       .catch(() => {
-        alert("profile update cannot possible");
+        toast.error("profile update cannot possible");
       });
     reference.current.close();
   }

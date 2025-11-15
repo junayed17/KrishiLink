@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/ContextProvider";
 import "./navber.css"
+import toast from "react-hot-toast";
 
 const Navber = () => {
   const { user, handleSignOut } = use(AuthContext);
@@ -9,9 +10,9 @@ const Navber = () => {
   function signOut() {
     handleSignOut()
       .then(() => {
-        alert("sucessfully logOut");
+        toast.success("sucessfully logOut");
       })
-      .catch((err) => alert(err));
+      .catch((err) => toast.error("try again"));
   }
 
   let links = (

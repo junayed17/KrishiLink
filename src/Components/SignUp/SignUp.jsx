@@ -3,6 +3,7 @@ import { FaEye } from "react-icons/fa";
 import { LuEyeClosed } from "react-icons/lu";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/ContextProvider";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const {
@@ -42,11 +43,11 @@ const SignUp = () => {
   function handleSignInGoogle() {
     handleSignInWithGoogle()
       .then((result) => {
-        alert("sucessfully logged");
+         toast.success("Account created successfully!");
         desiredlocation ? navigate(desiredlocation) : navigate("/");
       })
       .catch((err) => {
-        alert(err)
+        toast.error(err.code)
       });
   }
 
@@ -65,14 +66,14 @@ const SignUp = () => {
       .then((result) => {
         handleUpdateProfile(userData).then((result2) => {
           setUser(result.user);
-          alert("Account created successfully!");
+          toast.success("Account created successfully!");
            {
             desiredlocation ? navigate(desiredlocation) : navigate("/");
            }
           
         });
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => toast.error(err.message));
   }
  console.log(desiredlocation);
   return (

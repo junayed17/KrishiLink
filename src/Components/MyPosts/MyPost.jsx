@@ -4,6 +4,7 @@ import { AuthContext } from "../../Provider/ContextProvider";
 import Loader from "../Loader/Loader";
 import "./myPost.css";
 import { Link } from "react-router";
+import toast from "react-hot-toast";
 
 const MyPost = () => {
   const [crops, setCrops] = useState(null);
@@ -36,7 +37,7 @@ const MyPost = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.deletedCount === 1) {
-          alert("Post Deleted Sucessfully");
+          toast.success("Post Deleted Sucessfully");
           const newPosts = crops.filter((ele) => ele._id != deleteId);
           setCrops(newPosts);
         }

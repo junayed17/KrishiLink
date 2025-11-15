@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import Loader from "../Loader/Loader";
+import toast from "react-hot-toast";
 
 const MypostEdit = () => {
-  // function handleEditModal(id) {
-  //   seteditId(id);
-  //   editRef.current.showModal();
-  // }
+
 
   const navigate = useNavigate();
   const [postDetails, setPostDetails] = useState(null);
 
   const { id } = useParams();
-  console.log(id);
+
 
   useEffect(() => {
     fetch(`http://localhost:3000/postDetails/${id}`)
@@ -24,7 +22,7 @@ const MypostEdit = () => {
     return <Loader />;
   }
 
-  console.log(postDetails);
+
 
   function handleUpdate(e) {
     e.preventDefault();
@@ -60,7 +58,7 @@ const MypostEdit = () => {
       .then((result) => {
         console.log(result);
         if (result) {
-          alert("data updated sucessfully");
+          toast.success("Post updated sucessfully");
           navigate("/");
         }
       });

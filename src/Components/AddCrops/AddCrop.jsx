@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/ContextProvider";
+import toast from "react-hot-toast";
 
 const AddCrop = () => {
   const { user } = use(AuthContext);
@@ -44,7 +45,7 @@ const AddCrop = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        alert("data added");
+        toast.success("Post added sucessfully");
         navigate("/myPost");
       });
   }
