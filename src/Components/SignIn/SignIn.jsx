@@ -5,34 +5,35 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/ContextProvider";
 
 const SignIn = () => {
-  const Navigate=useNavigate()
+  const Navigate = useNavigate();
 
-  const { handleSignInWithEmailPass, handleSignInWithGoogle } =
+  const { handleSignInWithEmailPass, handleSignInWithGoogle ,setLoading} =
     use(AuthContext);
   const [passShow, setPassShow] = useState(false);
 
-const {state}=useLocation()
-   console.log(state);
+  const { state } = useLocation();
+  console.log(state);
 
   function handleSignIn(e) {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    alert(email, password);
     handleSignInWithEmailPass(email, password)
       .then((result) => {
         alert(result);
-          state ? Navigate(state) : Navigate("/");
+        setLoading(false)
+        state ? Navigate(state) : Navigate("/");
       })
       .catch((err) => {
         alert(err);
       });
   }
-  
+
   function handleSignInGoogle() {
     handleSignInWithGoogle()
       .then((result) => {
         alert("sucessfully logged");
+            setLoading(false);
         state ? Navigate(state) : Navigate("/");
       })
       .catch((err) => {
@@ -47,7 +48,7 @@ const {state}=useLocation()
           class="flex flex-col gap-2 bg-white p-7 w-full max-w-lg mx-auto rounded-xl font-sans"
           onSubmit={handleSignIn}
         >
-          <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
+          <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700 headingFont">
             SignIn Your Account
           </h3>
           <div class="flex-column flex flex-col">

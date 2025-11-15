@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   FaCheckCircle,
   FaTimesCircle,
@@ -15,7 +15,6 @@ import SingleInterest from "./SingleInterest";
 const AllInterests = ({ postDetails }) => {
   // const [interests, setInterests] = useState(initialInterests);
 
-  console.log(postDetails.interests);
 
 
 

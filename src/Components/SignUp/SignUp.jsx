@@ -84,7 +84,7 @@ const SignUp = () => {
           onSubmit={handleSignUp}
         >
           {/* Form Title */}
-          <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
+          <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700 headingFont">
             Create Your Account
           </h3>
 

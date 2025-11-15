@@ -3,6 +3,7 @@ import Slider from '../../slider/slider';
 import HowItWork from '../HowItWork/HowItWork';
 import LatestCrops from '../Crops/LatestCrops';
 import Blog from '../Blog/Blog';
+import Success from '../extra2/Success';
 
 const HomeContent = () => {
   return (
@@ -18,6 +19,9 @@ const HomeContent = () => {
       </section>
       <section>
         <Blog />
+      </section>
+      <section>
+        <Success/>
       </section>
     </div>
   );

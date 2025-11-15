@@ -39,7 +39,7 @@ const Profile = () => {
   return (
     <section className="max-w-[1440px] mx-auto px-4 py-10">
       <div>
-        <div className="relative max-w-96 bg-white/90 backdrop-blur-3xl rounded-2xl p-8 shadow-lg transform scale-90 mx-auto">
+        <div className="relative max-w-[400px] bg-white/90 backdrop-blur-3xl rounded-2xl p-8 shadow-lg transform scale-90 mx-auto">
           {/* Profile Top Background */}
           <div className="absolute left-0 top-0 w-full h-24 bg-green-400 rounded-t-2xl -z-10"></div>
 
@@ -50,7 +50,7 @@ const Profile = () => {
 
           {/* Profile Info */}
           <div className="text-left mb-6">
-            <p className="text-xl font-semibold text-gray-900 mb-1">
+            <p className="text-xl font-semibold text-gray-900 mb-1 headingFont">
               {user.displayName}
             </p>
             <p className="text-sm text-gray-600 mb-2">{user.email}</p>
@@ -93,7 +93,7 @@ const Profile = () => {
             class="bg-white p-4 max-w-sm mx-auto rounded-lg shadow-xl"
             onSubmit={handleUpdate}
           >
-            <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
+            <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700 headingFont">
               Update your profile
             </h3>
             <div class="relative">

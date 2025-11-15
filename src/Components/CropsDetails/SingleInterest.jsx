@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaCheck,
   FaCheckCircle,
@@ -6,13 +6,36 @@ import {
   FaTimes,
   FaTimesCircle,
 } from "react-icons/fa";
+import Loader from "../Loader/Loader";
 
-const SingleInterest = ({ item, postId }) => {
+ const SingleInterest = ({ item, postId }) => {
   const [obj, setObj] = useState(item);
-  const [isBtnDisable, setIsBtnDisable] = useState(false);
+  const [isBtnDisable, setIsBtnDisable] = useState(" ");
 
-  const btnA = document.querySelector("#accept");
-  const btnR = document.querySelector("#reject");
+
+useEffect(()=>{
+
+if (item.status == "Accepted") {
+  setIsBtnDisable(true);
+}
+else{
+  setIsBtnDisable(false);
+}
+  
+},[item.status])
+
+
+
+
+
+if (isBtnDisable.length<1) {
+  return <Loader/>
+}
+
+
+
+console.log(isBtnDisable);
+
 
   function handleAccept(id) {
     alert("i am working");
@@ -41,13 +64,10 @@ const SingleInterest = ({ item, postId }) => {
         setIsBtnDisable(true);
       });
 
-    console.log(btnA);
-    console.log(btnR);
   }
 
   function handleRejected(id) {
     alert("i am working");
-    console.log(postId, id);
 
     const query = {
       status: "Rejected",
@@ -119,8 +139,6 @@ const SingleInterest = ({ item, postId }) => {
               : "hover:bg-green-600"
           }`}
           onClick={() => handleAccept(obj._id)}
-          value={"Accept"}
-          id="reject"
           disabled={isBtnDisable}
         >
           <FaCheck />
@@ -132,7 +150,6 @@ const SingleInterest = ({ item, postId }) => {
               ? "cursor-not-allowed opacity-50"
               : "hover:bg-green-600"
           }`}
-          id="accept"
           onClick={() => handleRejected(obj._id)}
           disabled={isBtnDisable}
         >

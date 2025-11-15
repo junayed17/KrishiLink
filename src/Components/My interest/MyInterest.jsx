@@ -74,7 +74,7 @@ const MyInterests = () => {
 
   return (
     <section className="max-w-[1440px] mx-auto px-4 py-10">
-      <div className="min-h-screen">
+      <div className="min-h-[50vh]">
         <div className="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-green-50">

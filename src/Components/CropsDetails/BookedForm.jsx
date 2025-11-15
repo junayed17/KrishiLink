@@ -27,7 +27,7 @@ if (isBooked.length==1) {
 }
 
 
-console.log(isBooked);
+console.log(postDetails);
 
 
   function handleTotalPrice(e) {

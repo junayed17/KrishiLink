@@ -56,7 +56,7 @@ const AddCrop = () => {
           className="flex flex-col gap-4 bg-white p-8 w-full  rounded-xl font-sans shadow-2xl border border-green-100"
           onSubmit={handleCropAdd}
         >
-          <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
+          <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700 headingFont">
             🌱 Post Your Crop for Sale
           </h3>
           <div>
@@ -70,13 +70,13 @@ const AddCrop = () => {
               id="Name"
               name="name"
               placeholder="name of your crops"
-              className="input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
+              className=" w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
               type="text"
               required
             />
           </div>
           <div className="sm:flex gap-4">
-            <div className="w-1/2">
+            <div className="sm:w-1/2">
               <label
                 for="cropType"
                 className="text-sm text-[#151717] font-semibold mb-1 block"
@@ -86,7 +86,7 @@ const AddCrop = () => {
               <select
                 id="Type"
                 name="type"
-                className="input w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-green-500 transition duration-150"
+                className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-green-500 transition duration-150"
                 required
               >
                 <option value="">Select Type</option>
@@ -96,7 +96,7 @@ const AddCrop = () => {
                 <option value="Other">Other</option>
               </select>
             </div>
-            <div className="w-1/2">
+            <div className="sm:w-1/2">
               <label
                 for="unit"
                 className="text-sm text-[#151717] font-semibold mb-1 block"
@@ -106,7 +106,7 @@ const AddCrop = () => {
               <select
                 id="unit"
                 name="unit"
-                className="input w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-green-500 transition duration-150"
+                className=" w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
                 required
               >
                 <option value="">Select Unit</option>
@@ -115,7 +115,7 @@ const AddCrop = () => {
                 <option value="bag">Bag</option>
               </select>
             </div>
-            <div className="w-1/2">
+            <div className="sm:w-1/2">
               <label
                 for="location"
                 className="text-sm text-[#151717] font-semibold mb-1 block"
@@ -126,7 +126,7 @@ const AddCrop = () => {
                 id="Location"
                 name="location"
                 placeholder="Where is the crop grown?"
-                className="input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150 "
+                className=" w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
                 type="text"
                 required
               />
@@ -134,7 +134,7 @@ const AddCrop = () => {
           </div>
 
           <div className="sm:flex gap-4">
-            <div className="w-2/5">
+            <div className="sm:w-2/5">
               <label
                 for="pricePerUnit"
                 className="text-sm text-[#151717] font-semibold mb-1 block"
@@ -145,13 +145,13 @@ const AddCrop = () => {
                 id="Price"
                 name="price"
                 placeholder="price Per kg"
-                className="input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
+                className=" w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
                 type="number"
                 step="0.01"
                 required
               />
             </div>
-            <div className="w-2/5">
+            <div className="sm:w-2/5">
               <label
                 htmlFor="estimatedQuantity"
                 className="text-sm text-[#151717] font-semibold mb-1 block"
@@ -162,7 +162,7 @@ const AddCrop = () => {
                 id="Quantity"
                 name="quantity"
                 placeholder="the quantity you expect to harvest"
-                className="input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150 "
                 type="number"
                 required
               />
@@ -180,7 +180,7 @@ const AddCrop = () => {
               id="description"
               name="description"
               placeholder="type description of your product."
-              className="input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150 h-24 resize-none"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150 h-24 resize-none"
               required
             ></textarea>
           </div>
@@ -195,7 +195,7 @@ const AddCrop = () => {
             <input
               id="Photo"
               name="photo"
-              className="input w-full p-3 border border-gray-300 rounded-lg bg-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
               type="text"
               required
               placeholder="url Of your crop"
