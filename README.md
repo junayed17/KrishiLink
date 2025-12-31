@@ -1,7 +1,7 @@
 # 🌾 KrishiLink – Farmer’s Growth & Connection Platform
 
-🚀 **Live Site:** *Add your deployed client URL here*  
-🎥 **Project Demo Video:** `B12-A10_category-0015.mp4`
+🚀 **Live Site:** Add your deployed client URL here* ](https://storied-entremet-144cd8.netlify.app/
+
 
 KrishiLink is a modern agricultural networking platform that connects **farmers, traders, and consumers** within a single digital environment.  
 Unlike traditional e-commerce, KrishiLink works as a **social agro-network**, enabling users to communicate, collaborate, and build meaningful connections.
