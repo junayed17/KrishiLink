@@ -5,14 +5,13 @@ import Loader from "../Loader/Loader";
 import SingleInteresdts from "./SingleInteresdts";
 import toast from "react-hot-toast";
 
-
 const MyInterests = () => {
   const [interestssss, setInterestssss] = useState(null);
   const [myInterestsInfo, setMyInterestsInfo] = useState(null);
 
   const { user } = use(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:3000/myInterestedPosts/${user.email}`)
+    fetch(`https://krishilink-two.vercel.app/myInterestedPosts/${user.email}`)
       .then((res) => res.json())
       .then((result) => {
         setInterestssss(result);
@@ -39,17 +38,16 @@ const MyInterests = () => {
     return <Loader />;
   }
 
+  function sortByName() {
+    const sortByName = interestssss.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+    toast.success("Sorted sucessfully");
 
-function sortByName() {
-   const sortByName = interestssss.sort((a, b) => a.name.localeCompare(b.name))
-   toast.success("Sorted sucessfully")
-   
-   setInterestssss([...sortByName]);
+    setInterestssss([...sortByName]);
+  }
 
-}
-
-console.log(interestssss);
-
+  console.log(interestssss);
 
   return (
     <section className="max-w-[1440px] mx-auto px-4 py-10">

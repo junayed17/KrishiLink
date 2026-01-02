@@ -15,7 +15,7 @@ const CropDetails = () => {
   const [isOwner, setIsOwner] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/postDetails/${id}`)
+    fetch(`https://krishilink-two.vercel.app/postDetails/${id}`)
       .then((res) => res.json())
       .then((result) => setPostDetails(result));
   }, [id]);

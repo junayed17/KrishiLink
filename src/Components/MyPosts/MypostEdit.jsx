@@ -4,16 +4,13 @@ import Loader from "../Loader/Loader";
 import toast from "react-hot-toast";
 
 const MypostEdit = () => {
-
-
   const navigate = useNavigate();
   const [postDetails, setPostDetails] = useState(null);
 
   const { id } = useParams();
 
-
   useEffect(() => {
-    fetch(`http://localhost:3000/postDetails/${id}`)
+    fetch(`https://krishilink-two.vercel.app/postDetails/${id}`)
       .then((res) => res.json())
       .then((result) => setPostDetails(result));
   }, [id]);
@@ -21,8 +18,6 @@ const MypostEdit = () => {
   if (!postDetails) {
     return <Loader />;
   }
-
-
 
   function handleUpdate(e) {
     e.preventDefault();
@@ -47,7 +42,7 @@ const MypostEdit = () => {
       image,
     };
 
-    fetch(`http://localhost:3000/myPost/${id}`, {
+    fetch(`https://krishilink-two.vercel.app/myPost/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

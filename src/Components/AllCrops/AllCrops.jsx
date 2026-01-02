@@ -8,7 +8,7 @@ const AllCrops = () => {
   const [allPost, setAllPost] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/allPosts")
+    fetch("https://krishilink-two.vercel.app/allPosts")
       .then((res) => res.json())
       .then((result) => setAllPost(result));
   }, []);

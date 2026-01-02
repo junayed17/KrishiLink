@@ -9,7 +9,7 @@ const LatestCrops = () => {
   const [latestCrop, setLatestCrop] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/latestPosts`)
+    fetch(`https://krishilink-two.vercel.app/latestPosts`)
       .then((res) => res.json())
       .then((result) => setLatestCrop(result))
       .catch((err) => console.log(err));

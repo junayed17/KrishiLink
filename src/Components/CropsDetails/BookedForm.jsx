@@ -6,30 +6,25 @@ import toast from "react-hot-toast";
 
 const BookedForm = ({ id, postDetails, user }) => {
   const [totalPrice, setTotalPrice] = useState(null);
-  const [isBooked,setIsBooked]=useState(" ")
+  const [isBooked, setIsBooked] = useState(" ");
 
-postDetails.interests.forEach(element => {
-  if (element.email==user.email) {
-    console.log(element.email,user.email)
-    return
+  postDetails.interests.forEach((element) => {
+    if (element.email == user.email) {
+      console.log(element.email, user.email);
+      return;
+    }
+  });
+
+  useEffect(() => {
+    const Booked = postDetails.interests.some((i) => i.email === user.email);
+    setIsBooked(Booked);
+  }, [postDetails, user]);
+
+  if (isBooked.length == 1) {
+    return <Loader />;
   }
-});
 
-
-
-useEffect(() => {
-  const Booked = postDetails.interests.some((i) => i.email === user.email);
-  setIsBooked(Booked);
-}, [postDetails,user]);
-
-
-if (isBooked.length==1) {
-  return <Loader/>
-}
-
-
-console.log(postDetails);
-
+  console.log(postDetails);
 
   function handleTotalPrice(e) {
     const total = e.target.value;
@@ -55,15 +50,12 @@ console.log(postDetails);
       status,
     };
 
-
-    if (quantity<1) {
-      toast.error("Quantity must be atleast 1")
-      return
+    if (quantity < 1) {
+      toast.error("Quantity must be atleast 1");
+      return;
     }
 
-
-
-    fetch(`http://localhost:3000/post/${id}`, {
+    fetch(`https://krishilink-two.vercel.app/post/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -83,7 +75,7 @@ console.log(postDetails);
       <div className="py-10 shadow-2xl border-green-200">
         {isBooked ? (
           <p className="flex items-center justify-center gap-2 px-3 py-1.5 text-green-800 rounded-full text-3xl font-medium max-w-[500px] mx-auto">
-<FaCheckCircle/>
+            <FaCheckCircle />
             You’ve already sent an interest
           </p>
         ) : (

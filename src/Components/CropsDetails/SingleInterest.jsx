@@ -9,43 +9,30 @@ import {
 import Loader from "../Loader/Loader";
 import toast from "react-hot-toast";
 
- const SingleInterest = ({ item, postId }) => {
+const SingleInterest = ({ item, postId }) => {
   const [obj, setObj] = useState(item);
   const [isBtnDisable, setIsBtnDisable] = useState(" ");
 
+  useEffect(() => {
+    if (item.status == "Accepted") {
+      setIsBtnDisable(true);
+    } else {
+      setIsBtnDisable(false);
+    }
+  }, [item.status]);
 
-useEffect(()=>{
+  if (isBtnDisable.length < 1) {
+    return <Loader />;
+  }
 
-if (item.status == "Accepted") {
-  setIsBtnDisable(true);
-}
-else{
-  setIsBtnDisable(false);
-}
-  
-},[item.status])
-
-
-
-
-
-if (isBtnDisable.length<1) {
-  return <Loader/>
-}
-
-
-
-console.log(isBtnDisable);
-
+  console.log(isBtnDisable);
 
   function handleAccept(id) {
-
-
     const query = {
       status: "Accepted",
     };
 
-    fetch(`http://localhost:3000/interestStatus/${postId}/${id}`, {
+    fetch(`https://krishilink-two.vercel.app/interestStatus/${postId}/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -63,17 +50,14 @@ console.log(isBtnDisable);
 
         setIsBtnDisable(true);
       });
-
   }
 
   function handleRejected(id) {
-
-
     const query = {
       status: "Rejected",
     };
 
-    fetch(`http://localhost:3000/interestStatus/${postId}/${id}`, {
+    fetch(`https://krishilink-two.vercel.app/interestStatus/${postId}/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -89,7 +73,6 @@ console.log(isBtnDisable);
           status: "Rejected",
         }));
         setIsBtnDisable(true);
-        
       });
   }
 

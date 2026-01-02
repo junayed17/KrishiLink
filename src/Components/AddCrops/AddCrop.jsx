@@ -35,7 +35,7 @@ const AddCrop = () => {
         ownerName: user.displayName,
       },
     };
-    fetch("http://localhost:3000/addPost", {
+    fetch("https://krishilink-two.vercel.app/addPost", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
