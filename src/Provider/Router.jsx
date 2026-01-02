@@ -14,6 +14,7 @@ import MyInterests from "../Components/My interest/MyInterest";
 import PrivateRouter from "./PrivateRouter";
 import Error from "../Components/error/Error";
 import MypostEdit from "../Components/MyPosts/MypostEdit";
+import Features from "../Pages/features/Features";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/AllCrops",
         element: <AllCrops />,
+      },
+      {
+        path: "/Features",
+        element: <Features/>,
       },
       {
         path: "/myProfile",

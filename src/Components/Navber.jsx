@@ -29,6 +29,12 @@ const Navber = () => {
       >
         All crops
       </NavLink>
+      <NavLink
+        className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1 transition-all duration-500 hover:text-white text-[16px] font-bold"
+        to="/Features"
+      >
+        Features
+      </NavLink>
 
       {user && (
         <>
@@ -62,8 +68,11 @@ const Navber = () => {
   );
 
   return (
-    <div className="bg-base-100 shadow-sm">
-      <div className="navbar max-w-[1440px] mx-auto p-4">
+    <div className="bg-base-100">
+      <div
+        className="navbar max-w-[1440px] mx-auto px-4"
+        style={{ boxShadow: "0 4px 15px rgba(0,0,0,0.1)" }}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn-ghost lg:hidden">
