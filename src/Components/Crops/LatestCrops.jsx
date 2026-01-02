@@ -22,17 +22,23 @@ const LatestCrops = () => {
   }
 
   return (
-    <div className="">
-      <div className="flex items-center justify-center gap-4">
-        <img
-          src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
-          alt=""
-        />{" "}
-        <h2 className="headingFont text-5xl font-bold py-20">Latest Post</h2>
-        <img
-          src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
-          alt=""
-        />{" "}
+    <div className="my-8">
+      <div className="text-center mb-6">
+        <div className="flex items-center justify-center gap-3">
+          <img
+            src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
+            alt=""
+            className="hidden sm:block sm:h-10"
+          />
+          <h2 className="headingFont text-3xl sm:text-5xl font-extrabold mb-1 tracking-tight">
+            Fresh from the
+            <span className="text-green-600  ml-2">Fields</span>
+          </h2>
+        </div>
+        <p className="text-gray-600 max-w-2xl mx-auto text-[1rem] sm:text-lg">
+          Empowering farmers with modern technology. Buy fresh, sell fast, and
+          grow together.
+        </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {latestCrop.map((post) => (

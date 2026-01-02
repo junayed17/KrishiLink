@@ -20,7 +20,7 @@ export default function App() {
           pauseOnMouseEnter: true,
         }}
         loop={true}
-        className="mySwiper max-w-[1600px] mx-auto"
+        className="mySwiper max-w-[1600px] mx-auto mb-6"
       >
         <SwiperSlide>
           <div className="relative">

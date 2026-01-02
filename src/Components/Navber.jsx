@@ -1,147 +1,95 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/ContextProvider";
-import "./navber.css"
+import "./navber.css";
 import toast from "react-hot-toast";
+import Logo from "./Logo";
+import SignInBtn from "./SignInBtn";
+import LogOutBtn from "./LogOutBtn";
+import Headroom from "react-headroom";
 
 const Navber = () => {
   const { user, handleSignOut } = use(AuthContext);
 
-  function signOut() {
-    handleSignOut()
-      .then(() => {
-        toast.success("sucessfully logOut");
-      })
-      .catch((err) => toast.error("try again"));
-  }
-
   let links = (
     <>
       <NavLink
-        className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1 transition-all duration-500 hover:text-white text-[16px] font-bold"
+        className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-[16px] font-bold headingFont"
         to="/"
       >
         Home
       </NavLink>
       <NavLink
-        className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1 transition-all duration-500 hover:text-white text-[16px] font-bold"
+        className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-[16px] font-bold headingFont"
         to="/AllCrops"
       >
         All crops
       </NavLink>
       <NavLink
-        className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1 transition-all duration-500 hover:text-white text-[16px] font-bold"
+        className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-[16px] font-bold headingFont"
         to="/Features"
       >
         Features
       </NavLink>
-
-      {user && (
-        <>
-          <NavLink
-            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1 transition-all duration-500 hover:text-white text-[16px] font-bold"
-            to="/myProfile"
-          >
-            Profile
-          </NavLink>
-          <NavLink
-            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1  transition-all duration-500 hover:text-white text-[16px] font-bold"
-            to="/addCrop"
-          >
-            Add crops
-          </NavLink>
-          <NavLink
-            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1  transition-all duration-500 hover:text-white text-[16px] font-bold"
-            to="myPost"
-          >
-            My posts
-          </NavLink>
-          <NavLink
-            className="px-5 py-3  rounded-[10px] hover:bg-green-500 mx-1 transition-all duration-500 hover:text-white text-[16px] font-bold"
-            to="/MyInterests"
-          >
-            My interests
-          </NavLink>
-        </>
-      )}
     </>
   );
 
   return (
-    <div className="bg-base-100">
-      <div
-        className="navbar max-w-[1440px] mx-auto px-4"
-        style={{ boxShadow: "0 4px 15px rgba(0,0,0,0.1)" }}
-      >
-        <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 font-bold"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+    <Headroom
+      // pinStart: koto pixel niche scroll korle kaj shuru korbe
+      pinStart={10}
+      // downTolerance: ektu niche scroll korlei jeno lukiye jay
+      downTolerance={2}
+      // upTolerance: ektu upore scroll korlei jeno chole ashe
+      upTolerance={0}
+    
+      style={{
+        transition: "all .3s ease-in-out",
+        zIndex: 100,
+      }}
+    >
+      <div className="bg-base-100 sticky top-0 z-50">
+        <div
+          className="navbar max-w-[1440px] mx-auto px-4"
+          style={{ boxShadow: "0 4px 15px rgba(0,0,0,0.1)" }}
+        >
+          <div className="navbar-start">
+            <div className="dropdown">
+              <div tabIndex={0} role="button" className="btn-ghost lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-8 w-8 font-bold"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  {" "}
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />{" "}
+                </svg>
+              </div>
+              <ul
+                tabIndex="-1"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow z-10"
               >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
-              </svg>
+                {links}
+              </ul>
             </div>
-            <ul
-              tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow z-10"
-            >
-              {links}
-            </ul>
+            <Logo />
           </div>
-          <Link className="flex items-center justify-center" to="/">
-            <div className="w-10 h-10">
-              <img
-                src="https://i.ibb.co.com/9k3nCJ9Y/logo-removebg-preview.png"
-                alt=""
-              />
-            </div>
-            <div className="flex items-center text-3xl font-bold logoHidden">
-              <span className="text-[#009432]">Krishi</span>
-              <span className="text-black">Link</span>
-            </div>
-          </Link>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 z-10">{links}</ul>
-        </div>
-        <div className="navbar-end">
-          {user ? (
-            <div className="flex items-center justify-center gap-3">
-              <img
-                src={user.photoURL}
-                alt=""
-                className="h-10 w-10 rounded-full border-green-300"
-                title={user.displayName}
-              />
-              <button
-                onClick={signOut}
-                className="text-[20px] font-medium px-3 py-2 hover:bg-green-500 rounded-2xl duration-300 bg-green-400  hover:scale-[1.3] text-center inline-flex items-center justify-center"
-              >
-                LogOut
-              </button>
-            </div>
-          ) : (
-            <Link
-              to="/signIn"
-              className="text-[20px] font-medium px-3 py-2 hover:bg-green-500 rounded-2xl duration-300 bg-green-400  hover:scale-[1.3] text-center inline-flex items-center justify-center"
-            >
-              SignIn
-            </Link>
-          )}
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1 z-10 gap-1">{links}</ul>
+          </div>
+          <div className="navbar-end">
+            {user ? <LogOutBtn /> : <SignInBtn />}
+          </div>
         </div>
       </div>
-    </div>
+    </Headroom>
   );
 };
 

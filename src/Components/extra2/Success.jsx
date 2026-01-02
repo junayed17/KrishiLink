@@ -2,25 +2,21 @@ import React from "react";
 
 const Success = () => {
   return (
-    <section className="py-16 max-w-[1440px] mx-auto">
+    <section className="my-8 max-w-[1440px] mx-auto">
       <div className=" px-4">
-        <div className="mb-10">
-          <div className="flex items-center justify-center gap-4 mb-4">
+        <div className="text-center mb-6">
+          <div className="flex items-center justify-center gap-3">
             <img
               src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
-              alt=""
-              className="w-8 h-8"
+              alt="icon"
+              className="hidden sm:block sm:h-10"
             />
-            <h2 className="headingFont text-5xl font-bold text-gray-800">
-              Success Stories
+            <h2 className="headingFont text-3xl sm:text-5xl font-extrabold mb-1 tracking-tight">
+              Success
+              <span className="text-green-600 ml-2">Stories</span>
             </h2>
-            <img
-              src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
-              alt=""
-              className="w-8 h-8"
-            />
           </div>
-          <p className="text-center text-gray-500 mb-10">
+          <p className="text-gray-600 max-w-2xl mx-auto text-[1rem] sm:text-lg">
             Hear from our community members how KrishiLink has transformed their
             business
           </p>

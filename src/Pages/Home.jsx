@@ -9,7 +9,7 @@ const Home = () => {
       <header>
         <Navber />
       </header>
-      <main className="mx-2 sm:mx-4 min-h-[60vh]">
+      <main className="px-2 sm:px-4 min-h-[60vh]">
         <Outlet />
       </main>
       <footer>

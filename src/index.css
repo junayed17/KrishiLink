@@ -24,8 +24,9 @@ a.active {
   border-bottom: 5px solid green;
   transition: 0.3s;
 }
+/* rgb(249, 247, 247) */
 body{
-  background:rgb(249, 247, 247);
+  background:rgb(254, 254, 254);
 }
 
 

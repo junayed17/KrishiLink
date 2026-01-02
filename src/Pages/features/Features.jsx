@@ -43,23 +43,28 @@ const Features = () => {
   };
 
   return (
-    <section className="bg-slate-50 text-black py-6 sm:py-16">
-      <div className="max-w-6xl mx-auto">
+    <section className="text-black py-6 sm:py-16">
+      <div className="">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
-            One Platform for{" "}
-            <span className="text-green-600 block md:inline headingFont">
-              Krishi Commerce
-            </span>
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+          <div className="flex items-center justify-center gap-3">
+            <img
+              src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
+              alt=""
+              className="hidden sm:block sm:h-10"
+            />
+            <h2 className="headingFont text-3xl sm:text-5xl font-extrabold mb-4 tracking-tight">
+              One Platform for{" "}
+              <span className="text-green-600  ml-2">Krishi Commerce</span>
+            </h2>
+          </div>
+          <p className="text-gray-600 max-w-2xl mx-auto text-[1rem] sm:text-lg">
             Empowering farmers with modern technology. Buy fresh, sell fast, and
             grow together.
           </p>
         </div>
 
         {/* --- Responsive Stepper --- */}
-        <div className="flex items-center w-full rounded-xl font-sans font-bold mb-12 shadow-sm border border-gray-200 bg-white overflow-hidden gap-2">
+        <div className="flex items-center w-full rounded-xl font-sans font-bold mb-12 shadow-sm  overflow-hidden gap-2">
           {features.map((feature, index) => (
             <button
               key={index}
@@ -93,10 +98,12 @@ const Features = () => {
               <span className="text-green-600 font-bold uppercase text-sm tracking-widest mb-2 block">
                 Feature {activeStep + 1}
               </span>
+
               <h3 className="text-3xl md:text-4xl font-bold mb-4 headingFont">
                 {features[activeStep].fullLabel}
               </h3>
-              <p className="text-gray-600 text-xl leading-relaxed italic">
+
+              <p className="text-gray-600 text-xl leading-relaxed italic text-[1rem] sm:text-lg">
                 "{features[activeStep].desc}"
               </p>
             </div>

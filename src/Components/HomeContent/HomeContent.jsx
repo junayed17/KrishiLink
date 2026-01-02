@@ -13,10 +13,10 @@ const HomeContent = () => {
       <section>
         <Slider />
       </section>
-      <section className="max-w-[1440px] mx-auto px-4">
+      <section className="max-w-[1440px] mx-auto">
         <LatestCrops />
       </section>
-      <section className="max-w-[1440px] mx-auto px-4">
+      <section className="max-w-[1440px] mx-auto">
         <HowItWork />
       </section>
       <section>

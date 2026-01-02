@@ -2,25 +2,21 @@ import React from "react";
 
 const Blog = () => {
   return (
-    <section className="py-20 px-6 max-w-[1440px] mx-auto px-4">
-      <div className="max-w-6xl mx-auto text-center mb-12">
-        <div className="flex items-center justify-center gap-4">
+    <section className="my-8 max-w-[1440px] mx-auto">
+      <div className="text-center mb-6">
+        <div className="flex items-center justify-center gap-3">
           <img
             src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
             alt=""
-            className="w-8 h-8"
+            className="hidden sm:block sm:h-10"
           />
-          <h2 className="headingFont text-5xl font-bold text-gray-800">
-            Latest Blog Posts
+          <h2 className="headingFont text-3xl sm:text-5xl font-extrabold mb-1 tracking-tight">
+            Latest Blog
+            <span className="text-green-600  ml-2">Post</span>
           </h2>
-          <img
-            src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
-            alt=""
-            className="w-8 h-8"
-          />
         </div>
-        <p className="text-gray-500 mt-3">
-          Explore insights, farming tips, and the latest updates from AgriLink.
+        <p className="text-gray-600 max-w-2xl mx-auto text-[1rem] sm:text-lg">
+          Explore insights, farming tips, and the latest updates from KrishiLink.
         </p>
       </div>
 
@@ -41,10 +37,10 @@ const Blog = () => {
             <h3 className="text-2xl font-bold text-gray-800 mt-2 mb-3 headingFont group-hover:text-green-600 transition-colors duration-300">
               5 Smart Farming Techniques for 2025
             </h3>
-            <p className="text-gray-500">
+            {/* <p className="text-gray-500">
               Discover modern agricultural innovations helping farmers increase
               productivity while preserving the environment.
-            </p>
+            </p> */}
             <button className="mt-5 text-green-600 font-semibold hover:underline">
               Read More →
             </button>
@@ -67,10 +63,10 @@ const Blog = () => {
             <h3 className="text-2xl font-bold text-gray-800 mt-2 mb-3 headingFont group-hover:text-green-600 transition-colors duration-300">
               Best Practices for Sustainable Crop Growth
             </h3>
-            <p className="text-gray-500">
+            {/* <p className="text-gray-500">
               Learn how sustainable practices can boost yield while protecting
               your soil and local ecosystem.
-            </p>
+            </p> */}
             <button className="mt-5 text-green-600 font-semibold hover:underline">
               Read More →
             </button>
@@ -93,10 +89,10 @@ const Blog = () => {
             <h3 className="text-2xl font-bold text-gray-800 mt-2 mb-3 headingFont group-hover:text-green-600 transition-colors duration-300">
               How Farmers Are Adapting to Climate Change
             </h3>
-            <p className="text-gray-500">
+            {/* <p className="text-gray-500">
               See how local communities are embracing smart solutions to face
               changing climate challenges.
-            </p>
+            </p> */}
             <button className="mt-5 text-green-600 font-semibold hover:underline">
               Read More →
             </button>
