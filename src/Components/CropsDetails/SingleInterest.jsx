@@ -32,7 +32,7 @@ const SingleInterest = ({ item, postId }) => {
       status: "Accepted",
     };
 
-    fetch(`https://krishilink-two.vercel.app/interestStatus/${postId}/${id}`, {
+    fetch(`http://localhost:3000/interestStatus/${postId}/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -57,7 +57,7 @@ const SingleInterest = ({ item, postId }) => {
       status: "Rejected",
     };
 
-    fetch(`https://krishilink-two.vercel.app/interestStatus/${postId}/${id}`, {
+    fetch(`http://localhost:3000/interestStatus/${postId}/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -93,7 +93,8 @@ const SingleInterest = ({ item, postId }) => {
         {obj.userName}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-        {obj.quantity}{obj.unit}
+        {obj.quantity}
+        {obj.unit}
       </td>
       <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
         {obj.message}

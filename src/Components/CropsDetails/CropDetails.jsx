@@ -15,7 +15,7 @@ const CropDetails = () => {
   const [isOwner, setIsOwner] = useState(false);
 
   useEffect(() => {
-    fetch(`https://krishilink-two.vercel.app/postDetails/${id}`)
+    fetch(`http://localhost:3000/postDetails/${id}`)
       .then((res) => res.json())
       .then((result) => setPostDetails(result));
   }, [id]);
@@ -37,7 +37,7 @@ const CropDetails = () => {
         <title>KrisiLink | PostDetails</title>
         <div
           className={`${
-            !isOwner? "grid" : ""
+            !isOwner ? "grid" : ""
           } grid-cols-12 gap-6 items-start max-w-[1440px] mx-auto my-8`}
         >
           <div className="col-span-12 lg:col-span-8">

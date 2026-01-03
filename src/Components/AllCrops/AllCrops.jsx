@@ -8,7 +8,7 @@ const AllCrops = () => {
   const [allPost, setAllPost] = useState(null);
 
   useEffect(() => {
-    fetch("https://krishilink-two.vercel.app/allPosts")
+    fetch("http://localhost:3000/allPosts")
       .then((res) => res.json())
       .then((result) => setAllPost(result));
   }, []);
@@ -22,6 +22,8 @@ const AllCrops = () => {
     return <Loader />;
   }
 
+  console.log(allPost);
+  
   function handleSearch(e) {
     const searchPost = e.target.value.trim().toLowerCase();
 

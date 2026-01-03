@@ -10,7 +10,7 @@ const MypostEdit = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://krishilink-two.vercel.app/postDetails/${id}`)
+    fetch(`http://localhost:3000/postDetails/${id}`)
       .then((res) => res.json())
       .then((result) => setPostDetails(result));
   }, [id]);
@@ -42,7 +42,7 @@ const MypostEdit = () => {
       image,
     };
 
-    fetch(`https://krishilink-two.vercel.app/myPost/${id}`, {
+    fetch(`http://localhost:3000/myPost/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

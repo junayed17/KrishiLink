@@ -4,6 +4,7 @@ import { LuEyeClosed } from "react-icons/lu";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/ContextProvider";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
 const SignIn = () => {
   const Navigate = useNavigate();
@@ -13,11 +14,20 @@ const SignIn = () => {
   const [passShow, setPassShow] = useState(false);
 
   const { state } = useLocation();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
   
-  function handleSignIn(e) {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+
+
+
+
+  function handleSignIn(userData) {
+    const email =userData.email.trim();
+    const password = userData.password.trim();    
     handleSignInWithEmailPass(email, password)
       .then((result) => {
         toast.success("sucessfully logged");
@@ -41,13 +51,14 @@ const SignIn = () => {
       });
   }
 
+
   return (
-    <section className="px-4">
+    <section className="px-4 ">
       <title>KrisiLink | SignIn</title>
       <div className="py-10">
         <form
-          class="flex flex-col gap-2  p-7 w-full max-w-lg mx-auto rounded-xl border border-green-100 shadow-sm"
-          onSubmit={handleSignIn}
+          class="flex flex-col gap-2 bg-white p-7 w-full max-w-lg mx-auto rounded-xl font-sans border border-green-100 shadow-sm"
+          onSubmit={handleSubmit(handleSignIn)}
         >
           <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700 headingFont">
             SignIn Your Account
@@ -74,8 +85,12 @@ const SignIn = () => {
               class="input ml-2 rounded-lg border-none w-full h-full focus:outline-none"
               type="text"
               name="email"
+              {...register("email", { required: "This field is required" })}
             />
           </div>
+          {errors.email && (
+            <span className="text-red-500">{errors.email.message}</span>
+          )}
 
           <div class="flex-column flex flex-col mt-2">
             <label class="text-[#151717] font-semibold headingFont">
@@ -98,6 +113,7 @@ const SignIn = () => {
               class="input ml-2 rounded-lg border-none w-full h-full focus:outline-none"
               name="password"
               type={passShow ? "text" : "password"}
+              {...register("password", { required: "This field is required" })}
             />
             <p
               className="text-2xl mr-2"
@@ -108,6 +124,9 @@ const SignIn = () => {
               {!passShow ? <FaEye /> : <LuEyeClosed />}
             </p>
           </div>
+          {errors.password && (
+            <span className="text-red-500">{errors.password.message}</span>
+          )}
 
           <div class="flex-row flex flex-row items-center justify-between mt-1">
             <span class="span text-sm ml-1 text-[#0fe047] font-medium cursor-pointer hover:text-blue-700">
@@ -119,7 +138,7 @@ const SignIn = () => {
             Sign In
           </button>
 
-          <p class="p text-center text-black text-sm m-1">
+          <p class=" text-black text-sm m-1">
             Don't have an account?
             <Link
               to="/signUp"

@@ -11,7 +11,7 @@ const MyInterests = () => {
 
   const { user } = use(AuthContext);
   useEffect(() => {
-    fetch(`https://krishilink-two.vercel.app/myInterestedPosts/${user.email}`)
+    fetch(`http://localhost:3000/myInterestedPosts/${user.email}`)
       .then((res) => res.json())
       .then((result) => {
         setInterestssss(result);

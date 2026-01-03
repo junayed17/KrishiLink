@@ -7,7 +7,7 @@ import { User } from "lucide-react";
 import Swal from "sweetalert2";
 
 const BookedForm = ({ id, postDetails }) => {
-  const {user}=use(AuthContext)
+  const { user } = use(AuthContext);
   const [totalPrice, setTotalPrice] = useState(null);
   const [isBooked, setIsBooked] = useState(" ");
 
@@ -73,7 +73,7 @@ const BookedForm = ({ id, postDetails }) => {
       total,
       status,
     };
-    fetch(`https://krishilink-two.vercel.app/post/${id}`, {
+    fetch(`http://localhost:3000/post/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -201,7 +201,7 @@ const BookedForm = ({ id, postDetails }) => {
               />
             </div>
 
-            <button class="headingFont px-4 py-4 mt-6 rounded-xl bg-green-500 hover:bg-green-600 hover:text-white font-bold transition-all text-xl" >
+            <button class="headingFont px-4 py-4 mt-6 rounded-xl bg-green-500 hover:bg-green-600 hover:text-white font-bold transition-all text-xl">
               Book this post
             </button>
           </form>

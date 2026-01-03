@@ -17,7 +17,7 @@ const MyPost = () => {
   const { user } = use(AuthContext);
 
   useEffect(() => {
-    fetch(`https://krishilink-two.vercel.app/myPosts?email=${user.email}`)
+    fetch(`http://localhost:3000/myPosts?email=${user.email}`)
       .then((res) => res.json())
       .then((result) => setCrops(result))
       .catch((err) => console.log(err));
@@ -28,7 +28,7 @@ const MyPost = () => {
     deleteRef.current.showModal();
   }
   function handleDelete() {
-    fetch(`https://krishilink-two.vercel.app/myPost/${deleteId}`, {
+    fetch(`http://localhost:3000/myPost/${deleteId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
