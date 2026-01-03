@@ -7,14 +7,12 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 
 const SignUp = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm()
-    
   const {
     registerWithEmailPass,
     handleUpdateProfile,
@@ -26,7 +24,7 @@ const SignUp = () => {
 
   const [error, setError] = useState("");
   const [passShow, setPassShow] = useState(false);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const upperCase = /.*[A-Z].*/;
   const lowercase = /.*[a-z].*/;
@@ -52,36 +50,58 @@ const SignUp = () => {
   function handleSignInGoogle() {
     handleSignInWithGoogle()
       .then((result) => {
-         toast.success("Account created successfully!");
+        toast.success("Account created successfully!");
         desiredlocation ? navigate(desiredlocation) : navigate("/");
       })
       .catch((err) => {
-        toast.error(err.code)
+        toast.error(err.code);
       });
   }
 
   function handleSignUp(userDataa) {
     console.log(userDataa);
-    
-    const email =userDataa.email;
+
+    const email = userDataa.email;
     const name = userDataa.name;
     const photo = userDataa.photo;
     const password = userDataa.password;
-    const userData = {
-      displayName: userDataa.name,
-      photoURL: userDataa.photo,
-    };
 
     registerWithEmailPass(email, password)
-      .then((result) => {
-        handleUpdateProfile(userData).then((result2) => {
-          setUser(result.user);
-          toast.success("Account created successfully!");
-           {
-            desiredlocation ? navigate(desiredlocation) : navigate("/");
-           }
-          
-        });
+      .then((resultr) => {
+        
+        const formData = new FormData();
+        formData.append("image", userDataa.photo[0]);
+        const imgUrl = `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_IMG_BB_API_KEY
+        }`;
+        fetch(imgUrl, {
+          method: "POST",
+          body: formData,
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            const userData = {
+              displayName: userDataa.name,
+              photoURL: result.data.display_url,
+            };
+            handleUpdateProfile(userData).then((result2) => {
+              console.log(userData);
+
+              console.log(result);
+              
+              const data4 = {
+                ...userData,
+                ...resultr.user,
+              };
+              console.log(data4);
+              
+              setUser(data4);
+              toast.success("Account created successfully!");
+              {
+                desiredlocation ? navigate(desiredlocation) : navigate("/");
+              }
+            });
+          });
       })
       .catch((err) => toast.error(err.message));
   }
@@ -90,7 +110,6 @@ const SignUp = () => {
     <section className="px-4 min-h-screen flex items-center justify-center">
       <title>KrisiLink | SignUp</title>
       <div className="py-10 w-full">
-        {/* Sign Up Form Container */}
         <form
           className="flex flex-col gap-3 bg-white p-8 w-full max-w-lg mx-auto rounded-xl font-sans shadow-2xl shadow-sm border border-green-100"
           onSubmit={handleSubmit(handleSignUp)}
@@ -192,7 +211,7 @@ const SignUp = () => {
             <input
               placeholder="Enter your Profile URL"
               className="input ml-2 rounded-lg border-none w-full h-full focus:outline-none placeholder-gray-400 text-sm"
-              type="text"
+              type="file"
               name="photo"
               {...register("photo", { required: "Photo is required" })}
             />

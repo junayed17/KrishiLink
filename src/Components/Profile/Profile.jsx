@@ -2,35 +2,65 @@ import React, { use, useRef } from "react";
 import { AuthContext } from "../../Provider/ContextProvider";
 import Loader from "../Loader/Loader";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
 const Profile = () => {
   const reference = useRef(null);
   const { handleUpdateProfile, user, setUser } = use(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   function handleModal() {
     reference.current.showModal();
   }
 
-  console.log(user);
-  function handleUpdate(e) {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const photoUrl = e.target.photo.value;
-    const userData = {
-      displayName: name,
-      photoURL: photoUrl,
-    };
-    handleUpdateProfile(userData)
-      .then(() => {
-        setUser((prevUser) => ({
-          ...prevUser,
-          displayName: name,
-          photoURL: photoUrl,
-        }));
-        toast.success("profile updated");
+  function handleUpdate(userDataa) {
+    if (userDataa.photo.length) {
+      const formData = new FormData();
+      formData.append("image", userDataa.photo[0]);
+      const imgUrl = `https://api.imgbb.com/1/upload?key=${
+        import.meta.env.VITE_IMG_BB_API_KEY
+      }`;
+      fetch(imgUrl, {
+        method: "POST",
+        body: formData,
       })
-      .catch(() => {
-        toast.error("profile update cannot possible");
+        .then((res) => res.json())
+        .then((result) => {
+          const userData = {
+            displayName: userDataa.name,
+            photoURL: result.data.display_url,
+          };
+          handleUpdateProfile(userData).then((result2) => {
+            const data4 = {
+              ...user,
+              displayName: userDataa.name,
+              photoURL: user.photoURL,
+            };
+            setUser(data4);
+            toast.success("Profile updated successfully!");
+          });
+        });
+    } else {
+      handleUpdateProfile({
+        isplayName: userDataa.name,
+        photoURL: user.photoURL,
+      }).then((result2) => {
+        const data4 = {
+          ...user,
+          displayName: userDataa.name,
+          photoURL: user.photoURL,
+        };
+        console.log(data4, userDataa.name);
+        
+        setUser(data4);
+        toast.success("Profile name updated successfully!");
       });
+    }
+
     reference.current.close();
   }
 
@@ -93,7 +123,7 @@ const Profile = () => {
         <div className="modal-box">
           <form
             class="bg-white p-4 max-w-sm mx-auto rounded-lg shadow-xl"
-            onSubmit={handleUpdate}
+            onSubmit={handleSubmit(handleUpdate)}
           >
             <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700 headingFont">
               Update your profile
@@ -106,22 +136,30 @@ const Profile = () => {
                   class="w-full p-4 pr-12 text-sm leading-5 border border-gray-200 rounded-lg shadow-sm outline-none focus:border-green-400"
                   name="name"
                   defaultValue={user.displayName}
+                  {...register("name", { required: "Name is required" })}
                 />
-                <span></span>
+
+                {errors.name && (
+                  <span className="text-red-500">{errors.name.message}</span>
+                )}
               </div>
               <div class="relative mb-4">
                 <input
-                  type="text"
+                  type="file"
                   placeholder="Enter Profile Url.."
                   class="w-full p-4 pr-12 text-sm leading-5 border border-gray-200 rounded-lg shadow-sm outline-none focus:border-green-400"
                   name="photo"
-                  defaultValue={user.photoURL}
+                  // defaultValue={user.photoURL}
+                  {...register("photo")}
                 />
+                {errors.photo && (
+                  <span className="text-red-500">{errors.photo.message}</span>
+                )}
               </div>
             </div>
             <button
               type="submit"
-              class="w-full py-3 px-5 bg-green-400 text-white text-sm font-medium uppercase rounded-lg shadow-md hover:bg-green-400 transition duration-150 ease-in-out focus:outline-none focus:ring-opacity-50"
+              class="w-full py-3 px-5 bg-green-500 text-white text-sm font-medium uppercase rounded-lg shadow-md hover:bg-green-600 transition duration-150 ease-in-out focus:outline-none focus:ring-opacity-50 headingFont text-xl"
             >
               Submit
             </button>

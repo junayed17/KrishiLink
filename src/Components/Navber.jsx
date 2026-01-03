@@ -12,6 +12,7 @@ import { LuLeaf, LuZap } from "react-icons/lu";
 
 const Navber = () => {
   const { user, handleSignOut } = use(AuthContext);
+console.log(user);
 
   let links = (
     <>
