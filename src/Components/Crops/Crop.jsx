@@ -1,45 +1,124 @@
-import React from 'react';
-import { FaDollarSign, FaStar } from 'react-icons/fa';
-import { FaBangladeshiTakaSign } from 'react-icons/fa6';
-import { Link } from 'react-router';
+import React from "react";
+import { FaBangladeshiTakaSign, FaLocationDot, FaStar } from "react-icons/fa6";
+import { LuArrowRight, LuLock } from "react-icons/lu";
+import { Link } from "react-router";
 
 const Crop = ({ post }) => {
+  // Check if stock is available
+  const isOutOfStock = post.quantity <= 0;
+
   return (
-    <div className="bg-white text-black dark:bg-black dark:text-white border border-gray-300 dark:border-gray-700 rounded-2xl shadow-md hover:shadow-[1px_1px_10px_#b2bec3] hover:scale-[1.03] duration-300 overflow-hidden font-[Poppins]">
-      <img
-        src={post.image}
-        alt=""
-        className="rounded-2xl  transform hover:scale-[1.05] duration-300 h-[300px] w-full object-cover"
-      />
+    <div
+      className={`group h-full flex flex-col bg-white text-black dark:bg-zinc-900 dark:text-white border border-gray-200 dark:border-zinc-800 rounded-2xl shadow-sm transition-all duration-300 overflow-hidden font-[Poppins] 
+      ${isOutOfStock ? "opacity-60 grayscale-[0.5]" : "hover:shadow-xl"}`}
+    >
+      {/* Image Container */}
+      <div className="relative overflow-hidden shrink-0">
+        <img
+          src={post.image}
+          alt={post.name}
+          className={`h-[220px] w-full object-cover transform duration-500 ${
+            !isOutOfStock && "group-hover:scale-110"
+          }`}
+        />
 
-      <div className="p-4">
-        <h2 className="text-2xl font-bold design-font tracking-wide text-center mb-2">
-          {post.name}
-        </h2>
+        {/* Out of Stock Overlay */}
+        {isOutOfStock && (
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px] flex items-center justify-center">
+            <span className="bg-red-600 text-white font-bold px-4 py-2 rounded-lg uppercase tracking-tighter text-sm shadow-2xl border border-red-400">
+              Out of Stock
+            </span>
+          </div>
+        )}
 
-        <div className="flex items-center justify-between text-sm mb-4">
-          <p className="opacity-80 text-[18px] flex items-center font-bold ">
-            Type:{post.type}
-          </p>
-          <p className="flex items-center opacity-80 font-bold text-[18px] ">
-            Price:{post.pricePerUnit} <FaBangladeshiTakaSign />/{post.unit}
+        {/* Category Badge (Only show if in stock or keep it subtle) */}
+        {!isOutOfStock && (
+          <div className="absolute top-3 left-3 bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-lg uppercase tracking-wider">
+            {post.type}
+          </div>
+        )}
+      </div>
+
+      <div className="p-5 flex flex-col flex-grow">
+        {/* Title & Rating */}
+        <div className="mb-3">
+          <div className="flex justify-between items-start gap-2">
+            <h2
+              className={`text-lg font-bold tracking-tight line-clamp-1 transition-colors ${
+                !isOutOfStock && "group-hover:text-green-600"
+              }`}
+            >
+              {post.name}
+            </h2>
+            <div className="flex items-center gap-1 text-amber-500 text-xs mt-1 shrink-0">
+              <FaStar /> <span className="text-gray-400 font-medium">4.5</span>
+            </div>
+          </div>
+          <p className="flex items-center gap-1 text-gray-400 text-xs mt-1 italic">
+            <FaLocationDot className="text-green-600/70" /> {post.location}
           </p>
         </div>
 
-        <Link
-          to={`/crop/cropDetails/${post._id}`}
-          className="block text-center w-full py-2 mt-1 rounded-xl bg-black text-white dark:bg-white dark:text-black border border-transparent hover:bg-transparent hover:text-black dark:hover:text-white hover:border-black dark:hover:border-white duration-300 font-semibold"
-        >
-          View Details
-        </Link>
+        {/* Description */}
+        <p className="text-gray-500 dark:text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">
+          {post.description ||
+            "Premium quality fresh produce sourced directly from local farmers."}
+        </p>
+
+        {/* Price Grid */}
+        <div className="grid grid-cols-2 gap-0 border-y border-gray-100 dark:border-zinc-800 py-3 mb-5">
+          <div className="flex flex-col">
+            <span className="text-[10px] uppercase text-gray-400 font-bold tracking-widest">
+              Price
+            </span>
+            <div
+              className={`flex items-center font-black text-lg ${
+                isOutOfStock ? "text-gray-500" : "text-green-600"
+              }`}
+            >
+              {post.pricePerUnit}{" "}
+              <FaBangladeshiTakaSign className="text-xs ml-0.5" />
+              <span className="text-gray-400 font-normal text-xs ml-1">
+                /{post.unit}
+              </span>
+            </div>
+          </div>
+          <div className="flex flex-col border-l pl-4 border-gray-100 dark:border-zinc-800 text-right">
+            <span className="text-[10px] uppercase text-gray-400 font-bold tracking-widest">
+              Stock
+            </span>
+            <div
+              className={`font-bold ${
+                isOutOfStock
+                  ? "text-red-500"
+                  : "text-gray-700 dark:text-gray-200"
+              }`}
+            >
+              {isOutOfStock ? "Sold Out" : `${post.quantity} ${post.unit}`}
+            </div>
+          </div>
+        </div>
+
+        {/* Action Button */}
+        {isOutOfStock ? (
+          <button
+            disabled
+            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gray-200 dark:bg-zinc-800 text-gray-500 font-bold cursor-not-allowed border border-dashed border-gray-400"
+          >
+            <LuLock size={16} /> Unavailable
+          </button>
+        ) : (
+          <Link
+            to={`/crop/cropDetails/${post._id}`}
+            className="group/btn flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-zinc-900 text-white dark:bg-white dark:text-black font-bold hover:bg-green-600 dark:hover:bg-green-500 hover:text-white transition-all duration-300"
+          >
+            View Details
+            <LuArrowRight className="group-hover/btn:translate-x-1 transition-transform" />
+          </Link>
+        )}
       </div>
     </div>
   );
 };
 
 export default Crop;
-
-
-
-
-    

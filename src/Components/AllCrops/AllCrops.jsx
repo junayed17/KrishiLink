@@ -33,18 +33,24 @@ const AllCrops = () => {
   }
 
   return (
-    <section className="max-w-[1440px] mx-auto px-4">
+    <section className="max-w-[1440px] mx-auto mt-8">
       <title>KrisiLink | AllPosts</title>
-      <div className="flex items-center justify-center gap-4 pt-20 pb-10">
-        <img
-          src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
-          alt=""
-        />{" "}
-        <h2 className="headingFont text-5xl font-bold ">All Post</h2>
-        <img
-          src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
-          alt=""
-        />{" "}
+      <div className="text-center mb-6">
+        <div className="flex items-center justify-center gap-3">
+          <img
+            src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
+            alt=""
+            className="hidden sm:block sm:h-10"
+          />
+          <h2 className="headingFont text-3xl sm:text-5xl font-extrabold mb-1 tracking-tight">
+            Fresh from the
+            <span className="text-green-600  ml-2">Fields</span>
+          </h2>
+        </div>
+        <p className="text-gray-600 max-w-2xl mx-auto text-[1rem] sm:text-lg">
+          Empowering farmers with modern technology. Buy fresh, sell fast, and
+          grow together.
+        </p>
       </div>
 
       <div>
@@ -52,7 +58,7 @@ const AllCrops = () => {
           <form class="form">
             <button>
               <svg
-                width="17"
+                width="20"
                 height="16"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +76,7 @@ const AllCrops = () => {
             </button>
             <input
               class="input"
-              placeholder="Type your text"
+              placeholder="Search for Rice, Wheat or Mango..."
               required=""
               type="text"
               onChange={handleSearch}
@@ -97,7 +103,7 @@ const AllCrops = () => {
       </div>
 
       {displayData.length ? (
-        <div className="grid items-center justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
           {displayData.map((post) => (
             <Crop key={post._id} post={post} />
           ))}

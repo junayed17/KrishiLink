@@ -7,6 +7,8 @@ import Logo from "./Logo";
 import SignInBtn from "./SignInBtn";
 import LogOutBtn from "./LogOutBtn";
 import Headroom from "react-headroom";
+import { LucideHome } from "lucide-react";
+import { LuLeaf, LuZap } from "react-icons/lu";
 
 const Navber = () => {
   const { user, handleSignOut } = use(AuthContext);
@@ -17,18 +19,20 @@ const Navber = () => {
         className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-[16px] font-bold headingFont"
         to="/"
       >
-        Home
+        <LucideHome size={18} className="inline" /> Home
       </NavLink>
       <NavLink
         className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-[16px] font-bold headingFont"
         to="/AllCrops"
       >
+        <LuLeaf size={18} className="inline" />
         All crops
       </NavLink>
       <NavLink
         className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-[16px] font-bold headingFont"
         to="/Features"
       >
+        <LuZap size={18} className="inline" />
         Features
       </NavLink>
     </>
