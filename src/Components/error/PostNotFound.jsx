@@ -2,7 +2,7 @@ import React from 'react';
 
 const PostNotFound = () => {
   return (
-    <div className="w-[500px] mx-auto">
+    <div className="max-w-[500px] mx-auto">
       <title>KrisiLink | PostNotFound</title>
       <img
         src="https://i.ibb.co.com/TxR951nr/9214780.jpg"

@@ -15,6 +15,7 @@ import PrivateRouter from "./PrivateRouter";
 import Error from "../Components/error/Error";
 import MypostEdit from "../Components/MyPosts/MypostEdit";
 import Features from "../Pages/features/Features";
+import AllCropsDemoPagination from "../Components/AllCrops/AllCropsPagination";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
       {
         path: "/signUp",
         element: <SignUp />,
+      },
+      {
+        path: "/AllCropsDemoPagination",
+        element: <AllCropsDemoPagination />,
       },
     ],
   },
