@@ -4,8 +4,17 @@ import { LuEyeClosed } from "react-icons/lu";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/ContextProvider";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
 const SignUp = () => {
+
+
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm()
+    
   const {
     registerWithEmailPass,
     handleUpdateProfile,
@@ -51,15 +60,16 @@ const SignUp = () => {
       });
   }
 
-  function handleSignUp(e) {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const name = e.target.name.value;
-    const photo = e.target.photo.value;
-    const password = e.target.password.value;
+  function handleSignUp(userDataa) {
+    console.log(userDataa);
+    
+    const email =userDataa.email;
+    const name = userDataa.name;
+    const photo = userDataa.photo;
+    const password = userDataa.password;
     const userData = {
-      displayName: name,
-      photoURL: photo,
+      displayName: userDataa.name,
+      photoURL: userDataa.photo,
     };
 
     registerWithEmailPass(email, password)
@@ -83,7 +93,7 @@ const SignUp = () => {
         {/* Sign Up Form Container */}
         <form
           className="flex flex-col gap-3 bg-white p-8 w-full max-w-lg mx-auto rounded-xl font-sans shadow-2xl shadow-sm border border-green-100"
-          onSubmit={handleSignUp}
+          onSubmit={handleSubmit(handleSignUp)}
         >
           {/* Form Title */}
           <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700 headingFont">
@@ -118,8 +128,12 @@ const SignUp = () => {
               className="input ml-2 rounded-lg border-none w-full h-full focus:outline-none placeholder-gray-400 text-sm"
               type="text"
               name="name"
+              {...register("name", { required: "Name is required" })}
             />
           </div>
+          {errors.name && (
+            <span className="text-red-500">{errors.name.message}</span>
+          )}
 
           {/* --- Email Field --- */}
           <div className="flex-column flex flex-col mt-2">
@@ -145,8 +159,12 @@ const SignUp = () => {
               className="input ml-2 rounded-lg border-none w-full h-full focus:outline-none placeholder-gray-400 text-sm"
               type="email"
               name="email"
+              {...register("email", { required: "Email is required" })}
             />
           </div>
+          {errors.email && (
+            <span className="text-red-500">{errors.email.message}</span>
+          )}
 
           {/* --- Profile URL Field --- */}
           <div className="flex-column flex flex-col mt-2">
@@ -176,8 +194,12 @@ const SignUp = () => {
               className="input ml-2 rounded-lg border-none w-full h-full focus:outline-none placeholder-gray-400 text-sm"
               type="text"
               name="photo"
+              {...register("photo", { required: "Photo is required" })}
             />
           </div>
+          {errors.photo && (
+            <span className="text-red-500">{errors.photo.message}</span>
+          )}
 
           {/* --- Password Field --- */}
           <div className="flex-column flex flex-col mt-2">
@@ -199,12 +221,30 @@ const SignUp = () => {
             </svg>
 
             <input
-              onChange={handleCorrectPass}
+              {...register("password", {
+                required: "Password is required",
+                // 1. Minimum 6 character check
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters long",
+                },
+                // 2. Custom Validation function (Separately check)
+                validate: {
+                  hasUpperCase: (value) =>
+                    /[A-Z]/.test(value) ||
+                    "Password must include at least one uppercase letter",
+                  hasLowerCase: (value) =>
+                    /[a-z]/.test(value) ||
+                    "Password must include at least one lowercase letter",
+                },
+              })}
               placeholder="Enter your Password"
               className="input ml-2 rounded-lg border-none w-full h-full focus:outline-none"
-              name="password"
               type={passShow ? "text" : "password"}
             />
+
+            {/* Error Message Show korar jonno niche eita add koro */}
+
             <p
               className="text-2xl mr-2"
               onClick={() => {
@@ -214,6 +254,9 @@ const SignUp = () => {
               {!passShow ? <FaEye /> : <LuEyeClosed />}
             </p>
           </div>
+          {errors.password && (
+            <span className="text-red-500">{errors.password.message}</span>
+          )}
 
           <p
             className={`mt-2 text-sm ${
@@ -232,7 +275,7 @@ const SignUp = () => {
           </button>
 
           {/* --- Sign In Link --- */}
-          <p className="p text-center text-black text-sm m-1">
+          <p className=" text-black text-sm m-1">
             Already have an account?
             <Link
               to="/signIn"
