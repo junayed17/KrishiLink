@@ -43,7 +43,7 @@ const Features = () => {
   };
 
   return (
-    <section className="text-black py-6 sm:py-16">
+    <section className="text-black py-6 sm:py-16 ">
       <div className="">
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3">
@@ -92,9 +92,9 @@ const Features = () => {
         </div>
 
         {/* --- Focused Feature Detail --- */}
-        <div className="bg-white rounded-xl p-8 md:p-12  hover:shadow-xl border border-gray-100 transition-all duration-500">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div className="flex-1">
+        <div className="bg-white rounded-xl p-8 md:p-12  hover:shadow-xl transition-all duration-500 border border-gray-100">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 ">
+            <div className="flex-1  ">
               <span className="text-green-600 font-bold uppercase text-sm tracking-widest mb-2 block">
                 Feature {activeStep + 1}
               </span>

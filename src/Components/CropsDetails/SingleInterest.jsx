@@ -25,7 +25,7 @@ const SingleInterest = ({ item, postId }) => {
     return <Loader />;
   }
 
-  console.log(isBtnDisable);
+  console.log(obj);
 
   function handleAccept(id) {
     const query = {
@@ -87,14 +87,13 @@ const SingleInterest = ({ item, postId }) => {
         return "bg-yellow-100 text-yellow-700 border-yellow-400";
     }
   };
-
   return (
-    <tr key={obj._id} className="hover:bg-gray-50">
+    <tr key={obj._id} className="hover:bg-gray-50 text-left">
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
         {obj.userName}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-        {obj.quantity}
+        {obj.quantity}{obj.unit}
       </td>
       <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
         {obj.message}

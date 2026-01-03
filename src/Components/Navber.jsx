@@ -16,20 +16,20 @@ const Navber = () => {
   let links = (
     <>
       <NavLink
-        className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-[16px] font-bold headingFont"
+        className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-xl font-bold headingFont "
         to="/"
       >
         <LucideHome size={18} className="inline" /> Home
       </NavLink>
       <NavLink
-        className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-[16px] font-bold headingFont"
+        className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-xl font-bold headingFont"
         to="/AllCrops"
       >
         <LuLeaf size={18} className="inline" />
         All crops
       </NavLink>
       <NavLink
-        className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-[16px] font-bold headingFont"
+        className="px-3 py-1  rounded-[10px] hover:bg-green-500 transition-all duration-500 hover:text-white text-xl font-bold headingFont"
         to="/Features"
       >
         <LuZap size={18} className="inline" />
@@ -46,17 +46,16 @@ const Navber = () => {
       downTolerance={2}
       // upTolerance: ektu upore scroll korlei jeno chole ashe
       upTolerance={0}
-    
       style={{
         transition: "all .3s ease-in-out",
         zIndex: 100,
       }}
     >
-      <div className="bg-base-100 sticky top-0 z-50">
-        <div
-          className="navbar max-w-[1440px] mx-auto px-4"
-          style={{ boxShadow: "0 4px 15px rgba(0,0,0,0.1)" }}
-        >
+      <div
+        className="sticky top-0 bg-white/70 backdrop-blur-md"
+        style={{ boxShadow: "0 4px 15px rgba(0,0,0,0.1)" }}
+      >
+        <div className="navbar max-w-[1440px] mx-auto px-4">
           <div className="navbar-start">
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn-ghost lg:hidden">

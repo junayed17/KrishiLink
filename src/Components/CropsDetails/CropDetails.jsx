@@ -21,7 +21,7 @@ const CropDetails = () => {
   }, [id]);
 
   useEffect(() => {
-    if (user?.email === postDetails?.owner?.ownerEmail) {
+    if (user?.email && user?.email === postDetails?.owner?.ownerEmail) {
       setIsOwner(true);
     } else {
       setIsOwner(false);
@@ -35,15 +35,22 @@ const CropDetails = () => {
     <>
       <section>
         <title>KrisiLink | PostDetails</title>
-        <Details postDetails={postDetails} />
+        <div
+          className={`${
+            !isOwner? "grid" : ""
+          } grid-cols-12 gap-6 items-start max-w-[1440px] mx-auto my-8`}
+        >
+          <div className="col-span-12 lg:col-span-8">
+            <Details postDetails={postDetails} />
+          </div>
+          {!isOwner && (
+            <div className="col-span-12 lg:col-span-4 lg:sticky lg:top-24">
+              <BookedForm id={id} postDetails={postDetails} user={user} />
+            </div>
+          )}
+        </div>
       </section>
-      <section>
-        {isOwner ? (
-          <AllInterests postDetails={postDetails} />
-        ) : (
-          <BookedForm id={id} postDetails={postDetails} user={user} />
-        )}
-      </section>
+      <section>{isOwner && <AllInterests postDetails={postDetails} />}</section>
     </>
   );
 };

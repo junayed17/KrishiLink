@@ -1,7 +1,7 @@
-import React from "react";
-import { FaBangladeshiTakaSign, FaLocationDot, FaStar } from "react-icons/fa6";
-import { LuArrowRight, LuLock } from "react-icons/lu";
-import { Link } from "react-router";
+import React from 'react';
+import { FaBangladeshiTakaSign, FaLocationDot, FaStar } from 'react-icons/fa6';
+import { LuArrowRight, LuLock } from "react-icons/lu"; 
+import { Link } from 'react-router';
 
 const Crop = ({ post }) => {
   // Check if stock is available
@@ -61,8 +61,8 @@ const Crop = ({ post }) => {
 
         {/* Description */}
         <p className="text-gray-500 dark:text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">
-          {post.description ||
-            "Premium quality fresh produce sourced directly from local farmers."}
+          {post.description?.split(" ").slice(0, 10).join(" ")}
+          {post.description?.split(" ").length > 10? "..." : ""}
         </p>
 
         {/* Price Grid */}

@@ -77,12 +77,12 @@ const SignUp = () => {
   }
 
   return (
-    <section className="px-4 bg-gray-100 min-h-screen flex items-center justify-center">
+    <section className="px-4 min-h-screen flex items-center justify-center">
       <title>KrisiLink | SignUp</title>
       <div className="py-10 w-full">
         {/* Sign Up Form Container */}
         <form
-          className="flex flex-col gap-3 bg-white p-8 w-full max-w-lg mx-auto rounded-xl font-sans shadow-2xl"
+          className="flex flex-col gap-3 bg-white p-8 w-full max-w-lg mx-auto rounded-xl font-sans shadow-2xl shadow-sm border border-green-100"
           onSubmit={handleSignUp}
         >
           {/* Form Title */}
@@ -92,7 +92,7 @@ const SignUp = () => {
 
           {/* --- Name Field --- */}
           <div className="flex-column flex flex-col">
-            <label className="text-sm text-[#151717] font-semibold mb-1">
+            <label className="text-sm text-[#151717] font-semibold mb-1 headingFont">
               Name
             </label>
           </div>
@@ -123,7 +123,7 @@ const SignUp = () => {
 
           {/* --- Email Field --- */}
           <div className="flex-column flex flex-col mt-2">
-            <label className="text-sm text-[#151717] font-semibold mb-1">
+            <label className="text-sm text-[#151717] font-semibold mb-1 headingFont">
               Email
             </label>
           </div>
@@ -150,7 +150,7 @@ const SignUp = () => {
 
           {/* --- Profile URL Field --- */}
           <div className="flex-column flex flex-col mt-2">
-            <label className="text-sm text-[#151717] font-semibold mb-1">
+            <label className="text-sm text-[#151717] font-semibold mb-1 headingFont">
               Profile URL
             </label>
           </div>
@@ -181,7 +181,7 @@ const SignUp = () => {
 
           {/* --- Password Field --- */}
           <div className="flex-column flex flex-col mt-2">
-            <label className="text-sm text-[#151717] font-semibold mb-1">
+            <label className="text-sm text-[#151717] font-semibold mb-1 headingFont">
               Password
             </label>
           </div>
@@ -226,7 +226,7 @@ const SignUp = () => {
           {/* --- Sign Up Button --- */}
           <button
             type="submit"
-            className="button-submit mt-5 mb-2 bg-[#0cdc39] border-none text-white text-base font-medium rounded-lg h-[50px] w-full cursor-pointer hover:bg-[#0bb730] transition duration-150 shadow-md"
+            className="headingFont px-4 py-4 mt-6 rounded-xl bg-green-500 hover:bg-green-600 hover:text-white font-bold transition-all text-xl"
           >
             Sign Up
           </button>
@@ -250,7 +250,7 @@ const SignUp = () => {
           {/* --- Social Buttons --- */}
           <div className="flex-row flex flex-row gap-2">
             <button
-              className="btn google mt-2 w-full h-[50px] rounded-lg flex justify-center items-center font-medium gap-2 border border-gray-200 bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#09bb2f]"
+              className="btn google mt-2 w-full h-[50px] rounded-lg flex justify-center items-center font-medium gap-2 border border-gray-200 bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#09bb2f] headingFont text-lg bold text-xl"
               type="button"
               onClick={handleSignInGoogle}
             >

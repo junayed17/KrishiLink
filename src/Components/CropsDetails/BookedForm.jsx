@@ -3,28 +3,42 @@ import Loader from "../Loader/Loader";
 import { AuthContext } from "../../Provider/ContextProvider";
 import { FaCheckCircle } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { User } from "lucide-react";
+import Swal from "sweetalert2";
 
-const BookedForm = ({ id, postDetails, user }) => {
+const BookedForm = ({ id, postDetails }) => {
+  const {user}=use(AuthContext)
   const [totalPrice, setTotalPrice] = useState(null);
   const [isBooked, setIsBooked] = useState(" ");
 
   postDetails.interests.forEach((element) => {
-    if (element.email == user.email) {
-      console.log(element.email, user.email);
+    if (element?.email == user?.email) {
       return;
     }
   });
-
   useEffect(() => {
-    const Booked = postDetails.interests.some((i) => i.email === user.email);
+    const Booked = postDetails?.interests?.some((i) => i.email === user?.email);
     setIsBooked(Booked);
-  }, [postDetails, user]);
+  }, [postDetails, user?.email]);
 
   if (isBooked.length == 1) {
     return <Loader />;
   }
 
   console.log(postDetails);
+
+  function isUserExist(user) {
+    event.preventDefault();
+    if (!user) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        footer: 'please <a href="/signIn"><b>signIn</b></a> first',
+      });
+      return;
+    }
+  }
 
   function handleTotalPrice(e) {
     const total = e.target.value;
@@ -33,12 +47,22 @@ const BookedForm = ({ id, postDetails, user }) => {
 
   function handleBooked(e) {
     e.preventDefault();
-    const quantity = e.target.quantity.value;
-    const message = e.target.message.value;
-    const total = e.target.total.value;
-    const email = user.email;
+    const quantity = Number(e.target.quantity.value.trim());
+    const message = e.target.message.value.trim();
+    const total = Number(e.target.total.value.trim());
 
-    const userName = user.displayName;
+    if (!quantity || !message || !total) {
+      toast.error("Please fill in all fields (Quantity and Message)!");
+      return;
+    }
+
+    if (quantity < 1) {
+      toast.error("Quantity must be at least 1!");
+      return;
+    }
+
+    const email = user?.email;
+    const userName = user?.displayName;
     const status = "Pending";
 
     const bookedInfo = {
@@ -49,12 +73,6 @@ const BookedForm = ({ id, postDetails, user }) => {
       total,
       status,
     };
-
-    if (quantity < 1) {
-      toast.error("Quantity must be atleast 1");
-      return;
-    }
-
     fetch(`https://krishilink-two.vercel.app/post/${id}`, {
       method: "PATCH",
       headers: {
@@ -72,7 +90,7 @@ const BookedForm = ({ id, postDetails, user }) => {
 
   return (
     <div className="">
-      <div className="py-10 shadow-2xl border-green-200">
+      <div className="py-10 shadow-sm rounded-xl border border-green-100">
         {isBooked ? (
           <p className="flex items-center justify-center gap-2 px-3 py-1.5 text-green-800 rounded-full text-3xl font-medium max-w-[500px] mx-auto">
             <FaCheckCircle />
@@ -81,13 +99,18 @@ const BookedForm = ({ id, postDetails, user }) => {
         ) : (
           <form
             class="flex flex-col gap-2 bg-white p-7 w-full max-w-lg mx-auto rounded-xl font-sans"
-            onSubmit={handleBooked}
+            onSubmit={(e) => {
+              isUserExist(user);
+              handleBooked(e);
+            }}
           >
-            <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
+            <h3 className="headingFont text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
               Post Book form
             </h3>
             <div class="flex-column flex flex-col">
-              <label class="text-[#151717] font-semibold">Quantity</label>
+              <label class="text-[#151717] font-semibold headingFont">
+                Quantity
+              </label>
             </div>
             <div class="inputForm border border-gray-200 rounded-lg h-[50px] flex items-center pl-3 transition-all duration-200 ease-in-out focus-within:border-[#07b553]">
               <svg
@@ -117,7 +140,9 @@ const BookedForm = ({ id, postDetails, user }) => {
             </div>
 
             <div class="flex-column flex flex-col mt-2">
-              <label class="text-[#151717] font-semibold">Message</label>
+              <label class="text-[#151717] font-semibold headingFont">
+                Message
+              </label>
             </div>
             <div class="inputForm border border-gray-200 rounded-lg h-[50px] flex items-center pl-3 transition-all duration-200 ease-in-out focus-within:border-[#06ae4f]">
               <svg
@@ -145,7 +170,9 @@ const BookedForm = ({ id, postDetails, user }) => {
             </div>
 
             <div class="flex-column flex flex-col mt-2">
-              <label class="text-[#151717] font-semibold">Total Price</label>
+              <label class="text-[#151717] font-semibold headingFont">
+                Total Price
+              </label>
             </div>
             <div class="inputForm border border-gray-200 rounded-lg h-[50px] flex items-center pl-3 transition-all duration-200 ease-in-out focus-within:border-[#06ae4f]">
               <svg
@@ -174,7 +201,7 @@ const BookedForm = ({ id, postDetails, user }) => {
               />
             </div>
 
-            <button class="button-submit mt-5 mb-2 bg-[#0cdc39]  border-none text-white text-base font-medium rounded-lg h-[50px] w-full cursor-pointer hover:bg-[#0bb730]  transition duration-150">
+            <button class="headingFont px-4 py-4 mt-6 rounded-xl bg-green-500 hover:bg-green-600 hover:text-white font-bold transition-all text-xl" >
               Book this post
             </button>
           </form>

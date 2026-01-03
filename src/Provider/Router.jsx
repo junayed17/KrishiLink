@@ -27,11 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/crop/cropDetails/:id",
-        element: (
-          <PrivateRouter>
-            <CropDetails />
-          </PrivateRouter>
-        ),
+        element: <CropDetails />,
       },
       {
         path: "/AllCrops",
@@ -39,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Features",
-        element: <Features/>,
+        element: <Features />,
       },
       {
         path: "/myProfile",

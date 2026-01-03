@@ -51,11 +51,11 @@ const AddCrop = () => {
   }
 
   return (
-    <section className="px-4 bg-gray-50 min-h-screen flex items-center justify-center">
+    <section className="px-4 bg-gray-50 min-h-screen flex items-center justify-center mt-6 rounded-xl ">
       <title>KrisiLink | AddPost</title>
       <div className="w-[700px] mx-auto mt-5">
         <form
-          className="flex flex-col gap-4 bg-white p-8 w-full  rounded-xl font-sans shadow-2xl border border-green-100"
+          className="flex flex-col gap-4 bg-white p-8 w-full  rounded-xl font-sans shadow-sm border border-green-100"
           onSubmit={handleCropAdd}
         >
           <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700 headingFont">

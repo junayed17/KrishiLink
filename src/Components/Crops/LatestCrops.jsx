@@ -48,7 +48,7 @@ const LatestCrops = () => {
       <div className="text-center  my-10">
         <Link
           to="/AllCrops"
-          className="inline-flex items-center justify-center gap-2  headingFont px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 hover:text-white font-bold transition-all"
+          className="inline-flex items-center justify-center gap-2  headingFont px-4 py-2 rounded-xl bg-green-500 hover:bg-green-600 hover:text-white font-bold transition-all"
         >
           See All <FaArrowRight className="inline-block" />
         </Link>

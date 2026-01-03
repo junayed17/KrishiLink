@@ -24,17 +24,17 @@ const LogOutBtn = () => {
         className="flex items-center gap-3 p-1 rounded-full hover:bg-gray-100 transition-all duration-300"
       >
         <div className="text-end hidden sm:block">
-          <h4 className="headingFont text-sm font-bold text-gray-800 leading-none mb-1">
+          <h4 className="headingFont text-sm font-bold text-gray-800 leading-none mb-1 text-xl">
             {user?.displayName?.split(" ")[0] || "User"}
           </h4>
-          <p className="text-[10px] text-green-600 font-bold uppercase tracking-tighter">
+          <p className=" text-green-600 font-bold uppercase tracking-tighter text-sm">
             Farmer Account
           </p>
         </div>
         <img
           src={user?.photoURL}
           alt="profile"
-          className="h-10 w-10 rounded-full border-2 border-green-500 p-[2px] object-cover"
+          className="h-14 w-14 rounded-full border-2 border-green-500 p-[2px] object-cover"
         />
       </div>
 
@@ -53,7 +53,7 @@ const LogOutBtn = () => {
             to="/myProfile"
             className="
             headingFont
-            flex items-center gap-3 py-3 rounded-lg hover:bg-green-500 hover:text-white font-semibold transition-all"
+            flex items-center gap-3 py-3 rounded-lg hover:bg-green-500 hover:text-white font-semibold transition-all text-xl"
           >
             <User size={18} /> Profile
           </NavLink>
@@ -63,7 +63,7 @@ const LogOutBtn = () => {
             onClick={closeDropdown}
             to="/addCrop"
             className="
-            headingFont flex items-center gap-3 py-3 rounded-lg hover:bg-green-500 hover:text-white font-semibold transition-all"
+            headingFont flex items-center gap-3 py-3 rounded-lg hover:bg-green-500 hover:text-white font-semibold transition-all text-xl"
           >
             <PlusCircle size={18} /> Add crops
           </NavLink>
@@ -74,7 +74,7 @@ const LogOutBtn = () => {
             to="/myPost"
             className="
             headingFont
-            flex items-center gap-3 py-3 rounded-lg hover:bg-green-500 hover:text-white font-semibold transition-all"
+            flex items-center gap-3 py-3 rounded-lg hover:bg-green-500 hover:text-white font-semibold transition-all text-xl"
           >
             <LayoutGrid size={18} /> My posts
           </NavLink>
@@ -85,7 +85,7 @@ const LogOutBtn = () => {
             to="/MyInterests"
             className="
             headingFont
-            flex items-center gap-3 py-3 rounded-lg hover:bg-green-500 hover:text-white font-semibold transition-all"
+            flex items-center gap-3 py-3 rounded-lg hover:bg-green-500 hover:text-white font-semibold transition-all text-xl"
           >
             <Heart size={18} /> My interests
           </NavLink>
@@ -99,7 +99,7 @@ const LogOutBtn = () => {
               signOut();
               closeDropdown();
             }}
-            className="headingFont flex items-center gap-3 py-3 rounded-lg text-red-500 hover:bg-red-50 font-bold transition-all"
+            className="headingFont flex items-center gap-3 py-3 rounded-lg text-red-500 hover:bg-red-50 font-bold transition-all text-xl"
           >
             <LogOut size={18} /> Log Out
           </button>

@@ -13,7 +13,7 @@ const SignIn = () => {
   const [passShow, setPassShow] = useState(false);
 
   const { state } = useLocation();
-
+  
   function handleSignIn(e) {
     e.preventDefault();
     const email = e.target.email.value;
@@ -37,8 +37,6 @@ const SignIn = () => {
         state ? Navigate(state) : Navigate("/");
       })
       .catch((err) => {
-        console.log(err);
-        
         toast.error("try again");
       });
   }
@@ -48,14 +46,16 @@ const SignIn = () => {
       <title>KrisiLink | SignIn</title>
       <div className="py-10">
         <form
-          class="flex flex-col gap-2 bg-white p-7 w-full max-w-lg mx-auto rounded-xl font-sans"
+          class="flex flex-col gap-2  p-7 w-full max-w-lg mx-auto rounded-xl border border-green-100 shadow-sm"
           onSubmit={handleSignIn}
         >
           <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700 headingFont">
             SignIn Your Account
           </h3>
           <div class="flex-column flex flex-col">
-            <label class="text-[#151717] font-semibold">Email</label>
+            <label class="text-[#151717] font-semibold headingFont">
+              Email
+            </label>
           </div>
           <div class="inputForm border border-gray-200 rounded-lg h-[50px] flex items-center pl-3 transition-all duration-200 ease-in-out focus-within:border-[#07b553]">
             <svg
@@ -78,7 +78,9 @@ const SignIn = () => {
           </div>
 
           <div class="flex-column flex flex-col mt-2">
-            <label class="text-[#151717] font-semibold">Password</label>
+            <label class="text-[#151717] font-semibold headingFont">
+              Password
+            </label>
           </div>
           <div class="inputForm border border-gray-200 rounded-lg h-[50px] flex items-center pl-3 transition-all duration-200 ease-in-out focus-within:border-[#06ae4f]">
             <svg
@@ -113,7 +115,7 @@ const SignIn = () => {
             </span>
           </div>
 
-          <button class="button-submit mt-5 mb-2 bg-[#0cdc39]  border-none text-white text-base font-medium rounded-lg h-[50px] w-full cursor-pointer hover:bg-[#0bb730]  transition duration-150">
+          <button class="headingFont px-4 py-4 mt-6 rounded-xl bg-green-500 hover:bg-green-600 hover:text-white font-bold transition-all text-xl">
             Sign In
           </button>
 
@@ -133,7 +135,7 @@ const SignIn = () => {
 
           <div class="flex-row flex flex-row gap-2">
             <button
-              class="btn google mt-2 w-full h-[50px] rounded-lg flex justify-center items-center font-medium gap-2 border border-gray-200 bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#09bb2f]"
+              class="btn google mt-2 w-full h-[50px] rounded-lg flex justify-center items-center font-medium gap-2 border border-gray-200 bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#09bb2f] headingFont text-xl font-bold"
               onClick={handleSignInGoogle}
               type="button"
             >

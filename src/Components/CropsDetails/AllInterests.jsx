@@ -32,28 +32,29 @@ const AllInterests = ({ postDetails }) => {
   };
 
   return (
-    <section className="max-w-[1440px] mx-auto px-4 py-10">
-      <div>
-        <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700">
-          All Interest of this Crop
-        </h3>
-        <div className="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
+    <section className="max-w-[1440px] mx-auto py-10 shadow-sm border border-green-100 rounded-xl">
+      <div className="text-center">
+        <h2 className="headingFont text-3xl sm:text-5xl font-extrabold mb-1 tracking-tight">
+          All interest of
+          <span className="text-green-600 ml-2">this Post</span>
+        </h2>
+        <div className="bg-white p-6 rounded-xl overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-green-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider headingFont">
                   Buyer
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider headingFont">
                   Requested Quantity
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider headingFont">
                   buyer Message
                 </th>
-                <th className="px-6 py-3 text-center text-xs font-medium text-gray-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-600 uppercase tracking-wider headingFont">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider text-center">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider text-center headingFont">
                   Action
                 </th>
               </tr>
@@ -61,7 +62,7 @@ const AllInterests = ({ postDetails }) => {
             <tbody className="bg-white divide-y divide-gray-200">
               {postDetails.interests.length > 0 ? (
                 postDetails.interests.map((item) => (
-                  <SingleInterest item={item} postId={postDetails._id}/>
+                  <SingleInterest item={item} postId={postDetails._id} />
                 ))
               ) : (
                 <tr>

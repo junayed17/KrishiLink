@@ -27,13 +27,17 @@ const Details = ({ postDetails }) => {
   
 
   return (
-    <div className="p-4 sm:p-8 min-h-screen">
-      <div className="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden border border-green-200">
+    <div className="min-h-screen">
+      <div className=" bg-white shadow-sm rounded-xl overflow-hidden border-[1px] border-green-100">
         <div className="relative">
-          <img className="w-full h-80 object-cover" src={image} alt={name} />
+          <img
+            className="w-full max-h-[400px] object-cover"
+            src={image}
+            alt={name}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex items-end">
             <h1 className="text-4xl font-extrabold text-white leading-tight">
-              {name} Listing
+              {name}
               <span className="block text-lg font-medium text-green-300 mt-1">
                 ({type})
               </span>
@@ -81,7 +85,7 @@ const Details = ({ postDetails }) => {
               <FaUser className="inline mr-2 text-green-600" /> Seller
               Information
             </h2>
-            <div className="space-y-3 p-4 border rounded-lg bg-green-50">
+            <div className="space-y-3 p-4 border border-green-100 rounded-xl bg-green-50">
               <p className="flex items-center text-gray-700">
                 <FaUser className="mr-3 text-lg text-green-700" />
                 <span className="font-semibold">{owner.ownerName}</span> (Owner)
