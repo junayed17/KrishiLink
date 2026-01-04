@@ -9,7 +9,7 @@ const totalRequested = post?.interests
   ? post.interests.reduce((sum, item) => sum + Number(item.quantity || 0), 0)
   : 0;
 
-  console.log(totalRequested,Number(post.quantity));
+
   
 
   const isOutOfStock = totalRequested >= Number(post.quantity);

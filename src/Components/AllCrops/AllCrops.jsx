@@ -27,9 +27,15 @@ const AllCrops = () => {
       `http://localhost:3000/allPosts?sort=${order}&&limit=${8}&&catagory=${activeTab}&&pageIndex=${pageIndex}`
     )
       .then((res) => res.json())
-      .then((result) => setAllPost(result));
+      .then((result) =>{ 
+        setAllPost(result)});
   }, [activeTab, order, pageIndex]);
   const [displayData, setDisplayData] = useState(allPost);
+
+
+console.log(totalData);
+
+
 
   useEffect(() => {
     setDisplayData(allPost);
@@ -38,7 +44,7 @@ const AllCrops = () => {
 
 
 
-console.log(pageIndex);
+
 
 
 

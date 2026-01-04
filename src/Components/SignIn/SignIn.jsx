@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 const SignIn = () => {
   const Navigate = useNavigate();
 
+
   const { handleSignInWithEmailPass, handleSignInWithGoogle, setLoading } =
     use(AuthContext);
   const [passShow, setPassShow] = useState(false);
@@ -17,10 +18,18 @@ const SignIn = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
-  } = useForm()
+  } = useForm();
   
 
+
+
+function autofilAccout() {
+  // setValue field-er name, value, ebong validation update kore
+  setValue("email", "Fizz@gmail.com", { shouldValidate: true });
+  setValue("password", "MDfizz", { shouldValidate: true });
+}
 
 
 const saveUser = (user) => {
@@ -91,6 +100,13 @@ const saveUser = (user) => {
           <h3 className="text-3xl font-extrabold text-center text-gray-900 mb-6 text-green-700 headingFont">
             SignIn Your Account
           </h3>
+          <button
+            class="headingFont px-4 py-2 my-6 rounded-xl bg-green-500 hover:bg-green-600 hover:text-white font-bold transition-all text-xl"
+            type="button"
+            onClick={autofilAccout}
+          >
+            Demo Account
+          </button>
           <div class="flex-column flex flex-col">
             <label class="text-[#151717] font-semibold headingFont">
               Email
@@ -113,6 +129,7 @@ const saveUser = (user) => {
               class="input ml-2 rounded-lg border-none w-full h-full focus:outline-none"
               type="text"
               name="email"
+              id="email"
               {...register("email", { required: "This field is required" })}
             />
           </div>
@@ -141,6 +158,7 @@ const saveUser = (user) => {
               class="input ml-2 rounded-lg border-none w-full h-full focus:outline-none"
               name="password"
               type={passShow ? "text" : "password"}
+              id="password"
               {...register("password", { required: "This field is required" })}
             />
             <p
