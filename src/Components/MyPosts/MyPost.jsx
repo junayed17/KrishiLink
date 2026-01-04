@@ -53,26 +53,43 @@ const MyPost = () => {
   return (
     <section className="max-w-[1440px] mx-auto pt-10 px-4">
       <title>KrisiLink | My Post</title>
-      <div className="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
+      <div className="text-center mb-6">
+        <div className="flex items-center justify-center gap-3">
+          <img
+            src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
+            alt=""
+            className="hidden sm:block sm:h-10"
+          />
+          <h2 className="headingFont text-3xl sm:text-5xl font-extrabold mb-1 tracking-tight">
+            Manage Your
+            <span className="text-green-600  ml-2">Posts</span>
+          </h2>
+        </div>
+        <p className="text-gray-600 max-w-2xl mx-auto text-[1rem] sm:text-lg">
+          View, edit, or remove your crop posts and keep track of your active
+          inventory.
+        </p>
+      </div>
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-green-100 overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-green-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider headingFont">
                 ID
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider headingFont">
                 Name
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider headingFont">
                 Type
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider headingFont">
                 Price/Unit
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider headingFont">
                 Location
               </th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider headingFont">
                 Actions
               </th>
             </tr>
