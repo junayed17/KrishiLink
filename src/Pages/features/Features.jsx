@@ -44,6 +44,7 @@ const Features = () => {
 
   return (
     <section className="text-black py-6 sm:py-16 ">
+      <title>KrisiLink | Features</title>
       <div className="">
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3">

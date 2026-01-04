@@ -5,8 +5,16 @@ import { Link } from 'react-router';
 
 const Crop = ({ post }) => {
   // Check if stock is available
-  const isOutOfStock = post.quantity <= 0;
+const totalRequested = post?.interests
+  ? post.interests.reduce((sum, item) => sum + Number(item.quantity || 0), 0)
+  : 0;
 
+  console.log(totalRequested,Number(post.quantity));
+  
+
+  const isOutOfStock = totalRequested >= Number(post.quantity);
+
+  
   return (
     <div
       className={`group h-full flex flex-col bg-white text-black dark:bg-zinc-900 dark:text-white border border-gray-200 dark:border-zinc-800 rounded-2xl shadow-sm transition-all duration-300 overflow-hidden font-[Poppins] 

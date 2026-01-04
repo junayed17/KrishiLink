@@ -197,7 +197,7 @@ const AddCrop = () => {
             <input
               id="Photo"
               name="photo"
-              className="w-full p-3 border  rounded-lg bg-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:text-green-700 hover:file:bg-green-100"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150 "
               type="text"
               required
               placeholder="url Of your crop"
@@ -213,7 +213,7 @@ const AddCrop = () => {
 
           <div className="text-center mt-3">
             <Link
-              to="/"
+              to="/dashboard/overview"
               className="text-sm text-gray-500 hover:text-green-600 underline"
             >
               Go back to Dashboard

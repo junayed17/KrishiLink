@@ -62,13 +62,17 @@ const Overview = () => {
 
   return (
     <div className="py-6 bg-gray-50 min-h-screen font-sans">
+      <title>KrisiLink | Dashboard Overview</title>
       <div className="mb-8">
         <h2 className="text-3xl font-bold text-gray-800 headingFont">
           Dashboard Overview
         </h2>
         <p className="text-gray-500">
-          Welcome back <span className="text-lg font-bold text-green-400">{user?.displayName.split(" ")[0]}</span>! Here's
-          your crop performance at a glance.
+          Welcome back{" "}
+          <span className="text-lg font-bold text-green-400">
+            {user?.displayName.split(" ")[0]}
+          </span>
+          ! Here's your crop performance at a glance.
         </p>
       </div>
 
