@@ -52,6 +52,22 @@ const MyInterests = () => {
   return (
     <section className="max-w-[1440px] mx-auto px-4 py-10">
       <title>KrisiLink | MyInterests</title>
+      <div className="text-center mb-6">
+        <div className="flex items-center justify-center gap-3">
+          <img
+            src="https://script.viserlab.com/agrivest/assets/images/logo_icon/favicon.png"
+            alt=""
+            className="hidden sm:block sm:h-10"
+          />
+          <h2 className="headingFont text-3xl sm:text-5xl font-extrabold mb-1 tracking-tight">
+            Your Interested
+            <span className="text-green-600  ml-2">Posts</span>
+          </h2>
+        </div>
+        <p className="text-gray-600 max-w-2xl mx-auto text-[1rem] sm:text-lg">
+          Explore the crops you’ve marked interest in.
+        </p>
+      </div>
       <button
         className="block cursor-pointer px-6 py-3 rounded-2xl bg-green-500 max-w-[180px] mx-auto mb-10 font-bold shadow-2xl"
         onClick={sortByName}
@@ -59,23 +75,23 @@ const MyInterests = () => {
         <p className="text-black">Shot by Name</p>
       </button>
       <div className="min-h-[50vh]">
-        <div className="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-green-100 overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-green-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider headingFont">
                   Crop Name
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider headingFont">
                   Owner
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider headingFont">
                   Requested Quantity
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider headingFont">
                   My Message
                 </th>
-                <th className="px-6 py-3 text-center text-xs font-medium text-gray-600 uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-600 uppercase tracking-wider headingFont">
                   Status
                 </th>
               </tr>
@@ -87,9 +103,9 @@ const MyInterests = () => {
                 <tr>
                   <td
                     colSpan="6"
-                    className="px-6 py-4 text-center text-gray-500"
+                    className="px-6 py-4 text-center text-gray-500 headingFont"
                   >
-                    No buyer interest requests found.
+                    You have no interested post.
                   </td>
                 </tr>
               )}
