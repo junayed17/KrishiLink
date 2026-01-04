@@ -3,6 +3,8 @@ import { AuthContext } from "../Provider/ContextProvider";
 import toast from "react-hot-toast";
 import { NavLink } from "react-router";
 import { User, PlusCircle, LayoutGrid, Heart, LogOut } from "lucide-react"; // Icons add korlam
+import { MdOutlineDashboard } from "react-icons/md";
+import { HiOutlineViewGrid } from "react-icons/hi";
 
 const LogOutBtn = () => {
   const { user, handleSignOut } = use(AuthContext);
@@ -47,6 +49,18 @@ const LogOutBtn = () => {
           Manage
         </li>
 
+        <li>
+          <NavLink
+            onClick={closeDropdown}
+            to="/myProfile"
+            className="
+            headingFont
+            flex items-center gap-3 py-3 rounded-lg hover:bg-green-500 hover:text-white font-semibold transition-all text-xl"
+          >
+            <MdOutlineDashboard size={18} />
+            Overview
+          </NavLink>
+        </li>
         <li>
           <NavLink
             onClick={closeDropdown}

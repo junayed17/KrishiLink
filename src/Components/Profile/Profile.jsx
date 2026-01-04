@@ -1,4 +1,4 @@
-import React, { use, useRef } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../Provider/ContextProvider";
 import Loader from "../Loader/Loader";
 import toast from "react-hot-toast";
@@ -6,6 +6,10 @@ import { useForm } from "react-hook-form";
 
 const Profile = () => {
   const reference = useRef(null);
+  const [addiTionalInfo, setAddiTionalInfo] = useState({
+    totalPost: 0,
+    totalInterest: 0,
+  });
   const { handleUpdateProfile, user, setUser } = use(AuthContext);
   const {
     register,
@@ -16,6 +20,24 @@ const Profile = () => {
   function handleModal() {
     reference.current.showModal();
   }
+
+  useEffect(() => {
+    const data = {};
+    fetch(`http://localhost:3000/myPosts?email=${user.email}`)
+      .then((res) => res.json())
+      .then((result) => (data.totalPost = result.length))
+      .catch((err) => console.log(err));
+    fetch(`http://localhost:3000/myInterestedPosts/${user.email}`)
+      .then((res) => res.json())
+      .then((result) => {
+        data.totalInterest = result.length;
+      });
+    setAddiTionalInfo(data)
+
+  }, [user.email]);
+
+  console.log(addiTionalInfo);
+  
 
   function handleUpdate(userDataa) {
     if (userDataa.photo.length) {
@@ -55,7 +77,7 @@ const Profile = () => {
           photoURL: user.photoURL,
         };
         console.log(data4, userDataa.name);
-        
+
         setUser(data4);
         toast.success("Profile name updated successfully!");
       });
@@ -99,16 +121,29 @@ const Profile = () => {
           {/* Stats */}
           <div className="flex justify-between mt-4 pt-4 border-t border-gray-200">
             <div className="text-center">
-              <div className="font-semibold text-gray-900">15k</div>
-              <div className="text-sm text-gray-600">Followers</div>
+              {" "}
+              <div className="font-semibold text-sm text-gray-900">
+                User
+              </div>
+              <div className="text-sm font-semibold text-gray-600">
+               Role
+              </div>
             </div>
             <div className="text-center">
-              <div className="font-semibold text-gray-900">82</div>
-              <div className="text-sm text-gray-600">Posts</div>
+              {" "}
+              <div className="font-semibold text-gray-900">
+                {addiTionalInfo.totalPost}
+              </div>
+              <div className="text-sm font-semibold text-gray-600">Posts</div>
             </div>
             <div className="text-center">
-              <div className="font-semibold text-gray-900">4.8</div>
-              <div className="text-sm text-gray-600">Rating</div>
+              {" "}
+              <div className="font-semibold text-gray-900">
+                {addiTionalInfo.totalInterest}
+              </div>
+              <div className="text-sm font-semibold text-gray-600">
+                Interests
+              </div>
             </div>
           </div>
         </div>
