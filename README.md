@@ -31,7 +31,37 @@ Unlike traditional e-commerce, KrishiLink works as a **social agro-network**, en
 ### **Backend**
 - Express.js  
 - MongoDB  
-- Hosted on Vercel  
+- Hosted on Vercel
+
+### Core Framework
+* **React 19**: Modern UI library for building components.
+* **Vite**: Next-generation frontend tooling for fast development.
+* **React Router 7**: For seamless client-side navigation.
+
+### Authentication & Backend
+* **Firebase**: Handles secure user authentication (Email/Google) and real-time database needs.
+
+### UI & Styling
+* **Tailwind CSS 4**: Utility-first CSS framework for custom styling.
+* **DaisyUI 5**: Accessible and beautiful component library based on Tailwind.
+* **Lucide React & React Icons**: Premium icon sets for clear visual communication.
+* **Framer Motion & AOS**: Used for smooth scroll animations and entry effects.
+* **Swiper & Marquee**: For interactive carousels and smooth scrolling text.
+
+### Data Visualization & Forms
+* **Recharts**: Responsive charts to display stock and demand statistics.
+* **React Hook Form**: Efficient, flexible, and extensible forms with easy validation.
+* **React CountUp**: Animated counters for dashboard statistics.
+
+### Notifications & Modals
+* **React Hot Toast**: Lightweight and customizable toast notifications.
+* **SweetAlert2**: Beautiful and responsive popup boxes.
+
+### Other Utilities
+* **React Accordion (@szhsin)**: Fully accessible and customizable accordion for FAQ sections.
+* **React Headroom**: Smart header that hides on scroll and shows when scrolling up.
+* **React Paginate**: For handling large lists of data with ease.
+
 
 ### **Hosting**
 - Client: Netlify   
@@ -42,10 +72,13 @@ Unlike traditional e-commerce, KrishiLink works as a **social agro-network**, en
 ## 🏠 Home Page Sections
 
 - Hero Slider  
-- Latest 6 Crop Posts  
+- Latest 8 Crop Posts  
 - “How It Works” Section  
-- Agro News / Blogs  
-- Two additional custom sections  
+- Agro News Blogs  
+- project overview
+- FAQ
+- Partners
+- Our sucess stories
 
 ---
 
