@@ -22,22 +22,34 @@ const Profile = () => {
   }
 
   useEffect(() => {
-    const data = {};
-    fetch(`http://localhost:3000/myPosts?email=${user.email}`)
-      .then((res) => res.json())
-      .then((result) => (data.totalPost = result.length))
-      .catch((err) => console.log(err));
-    fetch(`http://localhost:3000/myInterestedPosts/${user.email}`)
-      .then((res) => res.json())
-      .then((result) => {
-        data.totalInterest = result.length;
-      });
-    setAddiTionalInfo(data)
+    // 1. User email na pawa porjonto fetch korbe na
+    if (!user?.email) return;
 
-  }, [user.email]);
+    const fetchData = async () => {
+      try {
+        // 2. Promise.all use korle 2-ta fetch eksathe hoy ebong data miss hoy na
+        const [postsRes, interestsRes] = await Promise.all([
+          fetch(`http://localhost:3000/myPosts?email=${user.email}`),
+          fetch(`http://localhost:3000/myInterestedPosts/${user.email}`),
+        ]);
+
+        const posts = await postsRes.json();
+        const interests = await interestsRes.json();
+
+        // 3. Ekbare state update koro
+        setAddiTionalInfo({
+          totalPost: posts.length,
+          totalInterest: interests.length,
+        });
+      } catch (err) {
+        console.log("Error fetching profile stats:", err);
+      }
+    };
+
+    fetchData();
+  }, [user?.email]); // 4. Ekhane user?.email ditei hobe
 
   console.log(addiTionalInfo);
-  
 
   function handleUpdate(userDataa) {
     if (userDataa.photo.length) {
@@ -122,12 +134,8 @@ const Profile = () => {
           <div className="flex justify-between mt-4 pt-4 border-t border-gray-200">
             <div className="text-center">
               {" "}
-              <div className="font-semibold text-sm text-gray-900">
-                User
-              </div>
-              <div className="text-sm font-semibold text-gray-600">
-               Role
-              </div>
+              <div className="font-semibold text-sm text-gray-900">User</div>
+              <div className="text-sm font-semibold text-gray-600">Role</div>
             </div>
             <div className="text-center">
               {" "}

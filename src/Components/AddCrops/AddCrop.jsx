@@ -14,8 +14,8 @@ const AddCrop = () => {
     const name = e.target.name.value;
     const type = e.target.type.value;
     const unit = e.target.unit.value;
-    const pricePerUnit = e.target.price.value;
-    const quantity = e.target.quantity.value;
+    const pricePerUnit = Number(e.target.price.value);
+    const quantity = Number(e.target.quantity.value);
     const description = e.target.description.value;
     const location = e.target.location.value;
     const image = e.target.photo.value;
@@ -64,7 +64,7 @@ const AddCrop = () => {
           <div>
             <label
               for="cropName"
-              className="text-sm text-[#151717] font-semibold mb-1 block"
+              className="text-sm text-[#151717] font-semibold mb-1 block headingFont"
             >
               Crop Name
             </label>
@@ -72,7 +72,7 @@ const AddCrop = () => {
               id="Name"
               name="name"
               placeholder="name of your crops"
-              className=" w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition duration-150"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-red focus:outline-none focus:border-green-500 transition duration-150  "
               type="text"
               required
             />
@@ -81,7 +81,7 @@ const AddCrop = () => {
             <div className="sm:w-1/2">
               <label
                 for="cropType"
-                className="text-sm text-[#151717] font-semibold mb-1 block"
+                className="text-sm text-[#151717] font-semibold mb-1 block headingFont"
               >
                 Type
               </label>
@@ -101,7 +101,7 @@ const AddCrop = () => {
             <div className="sm:w-1/2">
               <label
                 for="unit"
-                className="text-sm text-[#151717] font-semibold mb-1 block"
+                className="text-sm text-[#151717] font-semibold mb-1 block headingFont"
               >
                 Unit
               </label>
@@ -120,7 +120,7 @@ const AddCrop = () => {
             <div className="sm:w-1/2">
               <label
                 for="location"
-                className="text-sm text-[#151717] font-semibold mb-1 block"
+                className="text-sm text-[#151717] font-semibold mb-1 block headingFont"
               >
                 Location
               </label>
@@ -139,7 +139,7 @@ const AddCrop = () => {
             <div className="sm:w-2/5">
               <label
                 for="pricePerUnit"
-                className="text-sm text-[#151717] font-semibold mb-1 block"
+                className="text-sm text-[#151717] font-semibold mb-1 block headingFont"
               >
                 Price per Unit (BDT)
               </label>
@@ -156,7 +156,7 @@ const AddCrop = () => {
             <div className="sm:w-2/5">
               <label
                 htmlFor="estimatedQuantity"
-                className="text-sm text-[#151717] font-semibold mb-1 block"
+                className="text-sm text-[#151717] font-semibold mb-1 block headingFont"
               >
                 Quantity
               </label>
@@ -174,7 +174,7 @@ const AddCrop = () => {
           <div>
             <label
               for="description"
-              className="text-sm text-[#151717] font-semibold mb-1 block"
+              className="text-sm text-[#151717] font-semibold mb-1 block headingFont"
             >
               Description
             </label>
@@ -190,14 +190,14 @@ const AddCrop = () => {
           <div>
             <label
               htmlFor="cropImage"
-              className="text-sm text-[#151717] font-semibold mb-1 block"
+              className="text-sm text-[#151717] font-semibold mb-1 block headingFont"
             >
               Photo url of the Crop
             </label>
             <input
               id="Photo"
               name="photo"
-              className="w-full p-3 border border-gray-300 rounded-lg bg-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+              className="w-full p-3 border  rounded-lg bg-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:text-green-700 hover:file:bg-green-100"
               type="text"
               required
               placeholder="url Of your crop"
@@ -206,7 +206,7 @@ const AddCrop = () => {
 
           <button
             type="submit"
-            className="button-submit mt-6 bg-[#0cdc39] border-none text-white text-lg font-bold rounded-lg h-[55px] w-full cursor-pointer hover:bg-[#0bb730] transition duration-150 shadow-md"
+            class="headingFont px-4 py-4 mt-6 rounded-xl bg-green-500 hover:bg-green-600 hover:text-white font-bold transition-all text-xl"
           >
             Post
           </button>

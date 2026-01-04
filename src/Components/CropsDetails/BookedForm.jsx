@@ -46,6 +46,7 @@ const BookedForm = ({ id, postDetails }) => {
   }
 
   function handleBooked(e) {
+    
     e.preventDefault();
     const quantity = Number(e.target.quantity.value.trim());
     const message = e.target.message.value.trim();
