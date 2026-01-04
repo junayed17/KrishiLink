@@ -16,6 +16,7 @@ import Error from "../Components/error/Error";
 import MypostEdit from "../Components/MyPosts/MypostEdit";
 import Features from "../Pages/features/Features";
 import AllCropsDemoPagination from "../Components/AllCrops/AllCropsPagination";
+import Overview from "../Components/overview/OverviewDashboard";
 
 const router = createBrowserRouter([
   {
@@ -88,9 +89,10 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: "/AllCropsDemoPagination",
-        element: <AllCropsDemoPagination />,
-      },
+        path: "/dashboard/overview",
+        element:<Overview/>
+      }
+
     ],
   },
   {

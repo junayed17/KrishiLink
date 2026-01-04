@@ -52,7 +52,7 @@ const LogOutBtn = () => {
         <li>
           <NavLink
             onClick={closeDropdown}
-            to="/myProfile"
+            to="/dashboard/overview"
             className="
             headingFont
             flex items-center gap-3 py-3 rounded-lg hover:bg-green-500 hover:text-white font-semibold transition-all text-xl"
