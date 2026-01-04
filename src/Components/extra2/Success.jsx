@@ -3,7 +3,7 @@ import React from "react";
 const Success = () => {
   return (
     <section className="my-8 max-w-[1440px] mx-auto">
-      <div className=" px-4">
+      <div className="">
         <div className="text-center mb-6">
           <div className="flex items-center justify-center gap-3">
             <img

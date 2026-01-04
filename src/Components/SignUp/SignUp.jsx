@@ -22,6 +22,43 @@ const SignUp = () => {
     desiredlocation,
   } = use(AuthContext);
 
+
+
+
+
+
+  const saveUser = (user) => {
+    const userInfo = {
+      name: user?.displayName,
+      email: user?.email,
+      photo: user?.photoURL,
+    };
+
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          console.log("Notun user database-e add hoyeche.");
+        } else {
+          console.log("User agei database-e chilo, tai notun kore add hoy ni.");
+        }
+      })
+      .catch((error) => console.error("Error saving user:", error));
+  };
+
+
+
+
+
+
+
+
   const [error, setError] = useState("");
   const [passShow, setPassShow] = useState(false);
   const navigate = useNavigate();
@@ -52,6 +89,7 @@ const SignUp = () => {
       .then((result) => {
         toast.success("Account created successfully!");
         desiredlocation ? navigate(desiredlocation) : navigate("/");
+        saveUser(result.user)
       })
       .catch((err) => {
         toast.error(err.code);
@@ -100,6 +138,10 @@ const SignUp = () => {
               {
                 desiredlocation ? navigate(desiredlocation) : navigate("/");
               }
+
+
+
+              saveUser(data4);
             });
           });
       })

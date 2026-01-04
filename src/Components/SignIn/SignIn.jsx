@@ -23,6 +23,34 @@ const SignIn = () => {
 
 
 
+const saveUser = (user) => {
+  const userInfo = {
+    name: user?.displayName,
+    email: user?.email,
+    photo: user?.photoURL,
+  };
+
+  fetch("http://localhost:3000/users", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(userInfo),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.insertedId) {
+        console.log("Notun user database-e add hoyeche.");
+      } else {
+        console.log("User agei database-e chilo, tai notun kore add hoy ni.");
+      }
+    })
+    .catch((error) => console.error("Error saving user:", error));
+};
+
+
+
+
 
   function handleSignIn(userData) {
     const email =userData.email.trim();
@@ -44,6 +72,7 @@ const SignIn = () => {
         toast.success("sucessfully logged");
         setLoading(false);
         state ? Navigate(state) : Navigate("/");
+        saveUser(result.user);
       })
       .catch((err) => {
         toast.error("try again");

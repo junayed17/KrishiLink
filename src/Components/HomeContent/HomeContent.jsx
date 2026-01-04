@@ -1,10 +1,11 @@
-import React from 'react';
-import Slider from '../../slider/slider';
-import HowItWork from '../HowItWork/HowItWork';
-import LatestCrops from '../Crops/LatestCrops';
-import Blog from '../Blog/Blog';
-import Success from '../extra2/Success';
-import Partners from '../extra2/Partner';
+import React from "react";
+import Slider from "../../slider/slider";
+import HowItWork from "../HowItWork/HowItWork";
+import LatestCrops from "../Crops/LatestCrops";
+import Blog from "../Blog/Blog";
+import Success from "../extra2/Success";
+import Partners from "../extra2/Partner";
+import Overview from "../Overview";
 
 const HomeContent = () => {
   return (
@@ -24,6 +25,9 @@ const HomeContent = () => {
       </section>
       <section>
         <Success />
+      </section>
+      <section>
+        <Overview />
       </section>
       <section>
         <Partners />
